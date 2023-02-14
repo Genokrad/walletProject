@@ -1,21 +1,20 @@
-// import { useDispatch } from 'react-redux';
-// import { login } from '../../redux/auth/operations';
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/auth/auth-operations';
 
 import { Button } from '../Button/Button';
 
 export const LoginForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
-
-    const login = {
-      email: form.elements.email.value,
-      password: form.elements.password.value,
-    };
-
-    console.log(login);
+    dispatch(
+      login({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
 
     form.reset();
   };

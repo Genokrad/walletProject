@@ -3,11 +3,31 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://wallet.goit.ua/';
 
-export const register = createAsyncThunk('auth/register', async credentials => {
-  console.log(credentials);
-  try {
-    const { data } = await axios.post('/api/auth/sign-up', credentials);
-    console.log(data);
-    return data;
-  } catch (error) {}
-});
+export const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/api/auth/sign-up', credentials);
+      return data;
+    } catch (error) {}
+  }
+);
+
+export const login = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/api/auth/sign-in', credentials);
+      return data;
+    } catch (error) {}
+  }
+);
+
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.delete('/api/auth/sign-out');
+    } catch (error) {}
+  }
+);

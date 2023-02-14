@@ -18,9 +18,8 @@ const RegistrationForm = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-      // console.log(register())
     );
-    // form.reset();
+    form.reset();
   };
 
   return (
