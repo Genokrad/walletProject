@@ -3,7 +3,7 @@ export const Table = styled.table`
 width :715px;`
 export const TopTable = styled.tr`
 
-width: 38px;
+width: 37px;
 height: 27px;
 left: 569px;
 top: 142px;
