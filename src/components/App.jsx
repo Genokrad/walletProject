@@ -5,7 +5,7 @@ import { StatisticsPage } from 'pages/Statistics/StatisticsPage';
 import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { RegistrationPage } from 'pages/RegistrationsPage/RegistrationsPage';
 import { ErrorPage } from 'pages/ErrorPage/ErrorPage';
-
+//
 export const App = () => {
   return (
     <>

@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   isModalAddTransactionOpen: false,
   isLoading: false,
-  isModalLogoutOpen: false
+  isModalLogoutOpen: false,
 };
 
 export const globalSlice = createSlice({
@@ -13,9 +13,8 @@ export const globalSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     // builder
+    //
   },
 });
-
-
 
 export default globalSlice.reducer;
