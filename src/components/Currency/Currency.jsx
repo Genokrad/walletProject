@@ -12,11 +12,15 @@ export const Currency = () => {
           </tr>
         </thead>
         <tbody>
-          <ul>
-            <li>USD</li>
-            <li>EUR</li>
-            <li>Bit</li>
-          </ul>
+          <tr>
+            <td>USD</td>
+          </tr>
+          <tr>
+            <td>EUR</td>
+          </tr>
+          <tr>
+            <td>Bit</td>
+          </tr>
         </tbody>
       </CurrencyStyled>
     </>
