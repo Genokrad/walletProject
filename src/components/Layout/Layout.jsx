@@ -1,6 +1,6 @@
 // import { Navigation } from '../Navigation/Navigation';
 import { Outlet } from 'react-router';
-import { Header } from 'components/Header/Header';
+import Header from 'components/Header/Header';
 import { DashBoard } from 'components/DashBoard/DashBoard';
 // import { Login } from 'pages/LoginPage/LoginPage';
 // import { Registration } from 'pages/RegistrationsPage/RegistrationsPage';
@@ -8,9 +8,7 @@ import { DashBoard } from 'components/DashBoard/DashBoard';
 export const Layout = () => {
   return (
     <>
-      <header className="Header">
-        <Header />
-      </header>
+      <Header />
       <main className="main">
         <DashBoard />
         <Outlet />
