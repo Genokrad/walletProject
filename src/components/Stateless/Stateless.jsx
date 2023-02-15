@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { statistSummary } from '../../redux/statistics/stat-operations';
 // import { selectStatSummury } from '../../redux/statistics/selectorStatistics';
 
