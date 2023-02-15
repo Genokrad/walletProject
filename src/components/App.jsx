@@ -8,11 +8,19 @@ import { ErrorPage } from 'pages/ErrorPage/ErrorPage';
 
 import PrivateRoute from './Routs/PrivateRoute';
 import PublicRoute from './Routs/PublicRoute';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getIsFetchingCurrentUser } from './../redux/auth/auth-selectors';
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/auth/auth-operations';
 
 export const App = () => {
   const isFetchingCurrentUser = useSelector(getIsFetchingCurrentUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     !isFetchingCurrentUser && (
       <>
