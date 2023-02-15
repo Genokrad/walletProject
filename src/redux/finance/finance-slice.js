@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   data: [],
-  totalBalance: null,
+  isLoading: false,
+  error: null,
+  // totalBalance: null,
 };
 
 export const financeSlice = createSlice({

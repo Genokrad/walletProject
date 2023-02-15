@@ -15,7 +15,7 @@ export const App = () => {
         {/* <Route path="/" element={<PrivateRoute redirectTo="/login" component={<Layout />} />}> */}
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="/statistics_page" element={<StatisticsPage />} />
+          <Route path="/diagram" element={<StatisticsPage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
