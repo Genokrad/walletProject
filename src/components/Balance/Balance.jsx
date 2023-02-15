@@ -1,3 +1,7 @@
 export const Balance = () => {
-  return <p>Balance</p>;
+  return (
+    <>
+      <div></div>
+    </>
+  );
 };
