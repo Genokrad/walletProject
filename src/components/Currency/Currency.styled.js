@@ -10,11 +10,14 @@ export const CurrencyStyled = styled.table`
   top: 144px;
   color: white;
 
-  background: #4a56e2;
+  background: var(--bcg-ultraMarine-color);
   border-radius: 30px;
   thead {
   }
 
   tbody {
+  }
+  td {
+    display: flex;
   }
 `;
