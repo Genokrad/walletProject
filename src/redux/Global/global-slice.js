@@ -2,12 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 // import * as financeOperations from './finance-operations';
 
 const initialState = {
-  data: [],
-  totalBalance: null,
+  isModalAddTransactionOpen: false,
+  isLoading: false,
+  isModalLogoutOpen: false
 };
 
-export const financeSlice = createSlice({
-  name: 'finance',
+export const globalSlice = createSlice({
+  name: 'global',
   initialState,
   reducers: {},
   extraReducers: builder => {
@@ -15,4 +16,6 @@ export const financeSlice = createSlice({
   },
 });
 
-export default financeSlice.reducer;
+
+
+export default globalSlice.reducer;
