@@ -4,6 +4,7 @@ import { HomePage } from 'pages/HomePage/HomePage';
 import { StatisticsPage } from 'pages/Statistics/StatisticsPage';
 import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { RegistrationPage } from 'pages/RegistrationsPage/RegistrationsPage';
+import { ErrorPage } from 'pages/ErrorPage/ErrorPage';
 
 export const App = () => {
   return (
@@ -15,9 +16,8 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/statistics_page" element={<StatisticsPage />} />
-          <Route path="*" element={<HomePage />} />
         </Route>
-        <Route path="*" element={<HomePage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
