@@ -8,9 +8,7 @@ import { DashBoard } from 'components/DashBoard/DashBoard';
 export const Layout = () => {
   return (
     <>
-      <header className="Header">
         <Header />
-      </header>
       <main className="main">
         <DashBoard />
         <Outlet />

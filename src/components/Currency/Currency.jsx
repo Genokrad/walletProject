@@ -1,9 +1,6 @@
 import { CurrencyStyled } from './Currency.styled';
-import { useFetchCurrency } from 'components/hooks/useFetchCurrency';
 
 export const Currency = () => {
-  const data = useFetchCurrency();
-  console.log(333, data);
   return (
     <>
       <CurrencyStyled>
@@ -17,7 +14,11 @@ export const Currency = () => {
         <tbody>
           <tr>
             <td>USD</td>
+          </tr>
+          <tr>
             <td>EUR</td>
+          </tr>
+          <tr>
             <td>Bit</td>
           </tr>
         </tbody>

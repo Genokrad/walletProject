@@ -1,3 +1,10 @@
+import { Statistics } from '../../components/Statistics/Statistics';
+
 export const StatisticsPage = () => {
-  return <p>Statistics Page</p>;
+  return (
+    <>
+      <h2>Statistics</h2>
+      <Statistics />
+    </>
+  )
 };
