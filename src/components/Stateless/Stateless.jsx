@@ -1,24 +1,31 @@
 import { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { statistSummary } from '../../redux/statistics/stat-operations';
-// import { selectStatSummury } from '../../redux/statistics/selectorStatistics';
+import { selectStatSummury, selectExpenseSummary, selectIncomeSummary } from '../../redux/statistics/selectorStatistics';
 
 export const Stateless = () => {
     const [month, setMonth] = useState ('');
     const [years, setYears] = useState('');
 
-    // const statSummury = useSelector(selectStatSummury);
+    const statSummury = useSelector(selectStatSummury);
+    const expenseSummary = useSelector(selectExpenseSummary);
+    const incomeSummary = useSelector(selectIncomeSummary)
+
+
     const dispatch = useDispatch();
     
     const handleChange = ({ target }) => {
         const { name, value } = target;
         if (name === 'month') setMonth(value);
         else setYears(value);
+        // console.log('statSummury >>>>>', { month, years });
     }
 
     useEffect (() => {
-    dispatch(statistSummary());
+        dispatch(statistSummary({
+            month: month,
+            years: years,
+        }));
     }, [dispatch, month, years]);
     
     return (
@@ -57,16 +64,33 @@ export const Stateless = () => {
                     <td>Category</td>
                     <td>Sum</td>
                 </tr>
-                {/* {statSummury.map(({ name, total }) => {
-                    return (
-                        <tr key={name}>
-                            <td>{ name }</td>
-                        </tr>
-                    )
-                })} */}
+                <ul>
+                    {statSummury.length > 0 ? (statSummury.map(
+                        ({ name, total }) => {
+                            return (
+                                <tr key={name}>
+                                    <td>{name}</td>
+                                    <td>{ total }</td>
+                                </tr>
+                            )
+                })) : <p>No information</p>}
+                </ul>
+                
+
+                <tr>
+                    <td>Expenses:</td>
+                    <td>{ expenseSummary }</td>
+                </tr>
+                <tr>
+                    <td>Income:</td>
+                    <td>{incomeSummary}</td>
+                </tr>
             </table>
 
         </>
     )
     
 }
+
+// expenseSummary
+// incomeSummary
