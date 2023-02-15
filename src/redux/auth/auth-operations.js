@@ -5,11 +5,11 @@ axios.defaults.baseURL = 'https://wallet.goit.ua/';
 
 const token = {
   set(token) {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-      axios.defaults.headers.common.Authorization = '';
-  }
+    axios.defaults.headers.common.Authorization = '';
+  },
 };
 
 export const register = createAsyncThunk(
@@ -17,6 +17,7 @@ export const register = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/api/auth/sign-up', credentials);
+      token.set(data.token);
       return data;
     } catch (error) {}
   }
@@ -27,6 +28,7 @@ export const login = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/api/auth/sign-in', credentials);
+      token.set(data.token);
       return data;
     } catch (error) {}
   }
@@ -37,6 +39,27 @@ export const logout = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await axios.delete('/api/auth/sign-out');
+      token.unset();
     } catch (error) {}
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    try {
+      token.set(persistedToken);
+      const response = await axios.get('??????????????????????????');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );

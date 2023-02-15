@@ -7,8 +7,6 @@ const initialState = {
   isLoggedIn: false,
 };
 
-
-
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -31,14 +29,12 @@ export const authSlice = createSlice({
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
+      })
+      .addCase(authOperations.refreshUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
       });
   },
-
-  // extraReducers: {
-  //   [authOperations.register.fulfilled](state, action) {
-
-  //   },
-  // },
 });
 
 export default authSlice.reducer;

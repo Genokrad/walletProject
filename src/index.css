@@ -1,5 +1,27 @@
 @import-normalize; /* bring in normalize.css styles */
 
+:root {
+  --black-text-color: #000000;
+  --white-text-color: #ffffff;
+  --gray-text-color: #bdbdbd;
+  --light-gray-text-color: #e0e0e0;
+  --blue-text-color: #4a56e2;
+  --red-text-color: #ff6596;
+  --seaBlue-text-color: #24cca7;
+
+  --balance-text-color: #a6a6a6;
+
+  --button-seaBlue-color: #24cca7;
+  --button-red-color: #ff6596;
+  --button-blue-color: #4a56e2;
+
+  --bcg-white-color: #ffffff;
+  --bcg-white-transparent-color: rgba(255, 255, 255, 0.7);
+  --bcg-ultraMarine-color: #4a56e2;
+  --bcg-gray-color: #e5e5e5;
+  --bcg-red-color: #ff6596;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
