@@ -1,4 +1,4 @@
-import { Currency } from 'components/Currency/Currency';
+import { Currency } from 'components/Carrency/Carrency';
 
 // export const HomePage = () => {
 //   return <p>Home Page</p>;
