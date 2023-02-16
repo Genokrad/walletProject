@@ -3,11 +3,15 @@ import axios from "axios";
 
 export const statistSummary = createAsyncThunk (
     'statistics',
-    async (credentials, { rejectWithValue }) => {
+    async ({month, year}, { rejectWithValue }) => {
         try {
-            console.log('credentials >>>>>>>', credentials);
-            const { data } = await axios.get('/api/transactions-summary', credentials);
-            // token.set(data.token);
+
+            const { data } = await axios.get('/api/transactions-summary', {
+                params: {
+                    month: Number(month),
+                    year: Number(year),
+                }
+            });
             console.log('statistics >>>>', data);
             return data;
         } catch (error) {}

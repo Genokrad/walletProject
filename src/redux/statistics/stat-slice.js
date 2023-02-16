@@ -10,8 +10,8 @@ const initialState = {
         incomeSummary: 0,
         expenseSummary: 0,
         periodTotal: 0,
-        month: '',
-        year: '',
+        month: null,
+        year: null,
         isLoader: false,
     }
 
