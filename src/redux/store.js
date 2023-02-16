@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './auth/auth-slice';
+ import transactionsControllerReducer from './transactionsController/slice'
 import {
   persistStore,
   persistReducer,
@@ -11,6 +12,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import {statReducer} from './statistics/stat-slice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -21,6 +23,8 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    transactionsController: transactionsControllerReducer,
+    stat: statReducer,
     // auth: authReducer,
   },
   middleware: getDefaultMiddleware =>

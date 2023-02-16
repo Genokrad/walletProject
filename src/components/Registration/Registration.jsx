@@ -1,45 +1,62 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
-// import { useState } from 'react';
 import { Button } from '../Button/Button';
 
-// console.log(register);
+const schema = Yup.object().shape({
+  name: Yup.string().min(1).max(12).required(),
+  email: Yup.string().email().required(),
+  password: Yup.string().min(6).max(12).required(),
+});
+
+const initialValues = {
+  name: '',
+  email: '',
+  password: '',
+};
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    const form = evt.currentTarget;
+  const handleSubmit = (values, { resetForm }) => {
     dispatch(
       register({
-        username: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        username: values.name,
+        email: values.email,
+        password: values.password,
       })
     );
-    form.reset();
+    resetForm();
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <h2 className="title">Please register</h2>
-      <label className="formLabel">
-        <span className="labelTitle">Name:</span>
-        <input className="inputTag" type="text" name="name" />
-      </label>
-      <label className="formLabel">
-        <span className="labelTitle">E-mail:</span>
-        <input className="inputTag" type="email" name="email" />
-      </label>
-      <label className="formLabel">
-        <span className="labelTitle">Password:</span>
-        <input className="inputTag" type="password" name="password" />
-      </label>
-      <Button title="Create account" type="submit" />
-    </form>
+    <>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={schema}>
+        <Form autoComplete="off">
+          <h2 className="title">Please register</h2>
+          <label className="formLabel">
+            <span className="labelTitle">Name:</span>
+            <Field className="inputTag" type="text" name="name" />
+            <ErrorMessage name="name" component="div" />
+          </label>
+          <label className="formLabel">
+            <span className="labelTitle">E-mail:</span>
+            <Field className="inputTag" type="email" name="email" />
+            <ErrorMessage name="email" component="div" />
+          </label>
+          <label className="formLabel">
+            <span className="labelTitle">Password:</span>
+            <Field className="inputTag" type="password" name="password" />
+            <ErrorMessage name="password" component="div" />
+          </label>
+          <Button title="Create account" type="submit" />
+        </Form>
+      </Formik>
+    </>
   );
 };
 
 export default RegistrationForm;
+

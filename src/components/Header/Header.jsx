@@ -3,7 +3,7 @@ import LogoIcon from 'images/Header/logo-icon.svg';
 import Delimetr from 'images/Header/delimetr.svg';
 import ExitIcon from 'images/Header/exit-icon.svg';
 import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   Button,
   Container,
@@ -16,8 +16,9 @@ import {
   Name,
   Wrapper,
 } from './Header.styled';
+import { getUserName } from 'redux/auth/auth-selectors';
 export const Header = () => {
-  // const user = useSelector(state=>state.auth.user.name);
+  const {username} = useSelector(getUserName);
   return (
     <Container>
       <HeaderLine>
@@ -27,10 +28,7 @@ export const Header = () => {
         </Logo>
         <Wrapper>
           <NavLink to="/???">
-            <Name>
-              {/* {user} */}
-              UserName
-            </Name>
+            <Name>{username}</Name>
           </NavLink>
           <ImgDel src={Delimetr} alt="delimetr" />
           <Button

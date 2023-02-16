@@ -1,4 +1,5 @@
 import HomeTab from 'components/HomeTab/HomeTab';
+
 import { Btn } from './HomeButtonStyled';
 import sprite from '../../iconsSprite/icons.svg';
 import { useState } from "react";
@@ -16,6 +17,7 @@ export const HomePage = () => {
           <use href={sprite + '#iconplus'} width="20" height="20"></use>
         </svg>
       </Btn>{' '}
+
     </>
   );
 };

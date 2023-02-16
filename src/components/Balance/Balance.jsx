@@ -1,3 +1,14 @@
+import { useSelector } from 'react-redux';
+import { getUserName } from 'redux/auth/auth-selectors';
+import { StyledDiv, StyledPBalance, StyledPTite } from './Balance.styled';
+
 export const Balance = () => {
-  return <p>Balance</p>;
+  const { balance } = useSelector(getUserName);
+
+  return (
+    <StyledDiv>
+      <StyledPTite>Your balance</StyledPTite>
+      <StyledPBalance>₴ {balance}</StyledPBalance>
+    </StyledDiv>
+  );
 };
