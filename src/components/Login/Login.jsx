@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Button } from '../Button/Button';
 import { Notify } from 'notiflix';
-import { Container, Label, Input, ErrorMsg, Btn, Svg } from './Login.styled';
+import { Container, Label, Input, ErrorMsg, Svg } from './Login.styled';
 import sprite from '../../iconsSprite/icons.svg';
 
 const schema = Yup.object().shape({
