@@ -5,23 +5,25 @@ import AddComponent from './ComponentAdd';
 import MinusComponent from './componentMinus';
 import {
   Header,
-  Sum,
-  Data,
-  DivDataSum,
-  Coment,
-  DivSetting,
-  DivBtn,
-  BtnAdd,
-  BtnCancel,
+  // Sum,
+  // Data,
+  // DivDataSum,
+  // Coment,
+  // DivSetting,
+  // DivBtn,
+  // BtnAdd,
+  // BtnCancel,
   Switch,
-Span,Checkbox,DivChekbox
+  Span,
+  Checkbox,
+  DivChekbox,
 } from './StyledContent';
 
 import { useState } from 'react';
 // const checked = document.querySelector('.Checkbox')
 
 const ModalAdd = ({ active, setActive }) => {
- const [add, getAdd] = useState(true)
+  const [add, getAdd] = useState(true);
   return (
     <ContainerModal
       className={active ? 'ContainerModal active' : 'ContainerModal'}
@@ -41,13 +43,17 @@ const ModalAdd = ({ active, setActive }) => {
           <DivChekbox className="RadioBtn">
             <p>Income</p>
             <Switch className="switch">
-              <Checkbox className="Checkbox" type="checkbox" onClick={()=>getAdd(!add)} />
+              <Checkbox
+                className="Checkbox"
+                type="checkbox"
+                onClick={() => getAdd(!add)}
+              />
               <Span className="slider round"></Span>
             </Switch>
             <p>Expense</p>
           </DivChekbox>
-          {add?<AddComponent/>:<MinusComponent/>}
-          
+          {add ? <AddComponent /> : <MinusComponent />}
+
           {/* <DivSetting className="SetingTransaction">
             <form>
               <DivDataSum>
