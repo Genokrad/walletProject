@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const RegistrationPage = () => {
   return (
     <>
+      <h2 className="title">Wallet</h2>
       <RegistrationForm />
       <Link to="/login">Login</Link>
     </>
