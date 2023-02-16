@@ -6,6 +6,7 @@ import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { RegistrationPage } from 'pages/RegistrationsPage/RegistrationsPage';
 import { ErrorPage } from 'pages/ErrorPage/ErrorPage';
 
+
 import PrivateRoute from './Routs/PrivateRoute';
 import PublicRoute from './Routs/PublicRoute';
 import { useDispatch, useSelector } from 'react-redux';
@@ -71,5 +72,6 @@ export const App = () => {
         </Routes>
       </>
     )
+
   );
 };
