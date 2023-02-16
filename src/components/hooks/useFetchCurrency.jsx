@@ -13,9 +13,11 @@ export const useFetchCurrency = response => {
   const [details, setDetails] = useState(null);
 
   useEffect(() => {
-    // if (!details) return;
+    if (details) {
+      return;
+    }
     fetchMonoApi(response).then(setDetails);
-  }, [response]);
+  }, [details, response]);
 
   // useEffect(() => {
   //   // const time = details.data[0].date;
