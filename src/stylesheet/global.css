@@ -65,3 +65,7 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
+body {
+  background-color: var(--bcg-main-color);
+}

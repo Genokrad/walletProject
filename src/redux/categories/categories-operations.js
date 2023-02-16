@@ -12,3 +12,15 @@ const token = {
   },
 };
 
+export const getCategories = createAsyncThunk(
+  'categ/get',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/api/transaction-categories');
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

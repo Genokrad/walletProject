@@ -3,10 +3,24 @@ import sprite from '../../iconsSprite/icons.svg';
 import { SvgClose } from './ModalAddStyled';
 import AddComponent from './ComponentAdd';
 import MinusComponent from './componentMinus';
-import { Header, Switch, Span, Checkbox, DivChekbox } from './StyledContent';
+import {
+  Header,
+  // Sum,
+  // Data,
+  // DivDataSum,
+  // Coment,
+  // DivSetting,
+  // DivBtn,
+  // BtnAdd,
+  // BtnCancel,
+  Switch,
+  Span,
+  Checkbox,
+  DivChekbox,
+} from './StyledContent';
 
 import { useState } from 'react';
-
+// const checked = document.querySelector('.Checkbox')
 
 const ModalAdd = ({ active, setActive }) => {
   const [add, getAdd] = useState(true);
@@ -40,7 +54,20 @@ const ModalAdd = ({ active, setActive }) => {
           </DivChekbox>
           {add ? <AddComponent /> : <MinusComponent />}
 
-        
+          {/* <DivSetting className="SetingTransaction">
+            <form>
+              <DivDataSum>
+                <Sum placeholder="0.00"></Sum>
+                <Data type="date"></Data>
+              </DivDataSum>
+
+              <Coment placeholder="Comment"></Coment>
+            </form>
+          </DivSetting>
+          <DivBtn className="Btn">
+            <BtnAdd>ADD</BtnAdd>
+            <BtnCancel>CANCEL</BtnCancel>
+          </DivBtn> */}
         </div>
       </ContentModal>
     </ContainerModal>

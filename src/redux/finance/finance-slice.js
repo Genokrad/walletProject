@@ -1,20 +1,44 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import * as financeOperations from './finance-operations';
+import { refreshUser, login, logout } from 'redux/auth/auth-operations';
+import {
+  deleteTransaction,
+  createTransaction,
+} from 'redux/transactionsController/operations';
 
 const initialState = {
-  data: [],
-  isLoading: false,
-  error: null,
-  // totalBalance: null,
+  totalBalance: 0,
+  isHideBalance: false,
 };
 
-export const financeSlice = createSlice({
+const finance = createSlice({
   name: 'finance',
   initialState,
-  reducers: {},
+  reducers: {
+    showBalance(state) {
+      state.isHideBalance = false;
+    },
+    hideBalance(state) {
+      state.isHideBalance = true;
+    },
+  },
   extraReducers: builder => {
-    // builder
+    builder
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.totalBalance = payload.balance;
+      })
+      .addCase(createTransaction.fulfilled, (state, { payload }) => {
+        state.totalBalance = payload.balanceAfter;
+      })
+      .addCase(login.fulfilled, (state, { payload }) => {
+        state.totalBalance = payload.user.balance;
+      })
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        state.totalBalance = state.totalBalance - payload.amount;
+      })
+      .addCase(logout.fulfilled, state => {
+        state.totalBalance = 0;
+      });
   },
 });
-
-export default financeSlice.reducer;
+export const { showBalance, hideBalance } = finance.actions;
+export default finance.reducer;

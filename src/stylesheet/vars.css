@@ -13,11 +13,22 @@
   --button-red-color: #ff6596;
   --button-blue-color: #4a56e2;
 
+  --bcg-main-color: #e7eaf2;
   --bcg-white-color: #ffffff;
   --bcg-white-transparent-color: rgba(255, 255, 255, 0.7);
   --bcg-ultraMarine-color: #4a56e2;
   --bcg-gray-color: #e5e5e5;
   --bcg-red-color: #ff6596;
+
+  --main-expenses: #fed057;
+  --products: #ffd8d0;
+  --car: #fd9498;
+  --salf-care: #c5baff;
+  --child-care: #6e78e8;
+  --house-hold: #4a56e2;
+  --education: #81e1ff;
+  --leisure: #24cca7;
+  --oter-expenses: #00ad84;
 }
 
 /* @import url(./) */
