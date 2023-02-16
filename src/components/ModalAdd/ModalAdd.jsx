@@ -1,6 +1,8 @@
 import { ContainerModal, ContentModal } from './ModalAddStyled';
 import sprite from '../../iconsSprite/icons.svg';
 import { SvgClose } from './ModalAddStyled';
+import AddComponent from './ComponentAdd';
+import MinusComponent from './componentMinus';
 import {
   Header,
   Sum,
@@ -14,7 +16,12 @@ import {
   Switch,
 Span,Checkbox,DivChekbox
 } from './StyledContent';
+
+import { useState } from 'react';
+// const checked = document.querySelector('.Checkbox')
+
 const ModalAdd = ({ active, setActive }) => {
+ const [add, getAdd] = useState(true)
   return (
     <ContainerModal
       className={active ? 'ContainerModal active' : 'ContainerModal'}
@@ -34,12 +41,14 @@ const ModalAdd = ({ active, setActive }) => {
           <DivChekbox className="RadioBtn">
             <p>Income</p>
             <Switch className="switch">
-              <Checkbox type="checkbox" />
+              <Checkbox className="Checkbox" type="checkbox" onClick={()=>getAdd(!add)} />
               <Span className="slider round"></Span>
             </Switch>
             <p>Expense</p>
           </DivChekbox>
-          <DivSetting className="SetingTransaction">
+          {add?<AddComponent/>:<MinusComponent/>}
+          
+          {/* <DivSetting className="SetingTransaction">
             <form>
               <DivDataSum>
                 <Sum placeholder="0.00"></Sum>
@@ -52,7 +61,7 @@ const ModalAdd = ({ active, setActive }) => {
           <DivBtn className="Btn">
             <BtnAdd>ADD</BtnAdd>
             <BtnCancel>CANCEL</BtnCancel>
-          </DivBtn>
+          </DivBtn> */}
         </div>
       </ContentModal>
     </ContainerModal>

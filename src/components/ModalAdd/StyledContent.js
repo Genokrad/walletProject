@@ -12,6 +12,7 @@ align-items: center;
 justify-content: center;
 ` 
 export const DivDataSum = styled.div`
+margin-top: 42px;
 gap: 32px;
     justify-content: center;
     display: flex;
@@ -32,18 +33,25 @@ width: 181px;
 padding: 8px;
 text-align: center;
 border-bottom: 1px solid #E0E0E0;
+font-family: 'Circe';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+
+color: #000000;
 ` 
 
 export const DivSetting = styled.div`
 display: flex;
-margin-top: 42px;
+margin-top: 35px;
 justify-content: center;
 ` 
 export const Coment = styled.input`
 color:#BDBDBD;
 border: none;
 padding: 8px;
-margin-top: 40px;
+margin-top: 42px;
 width: 394px;
 
 border-bottom: 1px solid #E0E0E0;
@@ -141,4 +149,50 @@ display: flex;
   &.slider.round:before {
   border-radius: 50%;
 }
+` 
+
+export const Forms = styled.div`
+display: flex;
+justify-content: center;
+border: none;
+border-bottom: 1px solid #E0E0E0;
+` 
+export const FormsInput = styled.input`
+width: 190px;
+height: 24px;
+left: 451px;
+top: 265px;
+
+font-family: 'Circe';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+
+/* Gray 4 */
+
+color: #BDBDBD;
+border: none;
+` 
+
+export const FormsSelect = styled.select`
+border: none;
+text-decoration:none;
+
+` 
+export const Option = styled.option`
+border: none;
+text-decoration:none;
+width: 382px;
+height: 44px;
+left: 463px;
+top: 346px;
+
+font-family: 'Circe';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+display: flex;
+align-items: center;
 ` 
