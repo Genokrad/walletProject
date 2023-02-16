@@ -18,7 +18,7 @@ import {
 } from './Header.styled';
 import { getUserName } from 'redux/auth/auth-selectors';
 export const Header = () => {
-  const user = useSelector(getUserName);
+  const {username} = useSelector(getUserName);
   return (
     <Container>
       <HeaderLine>
@@ -28,7 +28,7 @@ export const Header = () => {
         </Logo>
         <Wrapper>
           <NavLink to="/???">
-            <Name>{user}</Name>
+            <Name>{username}</Name>
           </NavLink>
           <ImgDel src={Delimetr} alt="delimetr" />
           <Button
