@@ -3,11 +3,14 @@ import {
   ListStyled,
   ListLI,
   TypeStyled,
+  ImgStyledVector,
+  ImgStyledRectangle,
 } from './Currency.styled';
+
 import { useFetchCurrency } from 'components/hooks/useFetchCurrency';
-import Vector from '../../images/Header/Vector.png';
 import { Loader } from 'components/Loader/Loader';
-import styled from 'styled-components';
+import Vector from '../../images/Header/Vector.png';
+import Rectangle from '../../images/Header/Rectangle.png';
 
 export const Currency = () => {
   const data = useFetchCurrency();
@@ -25,14 +28,15 @@ export const Currency = () => {
         <Loader />
       ) : (
         <CurrencyStyled>
+          <ImgStyledRectangle src={Rectangle} alt="img" />
           <ListStyled>
             <ListLI>Currency</ListLI>
             <ListLI>Purchase</ListLI>
             <ListLI>Sale</ListLI>
           </ListStyled>
 
+          <ImgStyledVector src={Vector} alt="img" />
           <TypeStyled>
-            <img src={Vector} alt="img" />
             {allCurrency.map(({ rateBuy, currencyCodeA, rateSell }) => (
               <li key={currencyCodeA}>
                 {(currencyCodeA === 840 && <p>USD</p>) ||

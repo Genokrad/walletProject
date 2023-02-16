@@ -11,50 +11,72 @@ export const CurrencyStyled = styled.div`
 `;
 
 export const ListStyled = styled.ul`
-  padding: 10px;
-  max-width: 100%;
-  margin-bottom: 5px;
+  position: relative;
   display: flex;
-  justify-content: center;
-  gap: 30px;
 
+  gap: 28px;
+
+  margin-bottom: 12px;
+  margin-left: 20px;
   width: 280px;
   height: 50px;
-  left: 20px;
-  top: 144px;
-
-  background: red;
-  opacity: 0.2;
-  border-radius: 30px 30px 0px 0px;
 `;
 
 export const ListLI = styled.li`
+  margin-top: 11px;
+
   font-family: 'Circe';
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  line-height: 27px;
+  line-height: calc(27 / 18);
   color: white;
+`;
+export const ImgStyledRectangle = styled.img`
+  position: absolute;
+  top: auto;
+  left: auto;
 
-  text-align: right;
+  width: 280px;
+  height: 50px;
+
+  background: #ffffff;
+  opacity: 0.2;
+  border-radius: 30px 30px 0px 0px;
+`;
+
+export const ImgStyledVector = styled.img`
+  position: absolute;
+  top: 329px;
+  left: auto;
+
+  width: 280px;
+  height: 93px;
 `;
 
 export const TypeStyled = styled.ul`
   position: relative;
+
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  margin-left: 20px;
+  align-items: center;
+
+  gap: 17px;
 
   li {
     display: flex;
+    justify-content: space-between;
     gap: 55px;
+
+    width: 240px;
+    height: 24px;
+
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: calc(24 / 16);
+
     color: white;
-  }
-  img {
-    right: 10px;
-    top: 20px;
-    position: absolute;
-    width: 280px;
   }
 `;
