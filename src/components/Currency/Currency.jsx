@@ -1,20 +1,20 @@
-import { CurrencyStyled } from './Currency.styled';
+import { CurrencyStyled, ListStyled, TypeStyled } from './Currency.styled';
 
 export const Currency = () => {
   return (
     <>
       <CurrencyStyled>
-        <ul>
+        <ListStyled>
           <li>Currency</li>
           <li>Purchase</li>
           <li>Sale</li>
-        </ul>
+        </ListStyled>
 
-        <ul>
+        <TypeStyled>
           <li>USD</li>
           <li>EUR</li>
           <li>Bit</li>
-        </ul>
+        </TypeStyled>
       </CurrencyStyled>
     </>
   );
