@@ -20,6 +20,7 @@ export const ContainerModal = styled.div`
   }
 `;
 export const ContentModal = styled.div`
+
   padding: 20px;
   width: 540px;
   height: 508px;
