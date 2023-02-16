@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-  display: flex;
   @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 60px;
   }
   @media screen and (min-width: 1200px) {
+    display: flex;
     height: 100vh;
   }
 `;
