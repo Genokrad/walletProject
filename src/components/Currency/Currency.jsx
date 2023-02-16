@@ -1,6 +1,10 @@
 import { CurrencyStyled, ListStyled, TypeStyled } from './Currency.styled';
+import { useFetchCurrency } from 'components/hooks/useFetchCurrency';
 
 export const Currency = () => {
+  const data = useFetchCurrency();
+  console.log(333, data.data[0]);
+
   return (
     <>
       <CurrencyStyled>
@@ -9,8 +13,8 @@ export const Currency = () => {
           <li>Purchase</li>
           <li>Sale</li>
         </ListStyled>
-
         <TypeStyled>
+          {data.map(item => console.log(444, item))}
           <li>USD</li>
           <li>EUR</li>
           <li>Bit</li>
@@ -19,3 +23,7 @@ export const Currency = () => {
     </>
   );
 };
+
+// {
+//   data.map(item => console.log(444, item));
+// }
