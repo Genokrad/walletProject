@@ -1,15 +1,14 @@
-import {
-  Table,
-  TopTable,
-  TableBody,
-  Data,
-  Type,
-  Category,
-  Comment,
-  Sum,
-  Btn,
-  Action,
-} from './HomeTabStyle';
+import { Table, TopTable,TableBody,Data,
+    Type,
+    Category,
+    Comment,
+    Sum,Btn,Action,DataTd,
+    TypeTd,
+    CategoryTd,
+    CommentTd,
+    
+    SumTd,} from './HomeTabStyle';
+    import sprite from '../../iconsSprite/icons.svg'
 const HomeTab = () => {
   return (
     <div>
@@ -21,47 +20,64 @@ const HomeTab = () => {
             <Category>Category</Category>
             <Comment>Comment</Comment>
             <Sum>Sum</Sum>
-            <th> </th>
+            <th>  </th>
           </TopTable>
         </thead>
         <tbody>
           <TableBody>
-            <Data>04.01.19</Data>
-            <Type>-</Type>
-            <Category>Ouher</Category>
-            <Comment>Gift</Comment>
-            <Sum>300</Sum>
+            <DataTd>04.01.19</DataTd>
+            <TypeTd>-</TypeTd>
+            <CategoryTd>Ouher</CategoryTd>
+            <CommentTd>Gift</CommentTd>
+            <SumTd>300</SumTd>
             <Action>
+            <svg  width="14" height="14" >
+              
+              <use href={sprite + "#iconpencel"} width="14" height="14"></use>
+            </svg>
               <Btn>Delete</Btn>
             </Action>
           </TableBody>
           <TableBody>
-            <Data>04.01.19</Data>
-            <Type>-</Type>
-            <Category>Ouher</Category>
-            <Comment>Gift</Comment>
-            <Sum>300</Sum>
+            <DataTd>04.01.19</DataTd>
+            <TypeTd>-</TypeTd>
+            <CategoryTd>Ouher</CategoryTd>
+            <CommentTd>Gift</CommentTd>
+            <SumTd>300</SumTd>
             <Action>
+            <svg  width="14" height="14" >
+              
+              <use href={sprite + "#iconpencel"} width="14" height="14"></use>
+            </svg>
               <Btn>Delete</Btn>
             </Action>
           </TableBody>
           <TableBody>
-            <Data>04.01.22</Data>
-            <Type>+</Type>
-            <Category>Gars</Category>
-            <Comment>Fuel</Comment>
-            <Sum>1000</Sum>
+            <DataTd>04.01.22</DataTd>
+            <TypeTd>+</TypeTd>
+            <CategoryTd>Gars</CategoryTd>
+            <CommentTd>Fuel</CommentTd>
+            <SumTd>1000</SumTd>
             <Action>
+            <svg  width="14" height="14" >
+              
+              <use href={sprite + "#iconpencel"} width="14" height="14"></use>
+            </svg>
               <Btn>Delete</Btn>
             </Action>
           </TableBody>
           <TableBody>
-            <Data>04.01.19</Data>
-            <Type>-</Type>
-            <Category>Ouher</Category>
-            <Comment>Gift</Comment>
-            <Sum>300</Sum>
+            <DataTd>04.01.19</DataTd>
+            <TypeTd>-</TypeTd>
+            <CategoryTd>Ouher</CategoryTd>
+            <CommentTd>Gift</CommentTd>
+            <SumTd>300</SumTd>
             <Action>
+           
+            <svg  width="14" height="14" >
+              
+              <use href={sprite + "#iconpencel"} width="14" height="14"></use>
+            </svg>
               <Btn>Delete</Btn>
             </Action>
           </TableBody>

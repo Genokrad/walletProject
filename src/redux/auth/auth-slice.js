@@ -1,22 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, login, logout, refreshUser } from './auth-operations';
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: '', email: '', balance: null },
   token: null,
   isLoading: false,
   isLoggedIn: false,
   isRefreshing: false,
   isModalLogoutOpen: false,
+  balance: 0,
 };
 const handlePending = state => {
   state.isLoading = true;
   state.error = null;
-}
+};
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.isLoggedIn = false;
   state.error = payload;
-}
+};
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -28,7 +29,7 @@ export const authSlice = createSlice({
     },
     closeModalLogout(state) {
       state.isModalLogoutOpen = false;
-    }
+    },
   },
   extraReducers: builder => {
     builder
@@ -53,7 +54,8 @@ export const authSlice = createSlice({
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, state => {
         state.isLoading = false;
-        state.user = { name: null, email: null };
+        state.user = { name: '', email: '' };
+        state.balance = 0;
         state.token = null;
         state.isModalLogoutOpen = false;
         state.isLoggedIn = false;
@@ -78,5 +80,5 @@ export const authSlice = createSlice({
       });
   },
 });
-export const {openModalLogout,closeModalLogout} = authSlice.actions;
+export const { openModalLogout, closeModalLogout } = authSlice.actions;
 export default authSlice.reducer;
