@@ -68,4 +68,8 @@ html {
 
 body {
   background-color: var(--bcg-main-color);
+  background-image: url('../images/ellipse1.png'), url('../images/ellipse2.png');
+  background-repeat: no-repeat;
+  background-position: 0 100%, 100% 0;
+  background-attachment: fixed;
 }
