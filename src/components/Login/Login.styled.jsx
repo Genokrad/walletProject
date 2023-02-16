@@ -45,8 +45,8 @@ export const ErrorMsg = styled(ErrorMessage)`
   color: red;
 `;
 
-export const Btn = styled.button`
-  /* :hover {
+// export const Btn = styled.button`
+//   :hover {
    
-  } */
-`;
+//   }
+// `;
