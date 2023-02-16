@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
+  margin-top: 28px;
   display: flex;
   flex-direction: column;
   padding: 8px 40px;

@@ -67,6 +67,7 @@ html {
 }
 
 body {
+  min-height: 100%;
   background-color: var(--bcg-main-color);
   background-image: url('../images/ellipse1.png'), url('../images/ellipse2.png');
   background-repeat: no-repeat;

@@ -1,16 +1,28 @@
-import { StyledNavLink, Styledlist } from './Navigation.styled';
+import {
+  StyledNavLink,
+  Styledlist,
+  StyledItem,
+  StyledSVG,
+} from './Navigation.styled';
+import sprite from '../../iconsSprite/mySprite.svg';
 
 export const Navigation = () => {
   return (
     <>
       <nav>
         <Styledlist>
-          <li>
+          <StyledItem>
+            <StyledSVG width="18" height="18">
+              <use href={sprite + '#icon-home'}></use>
+            </StyledSVG>
             <StyledNavLink to="/">Home</StyledNavLink>
-          </li>
-          <li>
+          </StyledItem>
+          <StyledItem>
+            <StyledSVG width="18" height="18">
+              <use href={sprite + '#icon-stat'}></use>
+            </StyledSVG>
             <StyledNavLink to="diagram">Statistics</StyledNavLink>
-          </li>
+          </StyledItem>
         </Styledlist>
       </nav>
     </>
