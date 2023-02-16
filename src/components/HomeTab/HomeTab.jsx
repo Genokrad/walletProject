@@ -1,8 +1,15 @@
-import { Table, TopTable,TableBody,Data,
-    Type,
-    Category,
-    Comment,
-    Sum,Btn,Action} from './HomeTabStyle';
+import {
+  Table,
+  TopTable,
+  TableBody,
+  Data,
+  Type,
+  Category,
+  Comment,
+  Sum,
+  Btn,
+  Action,
+} from './HomeTabStyle';
 const HomeTab = () => {
   return (
     <div>
@@ -14,7 +21,7 @@ const HomeTab = () => {
             <Category>Category</Category>
             <Comment>Comment</Comment>
             <Sum>Sum</Sum>
-            <th>  </th>
+            <th> </th>
           </TopTable>
         </thead>
         <tbody>
