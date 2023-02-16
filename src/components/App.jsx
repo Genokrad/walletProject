@@ -6,13 +6,13 @@ import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { RegistrationPage } from 'pages/RegistrationsPage/RegistrationsPage';
 import { ErrorPage } from 'pages/ErrorPage/ErrorPage';
 
-
 import PrivateRoute from './Routs/PrivateRoute';
 import PublicRoute from './Routs/PublicRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsFetchingCurrentUser } from './../redux/auth/auth-selectors';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/auth-operations';
+import { getCategories } from 'redux/categories/categories-operations';
 
 export const App = () => {
   const isFetchingCurrentUser = useSelector(getIsFetchingCurrentUser);
@@ -20,6 +20,10 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getCategories());
   }, [dispatch]);
 
   return (
@@ -72,6 +76,5 @@ export const App = () => {
         </Routes>
       </>
     )
-
   );
 };

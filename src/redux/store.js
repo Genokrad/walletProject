@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './auth/auth-slice';
-import transactionsControllerReducer from './transactionsController/slice'
-import finance from './finance/finance-slice'
+import transactionsControllerReducer from './transactionsController/slice';
+import finance from './finance/finance-slice';
 import {
   persistStore,
   persistReducer,
@@ -14,6 +14,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { statReducer } from './statistics/stat-slice';
+import { categReducer } from './categories/categories-slice';
+
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -26,6 +28,7 @@ export const store = configureStore({
     transactionsController: transactionsControllerReducer,
     stat: statReducer,
     finance,
+    categories: categReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -34,7 +37,5 @@ export const store = configureStore({
       },
     }),
 });
-
-
 
 export const persistor = persistStore(store);
