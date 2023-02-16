@@ -36,6 +36,7 @@ border-bottom: 1px solid #E0E0E0;
 
 export const DivSetting = styled.div`
 display: flex;
+margin-top: 42px;
 justify-content: center;
 ` 
 export const Coment = styled.input`
@@ -83,4 +84,61 @@ color: #4A56E2;
 background: #FFFFFF;
 border: 1px solid #4A56E2;
 border-radius: 20px;
+` 
+// RadioBtn
+export const DivChekbox = styled.div`
+display: flex;
+margin-top: 42px;
+justify-content: center;
+align-items: center;
+gap: 32px;
+  
+` 
+export const Switch = styled.label`
+position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  
+` 
+export const Checkbox = styled.input`
+display:none;
+:checked + .slider {
+  background-color: #fff;
+}
+:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(35px);
+}
+` 
+export const Span = styled.span`
+position: absolute;
+display: flex;
+  align-items: center;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 32px;
+  background-color: #fff;
+  border: 1px solid #E0E0E0;
+  -webkit-transition: .4s;
+  transition: .4s;
+  ::before{ position: absolute;
+  content: "";
+  height: 44px;
+  width: 44px;
+  
+  
+  background-color: var(--button-seaBlue-color);
+  -webkit-transition: .4s;
+  transition: .4s;}
+  &.slider.round:before {
+  border-radius: 50%;
+}
 ` 

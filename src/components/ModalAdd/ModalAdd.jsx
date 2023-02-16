@@ -1,8 +1,19 @@
 import { ContainerModal, ContentModal } from './ModalAddStyled';
 import sprite from '../../iconsSprite/icons.svg';
 import { SvgClose } from './ModalAddStyled';
-import { Header, Sum, Data,DivDataSum,Coment,DivSetting,DivBtn,BtnAdd,
-  BtnCancel} from './StyledContent';
+import {
+  Header,
+  Sum,
+  Data,
+  DivDataSum,
+  Coment,
+  DivSetting,
+  DivBtn,
+  BtnAdd,
+  BtnCancel,
+  Switch,
+Span,Checkbox,DivChekbox
+} from './StyledContent';
 const ModalAdd = ({ active, setActive }) => {
   return (
     <ContainerModal
@@ -20,9 +31,14 @@ const ModalAdd = ({ active, setActive }) => {
           <h2>Add transaction</h2>
         </Header>
         <div>
-          <div className="RadioBtn">
-            <div className="switch-btn switch-on">+</div>
-          </div>
+          <DivChekbox className="RadioBtn">
+            <p>Income</p>
+            <Switch className="switch">
+              <Checkbox type="checkbox" />
+              <Span className="slider round"></Span>
+            </Switch>
+            <p>Expense</p>
+          </DivChekbox>
           <DivSetting className="SetingTransaction">
             <form>
               <DivDataSum>
@@ -30,7 +46,7 @@ const ModalAdd = ({ active, setActive }) => {
                 <Data type="date"></Data>
               </DivDataSum>
 
-              <Coment placeholder='Comment'></Coment>
+              <Coment placeholder="Comment"></Coment>
             </form>
           </DivSetting>
           <DivBtn className="Btn">
