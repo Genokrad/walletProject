@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CurrencyStyled = styled.table`
+export const CurrencyStyled = styled.div`
   padding: 5px;
   margin-top: 50px;
   margin-left: 40px;
@@ -12,12 +12,8 @@ export const CurrencyStyled = styled.table`
 
   background: var(--bcg-ultraMarine-color);
   border-radius: 30px;
-  thead {
-  }
 
-  tbody {
-  }
-  td {
+  ul {
     display: flex;
   }
 `;
