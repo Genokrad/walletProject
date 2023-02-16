@@ -13,7 +13,7 @@ export const CurrencyStyled = styled.div`
 export const ListStyled = styled.ul`
   padding: 10px;
   max-width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -23,6 +23,8 @@ export const ListStyled = styled.ul`
   left: 20px;
   top: 144px;
 
+  background: red;
+  opacity: 0.2;
   border-radius: 30px 30px 0px 0px;
 `;
 
@@ -38,6 +40,7 @@ export const ListLI = styled.li`
 `;
 
 export const TypeStyled = styled.ul`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -47,5 +50,11 @@ export const TypeStyled = styled.ul`
     display: flex;
     gap: 55px;
     color: white;
+  }
+  img {
+    right: 10px;
+    top: 20px;
+    position: absolute;
+    width: 280px;
   }
 `;

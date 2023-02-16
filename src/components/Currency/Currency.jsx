@@ -5,6 +5,7 @@ import {
   TypeStyled,
 } from './Currency.styled';
 import { useFetchCurrency } from 'components/hooks/useFetchCurrency';
+import Vector from '../../images/Header/Vector.png';
 
 export const Currency = () => {
   const data = useFetchCurrency();
@@ -27,6 +28,7 @@ export const Currency = () => {
           </ListStyled>
 
           <TypeStyled>
+            <img src={Vector} alt="img" />
             {/* <li>
               <p>USD</p> <p>{usd.rateBuy}</p>
               <p>{usd.rateSell.toFixed(2)}</p>
