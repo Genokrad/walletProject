@@ -5,14 +5,6 @@ import AddComponent from './ComponentAdd';
 import MinusComponent from './componentMinus';
 import {
   Header,
-  Sum,
-  Data,
-  DivDataSum,
-  Coment,
-  DivSetting,
-  DivBtn,
-  BtnAdd,
-  BtnCancel,
   Switch,
 Span,Checkbox,DivChekbox
 } from './StyledContent';
