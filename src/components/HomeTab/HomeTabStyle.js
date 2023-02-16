@@ -43,6 +43,37 @@ border-bottom: 1px solid #DCDCDF;
 box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 
 `
+export const DataTd = styled.td`
+width: 120px;
+display: flex;
+justify-content: center;
+
+`
+export const TypeTd = styled.td`
+width: 70px;
+display: flex;
+justify-content: center;
+
+`
+export const CategoryTd = styled.td`
+width: 130px;
+display: flex;
+justify-content: center;
+
+`
+export const CommentTd = styled.td`
+width: 150px;
+display: flex;
+justify-content: center;
+
+`
+export const SumTd = styled.td`
+width: 120px;
+display: flex;
+justify-content: center;
+
+`
+
 export const Data = styled.th`
 width: 120px;
 justify-content: center;
@@ -71,7 +102,8 @@ justify-content: center;
 export const Action = styled.td`
 border-radius:18px;
 display: flex;
-
+align-items: center;
+gap:9px;
 justify-content: flex-end;
 
 `
