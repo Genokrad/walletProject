@@ -1,8 +1,16 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Button } from '../Button/Button';
+import sprite from '../../iconsSprite/icons.svg';
+import {
+  Container,
+  Label,
+  Input,
+  ErrorMsg,
+  Svg,
+  Btn,
+} from './Registration.styled';
 import { Notify } from 'notiflix';
 
 const schema = Yup.object().shape({
@@ -12,7 +20,10 @@ const schema = Yup.object().shape({
   cpassword: Yup.string()
     .min(6)
     .max(12)
-    .oneOf([Yup.ref('password'), null], 'Confirm password must be one of the following password')
+    .oneOf(
+      [Yup.ref('password'), null],
+      'Confirm password must be one of the following password'
+    )
     .required(),
 });
 
@@ -33,7 +44,8 @@ const RegistrationForm = () => {
         email: values.email,
         password: values.password,
       })
-    ).unwrap()
+    )
+      .unwrap()
       .then(() => {
         Notify.success('Create user succesfully');
       })
@@ -53,45 +65,67 @@ const RegistrationForm = () => {
         validationSchema={schema}
       >
         {() => (
-          <Form>
-            <label className="formLabel">
-              <Field
+          <Container>
+            <Label className="formLabel">
+              <Input
                 className="inputTag"
                 type="email"
                 name="email"
                 placeholder="E-mail:"
               />
-              <ErrorMessage name="email" component="div" />
-            </label>
-            <label className="formLabel">
-              <Field
+              <Svg width="24" height="24">
+                <use href={sprite + '#icon-email'} width="24" height="24"></use>
+              </Svg>
+              <ErrorMsg name="email" component="div" />
+            </Label>
+            <Label className="formLabel">
+              <Input
                 className="inputTag"
                 type="password"
                 name="password"
                 placeholder="Password:"
               />
-              <ErrorMessage name="password" component="div" />
-            </label>
-            <label className="formLabel">
-              <Field
+              <Svg width="24" height="24">
+                <use
+                  href={sprite + '#icon-password'}
+                  width="24"
+                  height="24"
+                ></use>
+              </Svg>
+              <ErrorMsg name="password" component="div" />
+            </Label>
+            <Label className="formLabel">
+              <Input
                 className="inputTag"
                 type="password"
                 name="cpassword"
                 placeholder="Confirm password:"
               />
-              <ErrorMessage name="cpassword" component="div" />
-            </label>
-            <label className="formLabel">
-              <Field
+              <Svg width="24" height="24">
+                <use
+                  href={sprite + '#icon-password'}
+                  width="24"
+                  height="24"
+                ></use>
+              </Svg>
+              <ErrorMsg name="cpassword" component="div" />
+            </Label>
+            <Label className="formLabel">
+              <Input
                 className="inputTag"
                 type="text"
                 name="name"
                 placeholder="Name:"
               />
-              <ErrorMessage name="name" component="div" />
-            </label>
-            <Button title="Create account" type="submit" />
-          </Form>
+              <Svg width="24" height="24">
+                <use href={sprite + '#icon-name'} width="24" height="24"></use>
+              </Svg>
+              <ErrorMsg name="name" component="div" />
+            </Label>
+            <Btn title="Create account" type="submit">
+              Create account
+            </Btn>
+          </Container>
         )}
       </Formik>
     </>
@@ -99,4 +133,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-

@@ -6,6 +6,11 @@ import {
     selectExpenseSummary,
     selectIncomeSummary,
 } from '../../redux/statistics/selectorStatistics';
+import {
+    DivConteiner, Select, DivSelect, Option,
+    Table, TableHead, Tbody, UlList, UlResults, LiResultsName, LiResultsExpenses, LiResultsIncome,
+    Box
+} from '../Stateless/Stateless.styled';
 
 export const Stateless = () => {
     const objMonth = [
@@ -31,6 +36,18 @@ export const Stateless = () => {
         { name: '2024', value: 2024 },
         { name: '2025', value: 2025 },
     ]
+    // const colorExpenses = [
+    //     { name: 'Main expenses', color: '#FED057' },
+    //     { name: 'Products', color: '#FFD8D0'},
+    //     { name: 'Car', color: '#FD9498'},
+    //     { name: 'Self care', color: '#C5BAFF'},
+    //     { name: 'Child care', color: '#6E78E8'},
+    //     { name: 'Household products', color: '#4A56E2'},
+    //     { name: 'Education', color: '#81E1FF'},
+    //     { name: 'Leisure', color: '#24CCA7'},
+    //     { name: 'Other expenses', color: '#00AD84'},
+    // ]
+
     const date = new Date();
     console.log("Date: ", date);
     const currentMonth = date.getMonth() + 1;
@@ -63,72 +80,109 @@ export const Stateless = () => {
 
     return (
         <>
-            <div>
-                <select name="month" id="month" onChange={handleChange}>
-                        {objMonth.map(({ name, value }) => {
-                            if (value === currentMonth) {
-                                return (
-                                    <option value={value} selected>{name}</option>
-                            )
-                            } else {
-                                return (
-                                    <option value={value} >{name}</option>
-                            )
+            <DivConteiner>
+                <DivSelect>
+                    <Select name="month" id="month" onChange={handleChange}>
+                            {objMonth.map(({ name, value }) => {
+                                if (value === currentMonth) {
+                                    return (
+                                        <Option value={value} selected>{name}</Option>
+                                )
+                                } else {
+                                    return (
+                                        <Option value={value} >{name}</Option>
+                                )
+                                }
+                            })
                             }
-                        })
-                        }
-                </select>
-                </div>
+                    </Select>
 
-                <div>
-                <select name="year" id="year" onChange={handleChange}>
-                    {objYear.map(({ name, value }) => {
-                            if (value === currentYear) {
-                                return (
-                                    <option value={value} selected>{name}</option>
-                            )
-                            } else {
-                                return (
-                                    <option value={value} >{name}</option>
-                            )
+                    <Select name="year" id="year" onChange={handleChange}>
+                        {objYear.map(({ name, value }) => {
+                                if (value === currentYear) {
+                                    return (
+                                        <Option value={value} selected>{name}</Option>
+                                )
+                                } else {
+                                    return (
+                                        <Option value={value} >{name}</Option>
+                                )
+                                }
+                            })
                             }
-                        })
-                        }
-                </select>
-            </div>
+                    </Select>
+                </DivSelect>
 
-            <table>
-                <thead>
-                <tr>
-                    <td>Category</td>
-                    <td>Sum</td>
-                </tr>
-                </thead>
-                <ul>
-                {statSummury.length > 0 ? (
-                    statSummury.map(({ name, total }) => {
-                    return (
-                        <tr key={name}>
-                        <td>{name}</td>
-                        <td>{total}</td>
-                        </tr>
-                    );
-                    })
-                ) : (
-                    <p>No information</p>
-                )}
-                </ul>
-                <tbody>
-                <tr>
-                    <td>Expenses:</td>
-                    <td>{expenseSummary}</td>
-                </tr>
-                <tr>
-                    <td>Income:</td>
-                    <td>{incomeSummary}</td>
-                </tr>
-                </tbody>
-            </table>
+                <Table>
+                    <thead>
+                        <TableHead>
+                            <li>Category</li>
+                            <li>Sum</li>
+                        </TableHead>
+                    </thead>
+                    <UlList>
+                        {statSummury.length > 0 ? (
+                            statSummury.map(({ name, total }) => {
+                                return (
+                                <>
+                                    <li key={name}><Box></Box>{name}</li>
+                                    <li>{total}</li>
+                                </>
+                            );
+                            })
+                        ) : (
+                            <p>No information</p>
+                        )}
+                    </UlList>
+
+                    <Tbody>
+                        <UlResults>
+                            <LiResultsName>Expenses:</LiResultsName>
+                            <LiResultsExpenses>{expenseSummary}</LiResultsExpenses>
+                        </UlResults>
+                        <UlResults>
+                            <LiResultsName>Income:</LiResultsName>
+                            <LiResultsIncome>{incomeSummary}</LiResultsIncome>
+                        </UlResults>
+                    </Tbody>
+                </Table>
+            </DivConteiner>
+            
         </>
     );
 };
+
+
+
+// {/* <table>
+//                 <thead>
+//                 <tr>
+//                     <td>Category</td>
+//                     <td>Sum</td>
+//                 </tr>
+//                 </thead>
+//                 <ul>
+//                 {statSummury.length > 0 ? (
+//                     statSummury.map(({ name, total }) => {
+//                     return (
+//                         <tr key={name}>
+//                         <td>{name}</td>
+//                         <td>{total}</td>
+//                         </tr>
+//                     );
+//                     })
+//                 ) : (
+//                     <p>No information</p>
+//                 )}
+//                 </ul>
+//                 <tbody>
+//                 <tr>
+//                     <td>Expenses:</td>
+//                     <td>{expenseSummary}</td>
+//                 </tr>
+//                 <tr>
+//                     <td>Income:</td>
+//                     <td>{incomeSummary}</td>
+//                 </tr>
+//                 </tbody>
+//             </table> */}
