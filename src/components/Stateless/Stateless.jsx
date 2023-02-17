@@ -9,7 +9,7 @@ import {
     selectIncomeSummary,
 } from '../../redux/statistics/selectorStatistics';
 import {
-    DivConteiner, DivSelect, Option,
+    DivConteiner, DivSelect, 
     Table, TableHead, UlList, UlResults, LiResultsName, LiResultsExpenses, LiResultsIncome,
     Box, ItemTable
 } from '../Stateless/Stateless.styled';
@@ -73,10 +73,23 @@ export const Stateless = () => {
         <>
             <DivConteiner>
                 <DivSelect>
+                    <Select   
+                        name="month" id="month" onChange={handleChange}
+                        options={objMonth}
+                        theme={(theme) => ({
+                            ...theme,
+                            
+                            borderRadius: 20,
+                            colors: {
+                                ...theme.colors,
+                                primery: 'black',
+                            }
+                        })}
+                    />
 
                     <Select
-                        
-                        options={objMonth}
+                        name="year" id="year" onChange={handleChange}
+                        options={objYear}
                         theme={(theme) => ({
                             ...theme,
                             borderRadius: 20,
@@ -84,39 +97,8 @@ export const Stateless = () => {
                                 ...theme.colors,
                                 primery: 'black',
                             }
-
                         })}
                     />
-
-                    {/* <Select name="month" id="month" onChange={handleChange}> */}
-                            {/* {objMonth.map(({ name, value }) => {
-                                if (value === currentMonth) {
-                                    return (
-                                        <Option value={value} selected>{name}</Option>
-                                )
-                                } else {
-                                    return (
-                                        <Option value={value} >{name}</Option>
-                                )
-                                }
-                            })
-                            } */}
-                    {/* </Select> */}
-
-                    <Select name="year" id="year" onChange={handleChange}>
-                        {objYear.map(({ name, value }) => {
-                                if (value === currentYear) {
-                                    return (
-                                        <Option value={value} selected>{name}</Option>
-                                )
-                                } else {
-                                    return (
-                                        <Option value={value} >{name}</Option>
-                                )
-                                }
-                            })
-                            }
-                    </Select>
                 </DivSelect>
 
                 <Table>
@@ -124,7 +106,6 @@ export const Stateless = () => {
                         <li>Category</li>
                         <li>Sum</li>
                     </TableHead>
-
                     
                         {statSummury.length > 0 ? (
                             statSummury.map(({ name, total, type }) => {
