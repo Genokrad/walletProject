@@ -40,15 +40,15 @@ export const LoginPage = () => {
     <Container ref={ref}>
       {size && (
         <Imglog>
-          <picture class="hero-coctail__picture">
+          <picture>
             <source
-              srcset={`${LogDeskX1} 1x, ${LogDeskX2} 2x`}
+              srcSet={`${LogDeskX1} 1x, ${LogDeskX2} 2x`}
               width="435"
               media="(min-width: 1280px)"
               type="image/png"
             />
             <source
-              srcset={`${LogTabletX1} 1x, ${LogTabletX2} 2x`}
+              srcSet={`${LogTabletX1} 1x, ${LogTabletX2} 2x`}
               width="260"
               media="(min-width: 768px)"
               type="image/png"

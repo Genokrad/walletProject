@@ -21,7 +21,7 @@ import {
   LiResultsIncome,
   Box,
 } from '../Stateless/Stateless.styled';
-import { nanoid } from '@reduxjs/toolkit';
+// import { nanoid } from '@reduxjs/toolkit';
 export const Stateless = () => {
   const objMonth = [
     { name: 'January', value: 1 },

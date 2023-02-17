@@ -81,3 +81,92 @@ export const Btn = styled.button`
     border: 1px solid var(--blue-text-color);
   }
 `;
+
+export const Easy = styled.div`
+  position: relative;
+  width: 100%;
+  height: 4px;
+  margin-top: 2px;
+  background-color: #e5f1ef;
+  border-radius: 100px;
+
+  ::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    border-radius: 100px;
+    /* width: 33.3%; */
+    height: 4px;
+    background-color: var(--button-seaBlue-color);
+    box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
+    animation: moveEasy alternate 2s ease-in-out forwards;
+  }
+
+  @keyframes moveEasy {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 33.3%;
+    }
+  }
+`;
+
+
+
+export const Average = styled.div`
+  position: relative;
+  width: 100%;
+  height: 4px;
+  margin-top: 2px;
+  background-color: #e5f1ef;
+  border-radius: 100px;
+  ::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    border-radius: 100px;
+    /* width: 66.6%; */
+    height: 4px;
+    background-color: var(--button-seaBlue-color);
+    box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
+    animation: moveAverage alternate 2s ease-in-out forwards;
+  }
+  @keyframes moveAverage {
+    0% {
+      width: 33.3%;
+    }
+    100% {
+      width: 66.6%;
+    }
+  }
+`;
+
+export const Difficult = styled.div`
+  position: relative;
+  width: 100%;
+  height: 4px;
+  margin-top: 2px;
+  background-color: #e5f1ef;
+  border-radius: 100px;
+  ::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    border-radius: 100px;
+    /* width: 100%; */
+    height: 4px;
+    background-color: var(--button-seaBlue-color);
+    box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
+    animation: moveDifficult alternate 2s ease-in-out forwards;
+  }
+  
+  @keyframes moveDifficult {
+    0% {
+      width: 66.6%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+`;
