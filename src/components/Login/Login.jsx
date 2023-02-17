@@ -2,9 +2,8 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Button } from '../Button/Button';
 import { Notify } from 'notiflix';
-import { Container, Label, Input, ErrorMsg, Svg } from './Login.styled';
+import { Container, Label, Input, ErrorMsg, Svg, Btn } from './Login.styled';
 import sprite from '../../iconsSprite/icons.svg';
 
 const schema = Yup.object().shape({
@@ -16,7 +15,7 @@ const initialValues = {
   password: '',
 };
 
-export const LoginForm = () => {
+const LoginForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
@@ -45,25 +44,15 @@ export const LoginForm = () => {
         validationSchema={schema}
       >
         <Container>
-          <Label className="formLabel">
-            <Input
-              className="inputTag"
-              type="email"
-              name="email"
-              placeholder="E-mail:"
-            />
+          <Label>
+            <Input type="email" name="email" placeholder="E-mail:" />
             <Svg width="24" height="24">
               <use href={sprite + '#icon-email'} width="24" height="24"></use>
             </Svg>
             <ErrorMsg name="email" component="div" />
           </Label>
-          <Label className="formLabel">
-            <Input
-              className="inputTag"
-              type="password"
-              name="password"
-              placeholder="Password:"
-            />
+          <Label>
+            <Input type="password" name="password" placeholder="Password:" />
             <Svg width="24" height="24">
               <use
                 href={sprite + '#icon-password'}
@@ -73,9 +62,13 @@ export const LoginForm = () => {
             </Svg>
             <ErrorMsg name="password" component="div" />
           </Label>
-          <Button title="Log in" type="submit" />
+          <Btn title="Log in" type="submit">
+            Log in
+          </Btn>
         </Container>
       </Formik>
     </>
   );
 };
+
+export default LoginForm;

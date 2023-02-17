@@ -14,11 +14,10 @@ export const Container = styled.div`
   }
 `;
 
-export const Imglog = styled.div`
+export const ImgReg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-bottom: 50px;
 
   @media screen and (max-width: 1199px) {
@@ -38,8 +37,8 @@ export const TitleImg = styled.h2`
   font-weight: 400;
   font-size: 30px;
   line-height: 45px;
-
   color: var(--black-text-color);
+
   @media screen and (min-width: 1200px) {
     margin-top: 30px;
   }
@@ -53,7 +52,7 @@ export const Backdrop = styled.div`
   }
 `;
 
-export const ContainerLog = styled.div`
+export const ContainerReg = styled.div`
   display: flex;
   align-items: center;
   height: 100vh;
@@ -63,7 +62,7 @@ export const ContainerLog = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 533px;
-    height: 468px;
+    height: 600px;
     padding: 40px 65px;
     border-radius: 20px;
   }
@@ -74,20 +73,20 @@ export const ContainerLog = styled.div`
     transform: translate(-50%, -50%);
   }
 `;
-export const TitleLogCont = styled.div`
+export const TitleRegCont = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 60px;
 `;
 
-export const TitleLog = styled.h2`
+export const TitleReg = styled.h2`
   font-family: 'Poppins';
   font-weight: 700;
   margin-left: 15px;
   color: var(--black-text-color);
 `;
 
-export const LogLink = styled(Link)`
+export const RegLink = styled(Link)`
   font-family: 'Circe';
   font-size: 18px;
   line-height: 27px;

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
+
 export const CurrencyStyled = styled.div`
   width: 280px;
   height: 174px;
+
   left: 20px;
   top: 144px;
 
