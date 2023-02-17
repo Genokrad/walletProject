@@ -3,16 +3,10 @@ import sprite from '../../iconsSprite/icons.svg';
 import { SvgClose } from './ModalAddStyled';
 import AddComponent from './ComponentAdd';
 import MinusComponent from './componentMinus';
+
 import {
   Header,
-  // Sum,
-  // Data,
-  // DivDataSum,
-  // Coment,
-  // DivSetting,
-  // DivBtn,
-  // BtnAdd,
-  // BtnCancel,
+ 
   Switch,
   Span,
   Checkbox,
@@ -20,20 +14,25 @@ import {
 } from './StyledContent';
 
 import { useState } from 'react';
-// const checked = document.querySelector('.Checkbox')
-
-const ModalAdd = ({ active, setActive }) => {
+import { closeModalAddTransaction } from 'redux/transactionsController/slice';
+import {useDispatch } from 'react-redux';
+// import { selectIsModalAddTransactionOpen } from 'redux/transactionsController/selectors';
+const ModalAdd = ({ active,}) => {
   const [add, getAdd] = useState(true);
+  // const modalAdd = useSelector(selectIsModalAddTransactionOpen)
+ 
+  const dispatch = useDispatch();
+ 
   return (
     <ContainerModal
       className={active ? 'ContainerModal active' : 'ContainerModal'}
-      onClick={() => setActive(false)}
+      onClick={() => dispatch(closeModalAddTransaction())}
     >
       <ContentModal
         className={active ? 'ContentModal active' : 'ContentModal'}
         onClick={e => e.stopPropagation()}
       >
-        <SvgClose width="25" height="25" onClick={() => setActive(false)}>
+        <SvgClose width="25" height="25" onClick={() => dispatch(closeModalAddTransaction())}>
           <use href={sprite + '#iconclose'} width="25" height="25"></use>
         </SvgClose>
         <Header>
@@ -54,20 +53,6 @@ const ModalAdd = ({ active, setActive }) => {
           </DivChekbox>
           {add ? <AddComponent /> : <MinusComponent />}
 
-          {/* <DivSetting className="SetingTransaction">
-            <form>
-              <DivDataSum>
-                <Sum placeholder="0.00"></Sum>
-                <Data type="date"></Data>
-              </DivDataSum>
-
-              <Coment placeholder="Comment"></Coment>
-            </form>
-          </DivSetting>
-          <DivBtn className="Btn">
-            <BtnAdd>ADD</BtnAdd>
-            <BtnCancel>CANCEL</BtnCancel>
-          </DivBtn> */}
         </div>
       </ContentModal>
     </ContainerModal>

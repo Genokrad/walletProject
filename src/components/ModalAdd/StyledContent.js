@@ -22,7 +22,7 @@ export const Sum = styled.input`
 color:#BDBDBD;
 border: none;
 width: 181px;
-padding: 8px;
+padding: 9px;
 text-align: center;
 border-bottom: 1px solid #E0E0E0;
 ` 
