@@ -41,15 +41,15 @@ export const RegistrationPage = () => {
     <Container ref={ref}>
       {size && (
         <ImgReg>
-          <picture class="hero-coctail__picture">
+          <picture>
             <source
-              srcset={`${RegDeskX1} 1x, ${RegDeskX2} 2x`}
+              srcSet={`${RegDeskX1} 1x, ${RegDeskX2} 2x`}
               width="435"
               media="(min-width: 1280px)"
               type="image/png"
             />
             <source
-              srcset={`${RegTabletX1} 1x, ${RegTabletX2} 2x`}
+              srcSet={`${RegTabletX1} 1x, ${RegTabletX2} 2x`}
               width="260"
               media="(min-width: 768px)"
               type="image/png"
