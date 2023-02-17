@@ -17,7 +17,7 @@ export const Chart = () =>
 
     //   const labels = expenses.map(el => el.name);
     //   let amount = expenses.map(el => el.total);
-    const balance = 1250;
+    const balance = 1000;
     const options = {
       plugins: {
         legend: {
@@ -31,10 +31,10 @@ export const Chart = () =>
       // labels,
       datasets: [
         {
-          data: [450, 800],
+          data: [500, 500],
 
           // amount,
-          backgroundColor: ['yellow', 'black'],
+          backgroundColor: ['yellow', 'blue'],
           //  colors
           borderWidth: 0,
         },
