@@ -7,24 +7,38 @@ import {
   ImgStyledRectangle,
 } from './Currency.styled';
 
-import { useFetchCurrency } from 'components/hooks/useFetchCurrency';
+// import { FetchCurrency } from 'components/hooks/FetchCurrency';
 import { Loader } from 'components/Loader/Loader';
 import Vector from '../../images/Header/Vector.png';
 import Rectangle from '../../images/Header/Rectangle.png';
+import { useEffect, useState } from 'react';
+import { fetchMonoApi } from 'components/hooks/FetchCurrency';
 
 export const Currency = () => {
-  const data = useFetchCurrency();
+  // const data = useFetchCurrency().then(data => data);
 
-  console.log(333, data);
-  const usd = data.data[0];
-  const eur = data.data[1];
+  const [usd, setUsd] = useState('');
+  const [eur, setEur] = useState('');
+
+  // console.log(333, data);
+
+  // const usd = data?.data[0];
+  // const eur = data?.data[1];
   const allCurrency = [usd, eur];
 
   console.log('object :>> ', allCurrency);
 
+  useEffect(() => {
+    console.log('qweqwe');
+    fetchMonoApi().then(data => {
+      setUsd(data.data[0]);
+      setEur(data.data[1]);
+    });
+  }, []);
+
   return (
     <>
-      {!data ? (
+      {!usd ? (
         <Loader />
       ) : (
         <CurrencyStyled>
@@ -51,15 +65,3 @@ export const Currency = () => {
     </>
   );
 };
-
-//  {
-//    /* <li>
-//             <p>USD</p> <p>{usd.rateBuy}</p>
-//             <p>{usd.rateSell.toFixed(2)}</p>
-//           </li>
-//           <li>
-//             <p> EUR</p>
-//             <p>{eur.rateBuy}</p>
-//             <p>{eur.rateSell.toFixed(2)}</p>
-//           </li> */
-//  }

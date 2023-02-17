@@ -1,23 +1,26 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://api.monobank.ua/bank/currency';
+// axios.defaults.baseURL = 'https://api.monobank.ua/bank/currency';
 // const LOCAL_KEY = 'currency';
 
 export async function fetchMonoApi() {
-  const response = await axios();
+  const response = await axios('https://api.monobank.ua/bank/currency');
   return response;
 }
 
-export const useFetchCurrency = response => {
+export const FetchCurrency = () => {
   const [details, setDetails] = useState(null);
+  console.log(111, details);
+  // useEffect(() => {
+  //   console.log('hello');
+  //   if (details) {
+  //     return;
+  //   }
 
-  useEffect(() => {
-    if (details) {
-      return;
-    }
-    fetchMonoApi(response).then(setDetails);
-  }, [details, response]);
+  return fetchMonoApi().then(data => data);
+  // fetchMonoApi().then(setDetails);
+  // }, [details]);
 
   // useEffect(() => {
   //   // const time = details.data[0].date;
@@ -30,5 +33,5 @@ export const useFetchCurrency = response => {
   // }, [details]);
   // console.log(222, details);
 
-  return details;
+  // return details;
 };

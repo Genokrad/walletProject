@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const CurrencyStyled = styled.div`
   width: 280px;
   height: 174px;
@@ -49,7 +48,7 @@ export const ImgStyledRectangle = styled.img`
 
 export const ImgStyledVector = styled.img`
   position: absolute;
-  top: 329px;
+  top: 396px;
   left: auto;
 
   width: 280px;
