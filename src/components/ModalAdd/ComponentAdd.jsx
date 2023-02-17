@@ -1,10 +1,9 @@
-import Datetime from 'react-datetime'
-import "react-datetime/css/react-datetime.css"
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
 import {
   DivSetting,
   DivDataSum,
   Sum,
-  
   Coment,
   DivBtn,
   BtnAdd,
@@ -14,9 +13,8 @@ import { useDispatch, useSelector } from 'react-redux/es/exports.js';
 import { createTransaction } from 'redux/transactionsController/operations';
 import { getCat } from 'redux/categories/categories-selectors';
 import { useState } from 'react';
-
+//
 const AddComponent = () => {
-
   const [data, getData] = useState(new Date());
   // const [type, getType] = useState('INCOME');
   // const [category, getCategory] = useState('');
@@ -57,8 +55,13 @@ const AddComponent = () => {
         <form onSubmit={handleSubmit}>
           <DivDataSum>
             <Sum name="sum" placeholder="0.00" onChange={handleChange}></Sum>
-            <Datetime   dateFormat={true} timeFormat={false} value={data }name="data" onChange={handleChange}/>
-           
+            <Datetime
+              dateFormat={true}
+              timeFormat={false}
+              value={data}
+              name="data"
+              onChange={handleChange}
+            />
           </DivDataSum>
 
           <Coment
