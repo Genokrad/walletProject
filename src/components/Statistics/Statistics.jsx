@@ -3,7 +3,7 @@ import { Stateless } from 'components/Stateless/Stateless';
 import { useSelector } from 'react-redux';
 import { selectStatSummury } from 'redux/statistics/selectorStatistics';
 import { selectIsTotalBalance } from 'redux/finance/finance-selectors';
-const colorExpenses = [
+export const colorExpenses = [
   { color: '#FED057' },
   { color: '#FFD8D0' },
   { color: '#FD9498' },
@@ -19,11 +19,7 @@ export const Statistics = () => {
   const balance = useSelector(selectIsTotalBalance);
   return (
     <>
-      <Chart
-        colors={colorExpenses}
-        date={totalSummary}
-        balance={balance}
-      />
+      <Chart colors={colorExpenses} date={totalSummary} balance={balance} />
       <Stateless />
     </>
   );
