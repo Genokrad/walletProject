@@ -22,10 +22,6 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
-
   return (
     !isFetchingCurrentUser && (
       <>
