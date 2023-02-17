@@ -142,5 +142,7 @@ export const Box = styled.div`
     height: 24px;
     border-radius: 2px;
     margin-right: 16px;
-    background-color: #FED057;
+    background-color: ${props => props.color};
     `
+
+

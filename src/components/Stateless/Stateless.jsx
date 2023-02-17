@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import { statistSummary } from '../../redux/statistics/stat-operations';
+import { handleColor } from '../../redux/statistics/stat-color';
 import {
     selectStatSummury,
     selectExpenseSummary,
@@ -39,7 +40,7 @@ export const Stateless = () => {
     ]
 
     const date = new Date();
-    console.log("Date: ", date);
+    // console.log("Date: ", date);
     const currentMonth = date.getMonth() + 1;
     const currentYear = date.getFullYear();
     const [month, setMonth] = useState(currentMonth);
@@ -129,14 +130,12 @@ export const Stateless = () => {
                             statSummury.map(({ name, total, type }) => {
                                 return (
                                     type === 'EXPENSE' && (
-                                        // return (
                                             <>
                                                 <UlList>
-                                                    <ItemTable key={name}><Box></Box>{name}</ItemTable>
+                                                    <ItemTable key={name}><Box color={() => handleColor(name)}></Box>{name}</ItemTable>
                                                     <li>{total}</li>
                                                 </UlList>
                                             </>
-                                        // )
                                     )
                                     
                                 );
