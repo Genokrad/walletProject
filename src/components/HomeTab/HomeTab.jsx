@@ -1,4 +1,5 @@
 import { getAllTransactions } from 'redux/transactionsController/operations';
+import { selectTransactions } from 'redux/transactionsController/selectors';
 
 import {
   Table,
@@ -22,15 +23,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 const HomeTab = () => {
-  const getSelect = useSelector(getAllTransactions());
-  console.log('getSelect', getSelect);
+  const dispatch = useDispatch();
+  const data = useSelector(selectTransactions);
+
+  console.log('transactions', data);
 
   useEffect(() => {
-    getSelect.then(item => console.log(item));
-  }, [getSelect]);
-
-  // const dispatch = useDispatch();
-  // console.log('dispatch', dispatch);
+    dispatch(getAllTransactions());
+  }, [dispatch]);
 
   return (
     <div>
@@ -46,20 +46,38 @@ const HomeTab = () => {
           </TopTable>
         </thead>
         <tbody>
-          <TableBody>
-            <DataTd>04.01.19</DataTd>
-            <TypeTd>-</TypeTd>
-            <CategoryTd>Ouher</CategoryTd>
-            <CommentTd>Gift</CommentTd>
-            <SumTd>300</SumTd>
-            <Action>
-              <svg width="14" height="14">
-                <use href={sprite + '#iconpencel'} width="14" height="14"></use>
-              </svg>
-              <Btn>Delete</Btn>
-            </Action>
-          </TableBody>
-          <TableBody>
+          {data.map(
+            ({
+              transactionDate,
+              balanceAfter,
+              type,
+              categoryId,
+              comment,
+              id,
+            }) => (
+              <>
+                <TableBody>
+                  <DataTd key={id}>{transactionDate}</DataTd>
+                  <TypeTd>{type}</TypeTd>
+                  <CategoryTd>{categoryId}</CategoryTd>
+                  <CommentTd>{comment}</CommentTd>
+                  <SumTd>{balanceAfter}</SumTd>
+                  <Action>
+                    <svg width="14" height="14">
+                      <use
+                        href={sprite + '#iconpencel'}
+                        width="14"
+                        height="14"
+                      ></use>
+                    </svg>
+                    <Btn>Delete</Btn>
+                  </Action>
+                </TableBody>
+              </>
+            )
+          )}
+
+          {/* <TableBody>
             <DataTd>04.01.19</DataTd>
             <TypeTd>-</TypeTd>
             <CategoryTd>Ouher</CategoryTd>
@@ -97,7 +115,7 @@ const HomeTab = () => {
               </svg>
               <Btn>Delete</Btn>
             </Action>
-          </TableBody>
+          </TableBody> */}
         </tbody>
       </Table>
     </div>
