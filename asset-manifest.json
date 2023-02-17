@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/walletProject/static/css/main.7ff73c44.css",
-    "main.js": "/walletProject/static/js/main.00655817.js",
+    "main.js": "/walletProject/static/js/main.0896a2ce.js",
     "static/media/login_desk_2x.png": "/walletProject/static/media/login_desk_2x.d8f64e3e7c50a467da40.png",
     "static/media/reg_desk_2x.png": "/walletProject/static/media/reg_desk_2x.b6bae1d47d97ecdda1c9.png",
     "static/media/login_tablet_2x.png": "/walletProject/static/media/login_tablet_2x.efa6ceb36013e5bcbfdc.png",
@@ -17,10 +17,10 @@
     "static/media/exit-icon.svg": "/walletProject/static/media/exit-icon.68a6430100c84f3315fe87a326c27dcc.svg",
     "static/media/delimetr.svg": "/walletProject/static/media/delimetr.4197971255a4c6a047f2d568d14b817e.svg",
     "main.7ff73c44.css.map": "/walletProject/static/css/main.7ff73c44.css.map",
-    "main.00655817.js.map": "/walletProject/static/js/main.00655817.js.map"
+    "main.0896a2ce.js.map": "/walletProject/static/js/main.0896a2ce.js.map"
   },
   "entrypoints": [
     "static/css/main.7ff73c44.css",
-    "static/js/main.00655817.js"
+    "static/js/main.0896a2ce.js"
   ]
 }
