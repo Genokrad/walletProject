@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux/es/exports.js';
 import { createTransaction } from 'redux/transactionsController/operations';
 import { getCat } from 'redux/categories/categories-selectors';
 import { useState } from 'react';
-//
+
 const AddComponent = () => {
   const [data, getData] = useState(new Date());
   // const [type, getType] = useState('INCOME');
