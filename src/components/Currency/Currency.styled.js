@@ -48,7 +48,7 @@ export const ImgStyledRectangle = styled.img`
 
 export const ImgStyledVector = styled.img`
   position: absolute;
-  top: 396px;
+  bottom: 273px;
   left: auto;
 
   width: 280px;
@@ -57,7 +57,6 @@ export const ImgStyledVector = styled.img`
 
 export const TypeStyled = styled.ul`
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
