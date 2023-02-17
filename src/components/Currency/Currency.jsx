@@ -1,3 +1,5 @@
+import { Dna } from 'react-loader-spinner';
+
 import {
   CurrencyStyled,
   ListStyled,
@@ -7,39 +9,33 @@ import {
   ImgStyledRectangle,
 } from './Currency.styled';
 
-// import { FetchCurrency } from 'components/hooks/FetchCurrency';
-import { Loader } from 'components/Loader/Loader';
+import { useFetchCurrency } from 'components/hooks/useFetchCurrency';
 import Vector from '../../images/Header/Vector.png';
 import Rectangle from '../../images/Header/Rectangle.png';
-import { useEffect, useState } from 'react';
-import { fetchMonoApi } from 'components/hooks/FetchCurrency';
 
 export const Currency = () => {
-  // const data = useFetchCurrency().then(data => data);
-
-  const [usd, setUsd] = useState('');
-  const [eur, setEur] = useState('');
-
-  // console.log(333, data);
-
-  // const usd = data?.data[0];
-  // const eur = data?.data[1];
+  const data = useFetchCurrency();
+  const usd = data?.data[0];
+  const eur = data?.data[1];
   const allCurrency = [usd, eur];
-
-  console.log('object :>> ', allCurrency);
-
-  useEffect(() => {
-    console.log('qweqwe');
-    fetchMonoApi().then(data => {
-      setUsd(data.data[0]);
-      setEur(data.data[1]);
-    });
-  }, []);
 
   return (
     <>
-      {!usd ? (
-        <Loader />
+      {!data ? (
+        <Dna
+          height="150"
+          width="150"
+          color=" orange"
+          ariaLabel="dna-loading"
+          wrapperStyle={{
+            position: 'absolute',
+            bottom: 'auto',
+            left: '15%',
+            zIndex: '100',
+          }}
+          wrapperClass="dna-wrapper"
+          visible={true}
+        />
       ) : (
         <CurrencyStyled>
           <ImgStyledRectangle src={Rectangle} alt="img" />
