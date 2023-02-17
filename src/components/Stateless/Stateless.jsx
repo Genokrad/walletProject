@@ -4,17 +4,20 @@ import Select from 'react-select';
 import { statistSummary } from '../../redux/statistics/stat-operations';
 import { handleColor } from '../../redux/statistics/stat-color';
 import {
-    selectStatSummury,
-    selectExpenseSummary,
-    selectIncomeSummary,
+  selectStatSummury,
+  selectExpenseSummary,
+  selectIncomeSummary,
 } from '../../redux/statistics/selectorStatistics';
 import {
+
     DivConteiner, DivSelect, 
     Table, TableHead, UlList, UlResults, LiResultsName, LiResultsExpenses, LiResultsIncome,
     Box, ItemTable
-} from '../Stateless/Stateless.styled';
 
+} from '../Stateless/Stateless.styled';
+// import { nanoid } from '@reduxjs/toolkit';
 export const Stateless = () => {
+
     const objMonth = [
         { label: 'January', value: 1 },
         { label: 'February', value: 2 },
@@ -47,26 +50,27 @@ export const Stateless = () => {
     const [year, setYear] = useState(currentYear);
     // const [selectedOption, setSelectedOption] = useState(null);
 
-    const statSummury = useSelector(selectStatSummury);
-    const expenseSummary = useSelector(selectExpenseSummary);
-    const incomeSummary = useSelector(selectIncomeSummary);
 
-    const dispatch = useDispatch();
+  const statSummury = useSelector(selectStatSummury);
+  const expenseSummary = useSelector(selectExpenseSummary);
+  const incomeSummary = useSelector(selectIncomeSummary);
 
-    const handleChange = ({ target }) => {
-        const { name, value } = target;
-        if (name === 'month') setMonth(value);
-        else setYear(value);
-    };
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(
-        statistSummary({
-            month: month,
-            year: year,
-        })
-        );
-    }, [dispatch, month, year]);
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    if (name === 'month') setMonth(value);
+    else setYear(value);
+  };
+
+  useEffect(() => {
+    dispatch(
+      statistSummary({
+        month: month,
+        year: year,
+      })
+    );
+  }, [dispatch, month, year]);
 
 
     return (
@@ -183,6 +187,7 @@ export const Stateless = () => {
 
 
 //----------------------<tr><td>
+
 // {/* <table>
 //                 <thead>
 //                 <tr>
