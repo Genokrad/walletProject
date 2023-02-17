@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-  @media screen and (min-width: 768px) and (max-width: 1199px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 60px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     display: flex;
     height: 100vh;
   }
@@ -21,11 +21,11 @@ export const Imglog = styled.div`
 
   margin-bottom: 50px;
 
-  @media screen and (max-width: 1199px) {
+  @media screen and (max-width: 1279px) {
     flex-wrap: wrap;
     gap: 40px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     flex-direction: column;
     width: 600px;
     margin-right: 38px;
@@ -40,13 +40,13 @@ export const TitleImg = styled.h2`
   line-height: 45px;
 
   color: var(--black-text-color);
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     margin-top: 30px;
   }
 `;
 
 export const Backdrop = styled.div`
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     width: 100%;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(25px);
@@ -67,7 +67,7 @@ export const ContainerLog = styled.div`
     padding: 40px 65px;
     border-radius: 20px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     position: fixed;
     top: 50%;
     left: 50%;
