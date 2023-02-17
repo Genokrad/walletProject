@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import Datetime from 'react-datetime'
 export const Header = styled.div`
 font-family: 'Poppins';
 margin-top: 40px;
@@ -26,7 +26,7 @@ padding: 9px;
 text-align: center;
 border-bottom: 1px solid #E0E0E0;
 ` 
-export const Data = styled.input`
+export const Data = styled(Datetime)`
 color:#BDBDBD;
 border: none;
 width: 181px;
@@ -38,7 +38,6 @@ font-style: normal;
 font-weight: 400;
 font-size: 18px;
 line-height: 27px;
-
 color: #000000;
 ` 
 
