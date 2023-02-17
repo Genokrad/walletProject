@@ -32,7 +32,7 @@ export const DivSelect = styled.div`
     `
 
 export const Select = styled.select`
-    width: 100%;
+    /* width: 100%; */
     height: 50px;
     padding: 10px 20px;
     border: 1px solid #000000;
@@ -52,8 +52,12 @@ export const Option = styled.option`
     border-radius: 20px;
     `
 
-export const Table = styled.table`
-    width: 100%;
+export const Table = styled.div`
+    width: 395px;
+    margin-right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
     `
 
 export const TableHead = styled.ul`
@@ -74,22 +78,29 @@ export const TableHead = styled.ul`
 
 export const UlList = styled.ul`
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    padding: 12px 20px;
+
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+
     font-family: 'Circe';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
     color: var(--black-text-color);
-        `
 
-export const Tbody = styled.tbody`
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
+    border-bottom: 1px solid #DCDCDF;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+    `
+
+export const ItemTable = styled.li`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     `
 
 export const UlResults = styled.ul`

@@ -9,8 +9,8 @@ import {
 } from '../../redux/statistics/selectorStatistics';
 import {
     DivConteiner, DivSelect, Option,
-    Table, TableHead, Tbody, UlList, UlResults, LiResultsName, LiResultsExpenses, LiResultsIncome,
-    Box
+    Table, TableHead, UlList, UlResults, LiResultsName, LiResultsExpenses, LiResultsIncome,
+    Box, ItemTable
 } from '../Stateless/Stateless.styled';
 
 export const Stateless = () => {
@@ -119,37 +119,43 @@ export const Stateless = () => {
                 </DivSelect>
 
                 <Table>
-                    <thead>
-                        <TableHead>
-                            <li>Category</li>
-                            <li>Sum</li>
-                        </TableHead>
-                    </thead>
-                    <UlList>
+                    <TableHead>
+                        <li>Category</li>
+                        <li>Sum</li>
+                    </TableHead>
+
+                    
                         {statSummury.length > 0 ? (
-                            statSummury.map(({ name, total }) => {
+                            statSummury.map(({ name, total, type }) => {
                                 return (
-                                <>
-                                    <li key={name}><Box className={name}></Box>{name}</li>
-                                    <li>{total}</li>
-                                </>
-                            );
+                                    type === 'EXPENSE' && (
+                                        // return (
+                                            <>
+                                                <UlList>
+                                                    <ItemTable key={name}><Box></Box>{name}</ItemTable>
+                                                    <li>{total}</li>
+                                                </UlList>
+                                            </>
+                                        // )
+                                    )
+                                    
+                                );
                             })
                         ) : (
                             <p>No information</p>
                         )}
-                    </UlList>
+                    
 
-                    <Tbody>
-                        <UlResults>
-                            <LiResultsName>Expenses:</LiResultsName>
-                            <LiResultsExpenses>{expenseSummary}</LiResultsExpenses>
-                        </UlResults>
-                        <UlResults>
-                            <LiResultsName>Income:</LiResultsName>
-                            <LiResultsIncome>{incomeSummary}</LiResultsIncome>
-                        </UlResults>
-                    </Tbody>
+                    <UlResults>
+                        <LiResultsName>Expenses:</LiResultsName>
+                        <LiResultsExpenses>{expenseSummary}</LiResultsExpenses>
+                    </UlResults>
+
+                    <UlResults>
+                        <LiResultsName>Income:</LiResultsName>
+                        <LiResultsIncome>{incomeSummary}</LiResultsIncome>
+                    </UlResults>
+
                 </Table>
             </DivConteiner>
             
