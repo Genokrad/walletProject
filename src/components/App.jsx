@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIsFetchingCurrentUser } from './../redux/auth/auth-selectors';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/auth-operations';
-import { getCategories } from 'redux/categories/categories-operations';
+// import { getCategories } from 'redux/categories/categories-operations';
 
 export const App = () => {
   const isFetchingCurrentUser = useSelector(getIsFetchingCurrentUser);
@@ -20,10 +20,6 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getCategories());
   }, [dispatch]);
 
   return (

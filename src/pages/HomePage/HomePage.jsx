@@ -6,29 +6,30 @@ import sprite from '../../iconsSprite/icons.svg';
 // import { useState } from "react";
 
 import ModalAdd from 'components/ModalAdd/ModalAdd';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectIsModalAddTransactionOpen } from 'redux/transactionsController/selectors';
 import { openModalAddTransaction } from 'redux/transactionsController/slice';
+import { useEffect } from 'react';
+import { getCategories } from 'redux/categories/categories-operations';
 export const HomePage = () => {
+  const modalAdd = useSelector(selectIsModalAddTransactionOpen);
 
- 
-  const modalAdd = useSelector(selectIsModalAddTransactionOpen)
-  
   const dispatch = useDispatch();
- 
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   return (
     <>
       <HomeTab />
 
-      <ModalAdd active={modalAdd}/>
-      <Btn onClick={()=>dispatch(openModalAddTransaction())} type='button'>
+      <ModalAdd active={modalAdd} />
+      <Btn onClick={() => dispatch(openModalAddTransaction())} type="button">
         <svg width="20" height="20">
           <use href={sprite + '#iconplus'} width="20" height="20"></use>
         </svg>
       </Btn>
-
-
     </>
   );
 };
