@@ -1,8 +1,10 @@
+import Datetime from 'react-datetime'
+import "react-datetime/css/react-datetime.css"
 import {
   DivSetting,
   DivDataSum,
   Sum,
-  Data,
+  
   Coment,
   DivBtn,
   BtnAdd,
@@ -14,7 +16,8 @@ import { getCat } from 'redux/categories/categories-selectors';
 import { useState } from 'react';
 
 const AddComponent = () => {
-  const [data, getData] = useState(new Date().toISOString());
+
+  const [data, getData] = useState(new Date());
   // const [type, getType] = useState('INCOME');
   // const [category, getCategory] = useState('');
   const [comment, getComment] = useState('');
@@ -54,12 +57,8 @@ const AddComponent = () => {
         <form onSubmit={handleSubmit}>
           <DivDataSum>
             <Sum name="sum" placeholder="0.00" onChange={handleChange}></Sum>
-            <Data
-              name="data"
-              type="date"
-              value="2022-02-16"
-              onChange={handleChange}
-            ></Data>
+            <Datetime   dateFormat={true} timeFormat={false} value={data }name="data" onChange={handleChange}/>
+           
           </DivDataSum>
 
           <Coment
