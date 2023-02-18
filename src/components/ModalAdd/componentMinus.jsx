@@ -27,7 +27,7 @@ const MinusComponent = () => {
   const [amount, getAmount] = useState('');
   const getCategory = useSelector(getCat);
 
-  // const neededCat = getCategory.find(cat => cat.type === 'INCOME');
+
 
   const dispatch = useDispatch();
   const handleChange = e => {
