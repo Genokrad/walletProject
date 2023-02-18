@@ -60,7 +60,7 @@ export const Table = styled.div`
     gap: 14px;
     `
 
-export const TableHead = styled.ul`
+export const TableHead = styled.div`
     width: 100%;
     height: 58px;
     background: var(--white-text-color);
@@ -76,10 +76,8 @@ export const TableHead = styled.ul`
     color: var(--black-text-color);
     `
 
-export const UlList = styled.ul`
+export const LiList = styled.li`
     width: 100%;
-    /* padding-left: 20px;
-    padding-right: 20px; */
     padding: 12px 20px;
 
     display: flex;
@@ -97,20 +95,20 @@ export const UlList = styled.ul`
     box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
     `
 
-export const ItemTable = styled.li`
+export const ItemTable = styled.p`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     `
 
-export const UlResults = styled.ul`
+export const Results = styled.div`
     display: flex;
     justify-content: space-between;
     padding-left: 20px;
     padding-right: 20px;
     `
 
-export const LiResultsName = styled.ul`
+export const ResultsName = styled.p`
     font-family: 'Circe';
     font-style: normal;
     font-weight: 700;
@@ -119,7 +117,7 @@ export const LiResultsName = styled.ul`
     color: var(--black-text-color);
     `
 
-export const LiResultsExpenses = styled.ul`
+export const ResultsExpenses = styled.p`
     font-family: 'Circe';
     font-style: normal;
     font-weight: 700;
@@ -128,7 +126,7 @@ export const LiResultsExpenses = styled.ul`
     color: var(--red-text-color);
     `
 
-export const LiResultsIncome = styled.ul`
+export const ResultsIncome = styled.p`
     font-family: 'Circe';
     font-style: normal;
     font-weight: 700;
@@ -137,7 +135,7 @@ export const LiResultsIncome = styled.ul`
     color: var(--seaBlue-text-color);
     `
 
-export const Box = styled.div`
+export const Box = styled.span`
     width: 24px;
     height: 24px;
     border-radius: 2px;
