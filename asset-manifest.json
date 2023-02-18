@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/walletProject/static/css/main.7ff73c44.css",
-    "main.js": "/walletProject/static/js/main.b843d17c.js",
+    "main.js": "/walletProject/static/js/main.a9a0a997.js",
     "static/media/login_desk_2x.png": "/walletProject/static/media/login_desk_2x.d8f64e3e7c50a467da40.png",
     "static/media/reg_desk_2x.png": "/walletProject/static/media/reg_desk_2x.b6bae1d47d97ecdda1c9.png",
     "static/media/login_tablet_2x.png": "/walletProject/static/media/login_tablet_2x.efa6ceb36013e5bcbfdc.png",
@@ -10,17 +10,17 @@
     "static/media/reg_desk.png": "/walletProject/static/media/reg_desk.42c7e059ff565ef2ddcf.png",
     "static/media/login_tablet.png": "/walletProject/static/media/login_tablet.bf9ee2ea3880266b790b.png",
     "static/media/reg_tablet.png": "/walletProject/static/media/reg_tablet.fd09c83de9345ce10ca0.png",
-    "static/media/icons.svg": "/walletProject/static/media/icons.46deb40c956485fa0c541acfda476351.svg",
+    "static/media/icons.svg": "/walletProject/static/media/icons.0f5fb113954db2930618bd7acfc3418b.svg",
+    "static/media/mySprite.svg": "/walletProject/static/media/mySprite.a07139a95d37c8c31bf91261fd05b8d0.svg",
     "static/media/logo-icon.svg": "/walletProject/static/media/logo-icon.7aa7e611acc11def491e6d21f991b890.svg",
-    "static/media/mySprite.svg": "/walletProject/static/media/mySprite.16c8098e438fc69fec8183a9959df9f4.svg",
     "index.html": "/walletProject/index.html",
     "static/media/exit-icon.svg": "/walletProject/static/media/exit-icon.68a6430100c84f3315fe87a326c27dcc.svg",
     "static/media/delimetr.svg": "/walletProject/static/media/delimetr.4197971255a4c6a047f2d568d14b817e.svg",
     "main.7ff73c44.css.map": "/walletProject/static/css/main.7ff73c44.css.map",
-    "main.b843d17c.js.map": "/walletProject/static/js/main.b843d17c.js.map"
+    "main.a9a0a997.js.map": "/walletProject/static/js/main.a9a0a997.js.map"
   },
   "entrypoints": [
     "static/css/main.7ff73c44.css",
-    "static/js/main.b843d17c.js"
+    "static/js/main.a9a0a997.js"
   ]
 }
