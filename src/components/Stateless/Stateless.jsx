@@ -74,10 +74,11 @@ export const Stateless = () => {
                 <DivSelect>
                     <Select   
                         name="month" id="month" onChange={handleChange}
+                        
                         options={objMonth}
                         theme={(theme) => ({
                             ...theme,
-                            
+                            indicatorSeparator: false,
                             borderRadius: 20,
                             colors: {
                                 ...theme.colors,
