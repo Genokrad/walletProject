@@ -68,7 +68,7 @@ const MinusComponent = () => {
             <FormsInput placeholder="Select a category" />
             <FormsSelect id="category" onChange={handleChange} name="select">
               {getCategory.map(category => {
-                return <Option key={category.id}>{category.name}</Option>;
+                return <Option  key={category.id}>{category.name}</Option>;
               })}
             </FormsSelect>
           </Forms>
