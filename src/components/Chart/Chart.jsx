@@ -11,7 +11,7 @@ export const Chart = ({ colors, date, balance }) => {
   const expenses = date.filter(item => item.type === 'EXPENSE');
 
   const labels = expenses.map(el => el.name);
-  let amount = expenses.map(el => el.total);
+  let amount = expenses.map(el => Math.abs(el.total));
   const colories = colors.map(el =>el.color)
   const options = {
     plugins: {

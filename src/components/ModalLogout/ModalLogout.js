@@ -27,7 +27,6 @@ export const ModalLogout = () => {
         const escapeModal = event => {
             if (event.code === 'ESCAPE') {
                 event.preventDefault();
-                closeModal();
             }
 
         };
