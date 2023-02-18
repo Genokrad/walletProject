@@ -1,5 +1,3 @@
-// import { colorExpenses } from '../../components/Statistics/Statistics';
-
 const colorExpensesBox = [
         { name: 'Main expenses', color: '#FED057' },
         { name: 'Products', color: '#FFD8D0'},
