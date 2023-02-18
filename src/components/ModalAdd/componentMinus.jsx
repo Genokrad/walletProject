@@ -22,13 +22,13 @@ const MinusComponent = () => {
   const [data, getData] = useState(new Date());
   const [type, getType] = useState('EXPENSE');
   const [id, getId] = useState('c9d9e447-1b83-4238-8712-edc77b18b739');
-  // const [category, getCategory] = useState('');
+
   const [comment, getComment] = useState('');
   const [amount, getAmount] = useState('');
   const getCategory = useSelector(getCat);
 
   // const neededCat = getCategory.find(cat => cat.type === 'INCOME');
-  // console.log(data);
+
   const dispatch = useDispatch();
   const handleChange = e => {
     console.log(e.target.name);
