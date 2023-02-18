@@ -7,6 +7,7 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   isModalLogoutOpen: false,
+  error:null,
   balance: 0,
 };
 const handlePending = state => {
