@@ -113,7 +113,7 @@ export const Stateless = () => {
                                     type === 'EXPENSE' && (
                                                 <LiList key={name}>
                                                     <ItemTable><Box color={handleColor(name)}></Box>{name}</ItemTable>
-                                                    <p>{total}</p>
+                                                    <p>{Math.abs(total)}</p>
                                                 </LiList>
                                     )                                    
                                 );
@@ -125,7 +125,7 @@ export const Stateless = () => {
 
                     <Results>
                         <ResultsName>Expenses:</ResultsName>
-                        <ResultsExpenses>{expenseSummary}</ResultsExpenses>
+                        <ResultsExpenses>{Math.abs(expenseSummary)}</ResultsExpenses>
                     </Results>
 
                     <Results>
