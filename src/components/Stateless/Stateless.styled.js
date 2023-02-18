@@ -31,26 +31,28 @@ export const DivSelect = styled.div`
     }
     `
 
-// export const Select = styled.select`
-//     /* width: 100%; */
-//     height: 50px;
-//     padding: 10px 20px;
-//     border: 1px solid #000000;
-//     border-radius: 30px;
-//     font-family: 'Circe';
-//     font-style: normal;
-//     font-weight: 400;
-//     font-size: 16px;
-//     line-height: 1.5;
-//     color: var(--black-text-color);
-//     `
+export const Select = styled.select`
+    width: 181px;
+    height: 50px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid #000000;
+    border-radius: 30px;
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--black-text-color);
+    `
 
-// export const Option = styled.option`
-//     background: rgba(255, 255, 255, 0.7);
-//     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-//     backdrop-filter: blur(25px);
-//     border-radius: 20px;
-//     `
+export const Option = styled.option`
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #000000;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(25px);
+    border-radius: 20px;
+    `
 
 export const Table = styled.div`
     width: 395px;
