@@ -31,11 +31,9 @@ const MinusComponent = () => {
   // console.log(data);
   const dispatch = useDispatch();
   const handleChange = e => {
+    console.log(e.target.name);
     if (e.target.name === 'sum') {
       getAmount(e.currentTarget.value);
-    } else if (e.target.name === 'data') {
-      getData(new Date().toISOString());
-      // getData(e.currentTarget.value);
     } else if (e.target.name === 'comment') {
       getComment(e.currentTarget.value);
     } else if (e.target.name === 'select') {
@@ -68,7 +66,7 @@ const MinusComponent = () => {
             <FormsInput placeholder="Select a category" />
             <FormsSelect id="category" onChange={handleChange} name="select">
               {getCategory.map(category => {
-                return <Option  key={category.id}>{category.name}</Option>;
+                return <Option key={category.id}>{category.name}</Option>;
               })}
             </FormsSelect>
           </Forms>
@@ -76,11 +74,10 @@ const MinusComponent = () => {
           <DivDataSum>
             <Sum placeholder="0.00" name="sum" onChange={handleChange}></Sum>
             <Datetime
-              dateFormat={true}
+              dateFormat="DD-MM-YYYY"
               timeFormat={false}
               value={data}
-              name="data"
-              onChange={handleChange}
+              onChange={data => getData(data._d)}
             />
           </DivDataSum>
 
