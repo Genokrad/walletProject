@@ -54,15 +54,7 @@ const HomeTab = () => {
       </thead>
       <tbody>
         {resultRecords.map(
-          ({
-            transactionDate,
-            balanceAfter,
-            type,
-            categoryId,
-            name,
-            id,
-            comment,
-          }) => (
+          ({ transactionDate, balanceAfter, type, name, id, comment }) => (
             <TableBody key={id}>
               <DataTd>{transactionDate}</DataTd>
               <TypeTd>

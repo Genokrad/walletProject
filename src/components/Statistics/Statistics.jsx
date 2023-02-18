@@ -1,25 +1,36 @@
-import { Chart } from "components/Chart/Chart";
-import { Stateless } from "components/Stateless/Stateless";
+import { Chart } from 'components/Chart/Chart';
+import { Stateless } from 'components/Stateless/Stateless';
+import { useSelector } from 'react-redux';
+import { selectStatSummury } from 'redux/statistics/selectorStatistics';
+import { selectIsTotalBalance } from 'redux/finance/finance-selectors';
+import { ConteinerStat, DivBox, H2} from './Statistics.styled';
 
 export const colorExpenses = [
-        { name: 'Main expenses', color: '#FED057' },
-        { name: 'Products', color: '#FFD8D0'},
-        { name: 'Car', color: '#FD9498'},
-        { name: 'Self care', color: '#C5BAFF'},
-        { name: 'Child care', color: '#6E78E8'},
-        { name: 'Household products', color: '#4A56E2'},
-        { name: 'Education', color: '#81E1FF'},
-        { name: 'Leisure', color: '#24CCA7'},
-        { name: 'Other expenses', color: '#00AD84'},
-    ]
+  { color: '#FED057' },
+  { color: '#FFD8D0' },
+  { color: '#FD9498' },
+  { color: '#C5BAFF' },
+  { color: '#6E78E8' },
+  { color: '#4A56E2' },
+  { color: '#81E1FF' },
+  { color: '#24CCA7' },
+  { color: '#00AD84' },
+];
 
 export const Statistics = () => {
-    
-    return (
-        <>
-            <Chart />
-            <Stateless />
-            
-        </>
-    )
-}
+  const totalSummary = useSelector(selectStatSummury);
+  const balance = useSelector(selectIsTotalBalance);
+  return (
+    <>
+      <ConteinerStat>
+        <H2>Statistics</H2>
+        <DivBox>
+          <Chart colors={colorExpenses} date={totalSummary} balance={balance} />
+          <Stateless />
+        </DivBox>
+        
+      </ConteinerStat>
+      
+    </>
+  );
+};

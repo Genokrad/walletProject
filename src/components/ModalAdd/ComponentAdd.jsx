@@ -8,6 +8,7 @@ import {
   DivBtn,
   BtnAdd,
   BtnCancel,
+  
 } from './StyledContent';
 import { useDispatch, useSelector } from 'react-redux/es/exports.js';
 import { createTransaction } from 'redux/transactionsController/operations';
@@ -16,22 +17,17 @@ import { useState } from 'react';
 
 const AddComponent = () => {
   const [data, getData] = useState(new Date());
-  // const [type, getType] = useState('INCOME');
-  // const [category, getCategory] = useState('');
+
   const [comment, getComment] = useState('');
   const [amount, getAmount] = useState('');
   const getCategory = useSelector(getCat);
   const neededCat = getCategory.find(cat => cat.type === 'INCOME');
-  // console.log(data);
+
   const dispatch = useDispatch();
   const handleChange = e => {
     if (e.target.name === 'sum') {
       getAmount(e.currentTarget.value);
       console.log(e.currentTarget.value);
-    } else if (e.target.name === 'data') {
-      getData(new Date().toISOString());
-      // getData(e.currentTarget.value);
-      console.log(data);
     } else if (e.target.name === 'comment') {
       console.log(e.currentTarget.value);
       getComment(e.currentTarget.value);
@@ -55,12 +51,13 @@ const AddComponent = () => {
         <form onSubmit={handleSubmit}>
           <DivDataSum>
             <Sum name="sum" placeholder="0.00" onChange={handleChange}></Sum>
+
             <Datetime
-              dateFormat={true}
+              dateFormat="DD-MM-YYYY"
               timeFormat={false}
               value={data}
-              name="data"
-              onChange={handleChange}
+              className="data"
+              onChange={data => getData(data._d)}
             />
           </DivDataSum>
 

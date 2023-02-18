@@ -6,23 +6,24 @@ import MinusComponent from './componentMinus';
 
 import {
   Header,
- 
   Switch,
   Span,
+  SvgPlus,
   Checkbox,
   DivChekbox,
+  SvgMinus,
 } from './StyledContent';
 
 import { useState } from 'react';
 import { closeModalAddTransaction } from 'redux/transactionsController/slice';
-import {useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { selectIsModalAddTransactionOpen } from 'redux/transactionsController/selectors';
-const ModalAdd = ({ active,}) => {
+const ModalAdd = ({ active }) => {
   const [add, getAdd] = useState(true);
-  // const modalAdd = useSelector(selectIsModalAddTransactionOpen)
- 
+
+
   const dispatch = useDispatch();
- 
+
   return (
     <ContainerModal
       className={active ? 'ContainerModal active' : 'ContainerModal'}
@@ -32,7 +33,11 @@ const ModalAdd = ({ active,}) => {
         className={active ? 'ContentModal active' : 'ContentModal'}
         onClick={e => e.stopPropagation()}
       >
-        <SvgClose width="25" height="25" onClick={() => dispatch(closeModalAddTransaction())}>
+        <SvgClose
+          width="25"
+          height="25"
+          onClick={() => dispatch(closeModalAddTransaction())}
+        >
           <use href={sprite + '#iconclose'} width="25" height="25"></use>
         </SvgClose>
         <Header>
@@ -40,19 +45,46 @@ const ModalAdd = ({ active,}) => {
         </Header>
         <div>
           <DivChekbox className="RadioBtn">
-            <p>Income</p>
+            {add ? (
+              <p
+                style={{
+                  color: '#24CCA7',
+                }}
+              >
+                Income
+              </p>
+            ) : (
+              <p>Income</p>
+            )}
+
             <Switch className="switch">
               <Checkbox
                 className="Checkbox"
                 type="checkbox"
                 onClick={() => getAdd(!add)}
               />
-              <Span className="slider round"></Span>
+              <Span className="slider round">
+                <SvgPlus width="25" height="25">
+                  <use href={sprite + '#iconplus'} width="25" height="25"></use>
+                </SvgPlus>
+                <SvgMinus width="25" height="25">
+                  <use href={sprite + '#iconuntitled'} width="20"></use>
+                </SvgMinus>
+              </Span>
             </Switch>
-            <p>Expense</p>
+            {add ? (
+              <p>Expense</p>
+            ) : (
+              <p
+                style={{
+                  color: '#FF6596',
+                }}
+              >
+                Expense
+              </p>
+            )}
           </DivChekbox>
           {add ? <AddComponent /> : <MinusComponent />}
-
         </div>
       </ContentModal>
     </ContainerModal>

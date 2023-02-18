@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { statistSummary } from "./stat-operations";
 
 const initialState = {
-        statSummury: {
+        categoriesSummary: [{
             name: '',
             type: '',
             total: 0
-        },
+        }],
         incomeSummary: 0,
         expenseSummary: 0,
         periodTotal: 0,
@@ -25,7 +25,7 @@ export const statSlice = createSlice({
             })
             .addCase(statistSummary.fulfilled, (state, {payload}) => {
                 state.isLoader = false;
-                state.statSummury = payload.categoriesSummary;
+                state.categoriesSummary = payload.categoriesSummary;
                 state.incomeSummary = payload.incomeSummary;
                 state.expenseSummary = payload.expenseSummary;
                 state.periodTotal = payload.periodTotal;
