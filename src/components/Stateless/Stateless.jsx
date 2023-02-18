@@ -9,7 +9,7 @@ import {
     selectIncomeSummary,
 } from '../../redux/statistics/selectorStatistics';
 import {
-    DivConteiner, DivSelect, Option, Select,
+    DivConteiner, DivSelect, Option, Select, SelectWrapper,
     Table, TableHead, LiList, Results, ResultsName, ResultsExpenses, ResultsIncome,
     Box, ItemTable
 } from '../Stateless/Stateless.styled';
@@ -72,7 +72,8 @@ export const Stateless = () => {
         <>
             <DivConteiner>
                 <DivSelect>
-                    <Select name="month" id="month" onChange={handleChange}>
+                    <SelectWrapper>
+                        <Select name="month" id="month" onChange={handleChange}>
                             {objMonth.map(({ name, value }) => {
                                 if (value === currentMonth) {
                                     return (
@@ -86,8 +87,10 @@ export const Stateless = () => {
                             })
                             }
                     </Select>
-
-                    <Select name="year" id="year" onChange={handleChange}>
+                    </SelectWrapper>
+                    
+                    <SelectWrapper>
+                        <Select name="year" id="year" onChange={handleChange}>
                         {objYear.map(({ name, value }) => {
                                 if (value === currentYear) {
                                     return (
@@ -101,6 +104,8 @@ export const Stateless = () => {
                             })
                             }
                     </Select>
+                    </SelectWrapper>
+                    
                 </DivSelect> 
 
                 <Table>
