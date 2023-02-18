@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { logout } from "redux/auth/auth-operations";
 import { getIsError } from "redux/auth/auth-selectors";
-import { Content, Modal } from "./ModalLogout.styled";
-const body = window.document.body;
+import { CancelButton, Content, LogoutButton, Modal, Title } from "./ModalLogout.styled";
+import { Box } from "./ModalLogout.styled";
 
+const body = window.document.body;
 
 export const ModalLogout = () => {
     const closeModal = useCloseModalLogout();
@@ -25,8 +26,9 @@ export const ModalLogout = () => {
     useEffect(() => {
         disableBodyScroll(body);
         const escapeModal = event => {
-            if (event.code === 'ESCAPE') {
+            if (event.code === 'Escape') {
                 event.preventDefault();
+                closeModal();
             }
 
         };
@@ -44,8 +46,11 @@ export const ModalLogout = () => {
 
         <Modal>
             <Content >
-                <button onClick={handleLogout}>Ok</button>
-                <button onClick={closeModal}>Cancel</button>
+                <Title>Do you want to leave the page?</Title>
+                <Box>
+                    <CancelButton onClick={handleLogout}>Yes</CancelButton>
+                    <LogoutButton onClick={closeModal}>Cancel</LogoutButton>
+                </Box>
             </Content>
 
         </Modal>
