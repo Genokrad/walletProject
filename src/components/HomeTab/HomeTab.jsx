@@ -47,6 +47,15 @@ const HomeTab = () => {
   //   resultRecords.map(item => dispatch(deleteTransaction(item.categoryId)));
   // };
 
+  function reverseString(str) {
+    let splitString = str.split('-');
+    let reverseArray = splitString.reverse();
+    let finished =
+      reverseArray[0] + '.' + reverseArray[1] + '.' + reverseArray[2].slice(2);
+
+    return finished;
+  }
+
   return (
     <Table>
       <thead>
@@ -63,17 +72,28 @@ const HomeTab = () => {
         {resultRecords.map(
           ({ transactionDate, balanceAfter, type, name, id, comment }) => (
             <TableBody key={id}>
-              <DataTd>{transactionDate}</DataTd>
+              {console.log('transactionDate', transactionDate)}
+              <DataTd>{reverseString(transactionDate)}</DataTd>
               <TypeTd>
                 {(type === 'INCOME' && '+') || (type === 'EXPENSE' && '-')}
               </TypeTd>
               <CategoryTd>{name}</CategoryTd>
               <CommentTd>{comment}</CommentTd>
-              <SumTd>{balanceAfter}</SumTd>
+              {/* <SumTd>{balanceAfter}</SumTd> */}
+
+              {type === 'INCOME' ? (
+                <SumTd style={{ color: 'var(--seaBlue-text-color)' }}>
+                  {balanceAfter}
+                </SumTd>
+              ) : (
+                <SumTd style={{ color: 'var(--bcg-red-color)' }}>
+                  {balanceAfter}
+                </SumTd>
+              )}
               <Action>
                 <svg width="14" height="14">
                   <use
-                    href={sprite + '#iconpencel'}
+                    href={sprite + '#icon-edit-02'}
                     width="14"
                     height="14"
                   ></use>
