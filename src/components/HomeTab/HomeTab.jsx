@@ -30,7 +30,7 @@ const HomeTab = () => {
 
   const name = getcat.find(record => record.id === records[0].categoryId);
   const newUser = { ...records[0], name };
-
+  console.log(newUser);
   // console.log('newarray', newarray);
   // console.log('transactions', records);
   // console.log('getcat :>> ', getcat);
