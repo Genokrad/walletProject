@@ -20,7 +20,7 @@ import { useDispatch } from 'react-redux';
 // import { selectIsModalAddTransactionOpen } from 'redux/transactionsController/selectors';
 const ModalAdd = ({ active }) => {
   const [add, getAdd] = useState(true);
-  // const modalAdd = useSelector(selectIsModalAddTransactionOpen)
+
 
   const dispatch = useDispatch();
 
