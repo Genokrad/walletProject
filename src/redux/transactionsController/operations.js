@@ -54,7 +54,7 @@ export const updateTransaction = createAsyncThunk(
     try {
       const { data } = await axios.patch(
         `/api/transactions/${transaction.id}`,
-        transaction
+        transaction.obj
       );
       return data;
     } catch (error) {
@@ -68,7 +68,7 @@ export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
   async (element, { rejectWithValue }) => {
     try {
-      await axios.delete(`/api/transactions/${element.id}`);
+      await axios.delete(`/api/transactions/${element}`);
       return element;
     } catch (error) {
       return rejectWithValue(error.message);

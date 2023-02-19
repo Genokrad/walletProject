@@ -8,7 +8,6 @@ import {
   DivBtn,
   BtnAdd,
   BtnCancel,
-  
 } from './StyledContent';
 import { useDispatch, useSelector } from 'react-redux/es/exports.js';
 import { createTransaction } from 'redux/transactionsController/operations';
@@ -27,9 +26,9 @@ const AddComponent = () => {
   const handleChange = e => {
     if (e.target.name === 'sum') {
       getAmount(e.currentTarget.value);
-      console.log(e.currentTarget.value);
+      // console.log(e.currentTarget.value);
     } else if (e.target.name === 'comment') {
-      console.log(e.currentTarget.value);
+      // console.log(e.currentTarget.value);
       getComment(e.currentTarget.value);
     }
   };

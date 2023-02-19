@@ -21,7 +21,7 @@ import { useDispatch } from 'react-redux';
 const ModalAdd = ({ active }) => {
   const [add, getAdd] = useState(true);
 
-
+  console.log('add', add);
   const dispatch = useDispatch();
 
   return (

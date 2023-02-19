@@ -23,6 +23,9 @@ import {
 import sprite from '../../iconsSprite/icons.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { openModalAddTransaction } from 'redux/transactionsController/slice';
+import { updateTransaction } from 'redux/transactionsController/operations';
+import { deleteTransaction } from 'redux/transactionsController/operations';
 
 const HomeTab = () => {
   const dispatch = useDispatch();
@@ -56,6 +59,32 @@ const HomeTab = () => {
     return finished;
   }
 
+  const getTargetTransaction = (
+    id,
+    transactionDate,
+    type,
+    comment,
+    amount,
+    categoryId
+  ) => {
+    const transaction = {
+      id: id,
+      obj: {
+        transactionDate: new Date(transactionDate).toISOString(),
+        type: type,
+        categoryId: categoryId,
+        comment: comment,
+        amount: amount,
+      },
+    };
+    console.log('transaction', transaction);
+    dispatch(updateTransaction(transaction));
+  };
+
+  const deleteTransactionFu = id => {
+    dispatch(deleteTransaction(id));
+  };
+
   return (
     <Table>
       <thead>
@@ -69,30 +98,52 @@ const HomeTab = () => {
         </TopTable>
       </thead>
       <tbody>
+        {console.log(resultRecords)}
         {resultRecords.map(
-          ({ transactionDate, balanceAfter, type, name, id, comment }) => (
+          ({
+            transactionDate,
+            amount,
+            type,
+            name,
+            id,
+            comment,
+            categoryId,
+          }) => (
             <TableBody key={id}>
-              {console.log('transactionDate', transactionDate)}
               <DataTd>{reverseString(transactionDate)}</DataTd>
               <TypeTd>
                 {(type === 'INCOME' && '+') || (type === 'EXPENSE' && '-')}
               </TypeTd>
               <CategoryTd>{name}</CategoryTd>
               <CommentTd>{comment}</CommentTd>
-              {/* <SumTd>{balanceAfter}</SumTd> */}
 
               {type === 'INCOME' ? (
                 <SumTd style={{ color: 'var(--seaBlue-text-color)' }}>
-                  {balanceAfter}
+                  {amount}
                 </SumTd>
               ) : (
                 <SumTd style={{ color: 'var(--bcg-red-color)' }}>
-                  {balanceAfter}
+                  {amount}
                 </SumTd>
               )}
               <Action>
-                <svg width="14" height="14">
+                <svg
+                  id={id}
+                  onClick={() => dispatch(openModalAddTransaction())}
+                  width="14"
+                  height="14"
+                >
                   <use
+                    onClick={() =>
+                      getTargetTransaction(
+                        id,
+                        transactionDate,
+                        type,
+                        comment,
+                        amount,
+                        categoryId
+                      )
+                    }
                     href={sprite + '#icon-edit-02'}
                     width="14"
                     height="14"
@@ -100,6 +151,7 @@ const HomeTab = () => {
                 </svg>
               </Action>
               <Btn onClick={() => dispatch(deleteTransaction(id))}>Delete</Btn>
+
             </TableBody>
           )
         )}

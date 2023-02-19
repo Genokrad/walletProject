@@ -27,11 +27,9 @@ const MinusComponent = () => {
   const [amount, getAmount] = useState('');
   const getCategory = useSelector(getCat);
 
-
-
   const dispatch = useDispatch();
   const handleChange = e => {
-    console.log(e.target.name);
+    // console.log(e.target.name);
     if (e.target.name === 'sum') {
       getAmount(e.currentTarget.value);
     } else if (e.target.name === 'comment') {
@@ -45,7 +43,7 @@ const MinusComponent = () => {
     }
   };
 
-  console.log(type);
+  // console.log(type);
 
   const handleSubmit = evt => {
     evt.preventDefault();
