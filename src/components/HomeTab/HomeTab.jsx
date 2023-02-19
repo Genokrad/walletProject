@@ -28,7 +28,7 @@ import {
   openModalAddTransaction,
 } from 'redux/transactionsController/slice';
 // import { updateTransaction } from 'redux/transactionsController/operations';
-import { deleteTransaction } from 'redux/transactionsController/operations';
+// import { deleteTransaction } from 'redux/transactionsController/operations';
 // import ModalAdd from 'components/ModalAdd/ModalAdd';
 
 const HomeTab = () => {
@@ -104,9 +104,9 @@ const HomeTab = () => {
     dispatch(openModalAddTransaction());
   };
 
-  const deleteTransactionFu = id => {
-    dispatch(deleteTransaction(id));
-  };
+  // const deleteTransactionFu = id => {
+  //   dispatch(deleteTransaction(id));
+  // };
 
   return (
     <Table>
@@ -173,7 +173,6 @@ const HomeTab = () => {
                 </svg>
               </Action>
               <Btn onClick={() => dispatch(deleteTransaction(id))}>Delete</Btn>
-
             </TableBody>
           )
         )}
