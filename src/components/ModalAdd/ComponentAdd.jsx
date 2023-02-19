@@ -11,14 +11,24 @@ import {
 } from './StyledContent';
 import { ModalLogout } from 'components/ModalLogout/ModalLogout';
 import { useDispatch, useSelector } from 'react-redux/es/exports.js';
-import { createTransaction } from 'redux/transactionsController/operations';
+import {
+  createTransaction,
+  updateTransaction,
+} from 'redux/transactionsController/operations';
 import { getCat } from 'redux/categories/categories-selectors';
 import { useEffect, useState } from 'react';
 import { useOpenModalLogout } from 'components/modalHooks/hooks';
 import { getIsModalLogoutOpen } from 'redux/auth/auth-selectors';
 import MinusComponent from './componentMinus';
-import { selectOneTransaction } from 'redux/transactionsController/selectors';
-import { addOneTransaction } from 'redux/transactionsController/slice';
+import {
+  didUpdate,
+  selectOneTransaction,
+} from 'redux/transactionsController/selectors';
+import {
+  addOneTransaction,
+  statusTransaction,
+} from 'redux/transactionsController/slice';
+import { Button } from 'components/Button/Button';
 const AddComponent = ({ seting }) => {
   const openModal = useOpenModalLogout();
   const isModalOpen = useSelector(getIsModalLogoutOpen);
@@ -33,9 +43,9 @@ const AddComponent = ({ seting }) => {
   const [data, getData] = useState(new Date());
   const [comment, getComment] = useState('');
   const [amount, getAmount] = useState('');
-  console.log('amount ', amount);
+  // console.log('amount ', amount);
   const [type, getType] = useState('INCOME');
-  console.log(type);
+  // console.log(type);
   const [id, getId] = useState('063f1132-ba5d-42b4-951d-44011ca46262');
   const getCategory = useSelector(getCat);
 
@@ -44,13 +54,14 @@ const AddComponent = ({ seting }) => {
   const oneTransaction = useSelector(selectOneTransaction);
 
   useEffect(() => {
-    if (oneTransaction === null) {
+    if (didUpdate === true) {
       return;
     }
-    getAmount(oneTransaction?.obj?.amount);
-    getType(oneTransaction?.obj?.type);
-    getComment(oneTransaction?.obj?.comment);
-    dispatch(addOneTransaction(null));
+    getAmount(Math.abs(oneTransaction?.obj?.amount) || 0);
+    getType(oneTransaction?.obj?.type || 'INCOME');
+    getComment(oneTransaction?.obj?.comment || '');
+
+    dispatch(statusTransaction(true));
   }, [oneTransaction, dispatch]);
 
   // if (oneTransaction !== null) {
@@ -60,7 +71,7 @@ const AddComponent = ({ seting }) => {
   // }
 
   const handleChange = e => {
-    console.log(e.target);
+    // console.log(e.target);
     if (e.target.name === 'sum' && seting) {
       getId('063f1132-ba5d-42b4-951d-44011ca46262');
       getAmount(e.currentTarget.value);
@@ -88,7 +99,7 @@ const AddComponent = ({ seting }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-
+    console.log(type);
     if (type === 'EXPENSE') {
       const operation = {
         transactionDate: data,
@@ -97,6 +108,7 @@ const AddComponent = ({ seting }) => {
         comment: comment,
         amount: -amount,
       };
+
       dispatch(createTransaction(operation));
       reset();
       return;
@@ -109,13 +121,32 @@ const AddComponent = ({ seting }) => {
         amount: amount,
         // amount: {seting? amount:-amount},
       };
+      console.log('evt', operation);
       dispatch(createTransaction(operation));
       reset();
       return;
     }
 
-    // console.log(operation);
     // dispatch(createTransaction(operation));
+  };
+
+  const upDateFunction = () => {
+    // oneTransaction;
+    // console.log('transactionToChange', oneTransaction);
+    const newObj = {
+      id: oneTransaction.id,
+      obj: {
+        amount: Number(amount),
+        categoryId: oneTransaction.obj.categoryId,
+        comment: comment,
+        transactionDate: oneTransaction.obj.transactionDate,
+        type: type,
+      },
+    };
+    // console.log('newObj', newObj);
+
+    dispatch(updateTransaction(newObj));
+    dispatch(addOneTransaction(null));
   };
 
   return (
@@ -149,6 +180,7 @@ const AddComponent = ({ seting }) => {
         </form>
       </DivSetting>
       <DivBtn className="Btn">
+        <Button title={'update'} onClick={upDateFunction} />
         <BtnAdd type="submit" onClick={handleSubmit}>
           ADD
         </BtnAdd>

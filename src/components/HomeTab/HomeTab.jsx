@@ -104,10 +104,6 @@ const HomeTab = () => {
     dispatch(openModalAddTransaction());
   };
 
-  // const deleteTransactionFu = id => {
-  //   dispatch(deleteTransaction(id));
-  // };
-
   return (
     <Table>
       <thead>
@@ -121,7 +117,7 @@ const HomeTab = () => {
         </TopTable>
       </thead>
       <tbody>
-        {console.log(resultRecords)}
+        {/* {console.log(resultRecords)} */}
         {resultRecords.map(
           ({
             transactionDate,
