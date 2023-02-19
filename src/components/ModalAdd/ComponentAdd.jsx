@@ -9,38 +9,68 @@ import {
   BtnAdd,
   BtnCancel,
 } from './StyledContent';
+import { ModalLogout } from 'components/ModalLogout/ModalLogout';
 import { useDispatch, useSelector } from 'react-redux/es/exports.js';
 import { createTransaction } from 'redux/transactionsController/operations';
 import { getCat } from 'redux/categories/categories-selectors';
-import { useState } from 'react';
-
-const AddComponent = () => {
+import { useEffect, useState } from 'react';
+import { useOpenModalLogout } from 'components/modalHooks/hooks';
+import { getIsModalLogoutOpen } from 'redux/auth/auth-selectors';
+import MinusComponent from './componentMinus';
+const AddComponent = ({seting}) => {
+  const openModal = useOpenModalLogout();
+  const isModalOpen = useSelector(getIsModalLogoutOpen);
+  useEffect(() => {
+    if(seting){ getType('INCOME')}
+    else if(!seting){getType("EXPENSE")}
+    
+  },[seting]);
   const [data, getData] = useState(new Date());
-
   const [comment, getComment] = useState('');
   const [amount, getAmount] = useState('');
+  console.log("amount ", amount)
+  const [type, getType] = useState('INCOME');
+ console.log(type)
+  const [id, getId] = useState('063f1132-ba5d-42b4-951d-44011ca46262');
   const getCategory = useSelector(getCat);
-  const neededCat = getCategory.find(cat => cat.type === 'INCOME');
+  
 
   const dispatch = useDispatch();
   const handleChange = e => {
-    if (e.target.name === 'sum') {
+   console.log(e.target)
+    if (e.target.name === 'sum'&& seting) {
+     
+      getId('063f1132-ba5d-42b4-951d-44011ca46262')
       getAmount(e.currentTarget.value);
-      // console.log(e.currentTarget.value);
-    } else if (e.target.name === 'comment') {
-      // console.log(e.currentTarget.value);
+    } 
+    else if (e.target.name === 'sum'&& !seting) {
+     
+      getAmount(-e.currentTarget.value);
+    } 
+    else if (e.target.name === 'comment') {
+      
       getComment(e.currentTarget.value);
+    }
+    else if (e.target.name === 'select'&&!seting) {
+      const typeOfSelector = getCategory.find(
+        obj => obj.name === e.target.value
+      );
+      
+      getType(typeOfSelector.type);
+      getId(typeOfSelector.id);
     }
   };
   const handleSubmit = evt => {
     evt.preventDefault();
     const operation = {
       transactionDate: data,
-      type: neededCat.type,
-      categoryId: neededCat.id,
+      type:type,
+      categoryId: id,
       comment: comment,
       amount: amount,
+      // amount: {seting? amount:-amount},
     };
+    console.log(operation)
     dispatch(createTransaction(operation));
   };
 
@@ -48,6 +78,7 @@ const AddComponent = () => {
     <>
       <DivSetting className="SetingTransaction">
         <form onSubmit={handleSubmit}>
+          {seting?"":<MinusComponent change={handleChange}/>}
           <DivDataSum>
             <Sum name="sum" placeholder="0.00" onChange={handleChange}></Sum>
 
@@ -71,7 +102,8 @@ const AddComponent = () => {
         <BtnAdd type="submit" onClick={handleSubmit}>
           ADD
         </BtnAdd>
-        <BtnCancel>CANCEL</BtnCancel>
+        <BtnCancel onClick={openModal}>CANCEL</BtnCancel>
+        {isModalOpen && <ModalLogout />}
       </DivBtn>
     </>
   );
