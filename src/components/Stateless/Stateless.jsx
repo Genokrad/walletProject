@@ -9,7 +9,7 @@ import {
     selectIncomeSummary,
 } from '../../redux/statistics/selectorStatistics';
 import {
-    DivConteiner, DivSelect, Option, Select, SelectWrapper,
+    DivConteiner, DivSelect, Select, SelectWrapper,
     Table, TableHead, LiList, Results, ResultsName, ResultsExpenses, ResultsIncome,
     Box, ItemTable
 } from '../Stateless/Stateless.styled';
@@ -77,11 +77,11 @@ export const Stateless = () => {
                             {objMonth.map(({ name, value }) => {
                                 if (value === currentMonth) {
                                     return (
-                                        <Option value={value} selected>{name}</Option>
+                                        <option value={value} selected>{name}</option>
                                 )
                                 } else {
                                     return (
-                                        <Option value={value} >{name}</Option>
+                                        <option value={value} >{name}</option>
                                 )
                                 }
                             })
@@ -94,11 +94,11 @@ export const Stateless = () => {
                         {objYear.map(({ name, value }) => {
                                 if (value === currentYear) {
                                     return (
-                                        <Option value={value} selected>{name}</Option>
+                                        <option value={value} selected>{name}</option>
                                 )
                                 } else {
                                     return (
-                                        <Option value={value} >{name}</Option>
+                                        <option value={value} >{name}</option>
                                 )
                                 }
                             })

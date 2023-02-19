@@ -35,9 +35,14 @@ export const SelectWrapper = styled.div`
     position: relative;
     width: 181px;
     height: 50px;
+    /* background: rgba(255, 255, 255, 0.7); */
     /* border: 1px solid #000000; */
+    /* box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(25px);
+    border-radius: 20px; */
+    /* overflow: hidden; */
 
-    &::before {
+    &::after {
         content: '';
         position: absolute;
         top: 50%;
@@ -45,14 +50,19 @@ export const SelectWrapper = styled.div`
         transform: translateY(-50%);
         width: 20px;
         height: 11px;
-        /* background-color: red; */
-        /* background-image: url('/src/images/Stat/arrow-down.svg'); */
         background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='20' height='11' viewBox='0 0 20 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M19 1L10 10L1 1' stroke='black'/%3e%3c/svg%3e ");
         pointer-events: none;
+    }
+
+    &:hover::after {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='20' height='11' viewBox='0 0 20 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M19 10L10 1L1 10' stroke='black'/%3e%3c/svg%3e ");
     }
     `
 
 export const Select = styled.select`
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
     appearance: none;
     width: 181px;
     height: 50px;
@@ -67,20 +77,20 @@ export const Select = styled.select`
     font-size: 16px;
     line-height: 1.5;
     color: var(--black-text-color);
+    cursor: pointer;
 
     &::-ms-expand {
         display: none;
     }
     `
 
-export const Option = styled.option`
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid #000000;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(25px);
-    border-radius: 20px;
-    `
+// export const Option = styled.option`
+//     background: rgba(255, 255, 255, 0.7);
+//     border: 1px solid #000000;
+//     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+//     backdrop-filter: blur(25px);
+//     border-radius: 20px;
+//     `
 
 export const Table = styled.div`
     width: 395px;
