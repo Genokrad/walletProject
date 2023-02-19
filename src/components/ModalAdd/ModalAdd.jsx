@@ -2,8 +2,8 @@ import { ContainerModal, ContentModal } from './ModalAddStyled';
 import sprite from '../../iconsSprite/icons.svg';
 import { SvgClose } from './ModalAddStyled';
 import AddComponent from './ComponentAdd';
-import MinusComponent from './componentMinus';
 
+import { useEffect } from 'react';
 import {
   Header,
   Switch,
@@ -21,9 +21,24 @@ import { useDispatch } from 'react-redux';
 const ModalAdd = ({ active }) => {
   const [add, getAdd] = useState(true);
 
-  console.log('add', add);
+  console.log('add', active);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+   
+    const escapeModal = event => {
+      if (event.code === 'Escape') {
+        event.preventDefault();
+        dispatch(closeModalAddTransaction())
+      }
+    };
+    window.addEventListener('keydown', escapeModal);
+
+    return () => {
+      window.removeEventListener('keydown', escapeModal);
+      
+    };
+  });
   return (
     <ContainerModal
       className={active ? 'ContainerModal active' : 'ContainerModal'}
@@ -84,8 +99,9 @@ const ModalAdd = ({ active }) => {
               </p>
             )}
           </DivChekbox>
-          {add ? <AddComponent /> : <MinusComponent />}
+         <AddComponent seting={add}/> 
         </div>
+        
       </ContentModal>
     </ContainerModal>
   );

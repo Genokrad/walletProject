@@ -1,8 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
 import { Formik } from 'formik';
+import { Notify } from 'notiflix';
+import { useState } from 'react';
 import * as Yup from 'yup';
 import sprite from '../../iconsSprite/icons.svg';
+import css from './Registration.module.css';
 import {
   Container,
   Label,
@@ -10,12 +13,8 @@ import {
   ErrorMsg,
   Svg,
   Btn,
-  Easy,
-  Difficult,
-  Average,
+  Line,
 } from './Registration.styled';
-import { Notify } from 'notiflix';
-import { useState } from 'react';
 
 const schema = Yup.object().shape({
   name: Yup.string().min(1).max(12).required(),
@@ -37,36 +36,37 @@ const initialValues = {
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
-  const [strength, setStrength] = useState('');
+  const [strength, setStrength] = useState('empty');
   const [cpassword, setCpassword] = useState('');
 
   const handleChange = value => {
-    if (value !== undefined) setCpassword(value);
+    const checkValue = (value !== undefined)
+
+    if (checkValue) setCpassword(value);
 
     let score = 0;
-
-    if (cpassword.length >= 5) {
+    if (checkValue && value.length >= 6) {
       score += 1;
     }
-    if ((cpassword.match(/[A-Z]/g) || []).length >= 1) {
+    if (checkValue && (value.match(/[A-Z]/g) || []).length >= 1) {
       score += 1;
     }
-    if ((cpassword.match(/[0-9]/g) || []).length >= 1) {
+    if (checkValue && (value.match(/[0-9]/g) || []).length >= 1) {
       score += 1;
     }
 
     switch (score) {
       case 0:
-        setStrength('');
+        setStrength('empty');
         break;
       case 1:
-        setStrength('Weak');
+        setStrength('easy');
         break;
       case 2:
-        setStrength('Medium');
+        setStrength('average');
         break;
       case 3:
-        setStrength('Strong');
+        setStrength('difficult');
         break;
       default:
         break;
@@ -135,9 +135,9 @@ const RegistrationForm = () => {
                   height="24"
                 ></use>
               </Svg>
-              {strength === 'Weak' && <Easy />}
-              {strength === 'Medium' && <Average />}
-              {strength === 'Strong' && <Difficult />}
+              <Line>
+                <div className={css[strength]} />
+              </Line>
               <ErrorMsg name="confirmation" component="div" />
             </Label>
             <Label>

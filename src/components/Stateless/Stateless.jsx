@@ -9,7 +9,7 @@ import {
     selectIncomeSummary,
 } from '../../redux/statistics/selectorStatistics';
 import {
-    DivConteiner, DivSelect, Option, Select,
+    DivConteiner, DivSelect, Select, SelectWrapper,
     Table, TableHead, LiList, Results, ResultsName, ResultsExpenses, ResultsIncome,
     Box, ItemTable
 } from '../Stateless/Stateless.styled';
@@ -72,35 +72,40 @@ export const Stateless = () => {
         <>
             <DivConteiner>
                 <DivSelect>
-                    <Select name="month" id="month" onChange={handleChange}>
+                    <SelectWrapper>
+                        <Select name="month" id="month" onChange={handleChange}>
                             {objMonth.map(({ name, value }) => {
                                 if (value === currentMonth) {
                                     return (
-                                        <Option value={value} selected>{name}</Option>
+                                        <option value={value} selected>{name}</option>
                                 )
                                 } else {
                                     return (
-                                        <Option value={value} >{name}</Option>
+                                        <option value={value} >{name}</option>
                                 )
                                 }
                             })
                             }
                     </Select>
-
-                    <Select name="year" id="year" onChange={handleChange}>
+                    </SelectWrapper>
+                    
+                    <SelectWrapper>
+                        <Select name="year" id="year" onChange={handleChange}>
                         {objYear.map(({ name, value }) => {
                                 if (value === currentYear) {
                                     return (
-                                        <Option value={value} selected>{name}</Option>
+                                        <option value={value} selected>{name}</option>
                                 )
                                 } else {
                                     return (
-                                        <Option value={value} >{name}</Option>
+                                        <option value={value} >{name}</option>
                                 )
                                 }
                             })
                             }
                     </Select>
+                    </SelectWrapper>
+                    
                 </DivSelect> 
 
                 <Table>
