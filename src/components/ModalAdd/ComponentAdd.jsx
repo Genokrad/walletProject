@@ -30,20 +30,19 @@ import {
 } from 'redux/transactionsController/slice';
 import { Button } from 'components/Button/Button';
 import { closeModalAddTransaction } from 'redux/transactionsController/slice';
-const AddComponent = ({ seting, fn}) => {
-
+const AddComponent = ({ seting, fn }) => {
   const openModal = useOpenModalLogout();
   const isModalOpen = useSelector(getIsModalLogoutOpen);
   useEffect(() => {
     if (seting) {
       getType('INCOME');
-      getId('063f1132-ba5d-42b4-951d-44011ca46262')
+      getId('063f1132-ba5d-42b4-951d-44011ca46262');
     } else if (!seting) {
       getType('EXPENSE');
       getId('c9d9e447-1b83-4238-8712-edc77b18b739');
     }
   }, [seting]);
-  
+
   const [data, getData] = useState(new Date());
   const [comment, getComment] = useState('');
   const [amount, getAmount] = useState('');
@@ -75,7 +74,6 @@ const AddComponent = ({ seting, fn}) => {
   // }
 
   const handleChange = e => {
-
     if (e.target.name === 'sum' && seting) {
       getId('063f1132-ba5d-42b4-951d-44011ca46262');
       getAmount(e.currentTarget.value);
@@ -112,11 +110,11 @@ const AddComponent = ({ seting, fn}) => {
         comment: comment,
         amount: -amount,
       };
-      fn(true)
+      fn(true);
 
       dispatch(createTransaction(operation));
-      dispatch(closeModalAddTransaction())
-      
+      dispatch(closeModalAddTransaction());
+
       reset();
       return;
     } else if (type === 'INCOME') {
@@ -128,11 +126,11 @@ const AddComponent = ({ seting, fn}) => {
         amount: amount,
         // amount: {seting? amount:-amount},
       };
-      fn(true)
+      fn(true);
 
       dispatch(createTransaction(operation));
       dispatch(closeModalAddTransaction());
-      
+
       reset();
       return;
     }
@@ -143,27 +141,52 @@ const AddComponent = ({ seting, fn}) => {
   const upDateFunction = () => {
     // oneTransaction;
     // console.log('transactionToChange', oneTransaction);
-    const newObj = {
-      id: oneTransaction.id,
-      obj: {
-        amount: Number(amount),
-        categoryId: oneTransaction.obj.categoryId,
-        comment: comment,
-        transactionDate: oneTransaction.obj.transactionDate,
-        type: type,
-      },
-    };
-    // console.log('newObj', newObj);
+    // console.log('oneTransaction.obj.type', oneTransaction.obj.type);
+    let newObj = {};
+    // console.log(
+    //   'new Date',
+    //   new Date(oneTransaction.obj.transactionDate).toLocaleDateString()
+    // );
+    if (oneTransaction.obj.type === 'INCOME') {
+      newObj = {
+        id: oneTransaction.id,
+        obj: {
+          amount: Number(amount),
+          categoryId: oneTransaction.obj.categoryId,
+          comment: comment,
+          transactionDate: oneTransaction.obj.transactionDate,
+          type: type,
+        },
+      };
+      dispatch(updateTransaction(newObj));
+      dispatch(addOneTransaction(null));
+      return newObj;
+    } else if (oneTransaction.obj.type === 'EXPENSE') {
+      console.log('oneTransaction.obj.type', oneTransaction.obj.type);
+      newObj = {
+        id: oneTransaction.id,
+        obj: {
+          amount: Number(-amount),
+          categoryId: oneTransaction.obj.categoryId,
+          comment: comment,
+          transactionDate: oneTransaction.obj.transactionDate,
+          type: type,
+        },
+      };
+      console.log('newObj', newObj);
+      dispatch(updateTransaction(newObj));
+      dispatch(addOneTransaction(null));
+      return newObj;
+    }
 
-    dispatch(updateTransaction(newObj));
-    dispatch(addOneTransaction(null));
+    console.log('newObj', newObj);
   };
 
   return (
     <>
       <DivSetting className="SetingTransaction">
         <form onSubmit={handleSubmit}>
-          {seting ? '' : <MinusComponent change={handleChange} id={id}/>}
+          {seting ? '' : <MinusComponent change={handleChange} id={id} />}
           <DivDataSum>
             <Sum
               name="sum"
@@ -172,6 +195,7 @@ const AddComponent = ({ seting, fn}) => {
               onChange={handleChange}
             ></Sum>
 
+            {/* {console.log('first', data)} */}
             <Datetime
               dateFormat="DD-MM-YYYY"
               timeFormat={false}
