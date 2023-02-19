@@ -25,18 +25,17 @@ const ModalAdd = ({ active }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-   
     const escapeModal = event => {
       if (event.code === 'Escape') {
         event.preventDefault();
-        dispatch(closeModalAddTransaction())
+
+        dispatch(closeModalAddTransaction());
       }
     };
     window.addEventListener('keydown', escapeModal);
 
     return () => {
       window.removeEventListener('keydown', escapeModal);
-      
     };
   });
   return (
@@ -99,9 +98,8 @@ const ModalAdd = ({ active }) => {
               </p>
             )}
           </DivChekbox>
-         <AddComponent seting={add}/> 
+          <AddComponent seting={add} />
         </div>
-        
       </ContentModal>
     </ContainerModal>
   );
