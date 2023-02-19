@@ -100,6 +100,7 @@ export const Action = styled.td`
   justify-content: flex-end;
 `;
 export const Btn = styled.td`
+  cursor: pointer;
   border-radius: 18px;
   width: 70px;
   color: white;

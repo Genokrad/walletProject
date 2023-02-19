@@ -1,6 +1,7 @@
 import { getAllTransactions } from 'redux/transactionsController/operations';
 import { selectTransactions } from 'redux/transactionsController/selectors';
 import { getCat } from 'redux/categories/categories-selectors';
+import { deleteTransaction } from 'redux/transactionsController/operations';
 
 import {
   Table,
@@ -47,6 +48,12 @@ const HomeTab = () => {
   useEffect(() => {
     dispatch(getAllTransactions());
   }, [dispatch]);
+
+  // console.log(resultRecords);
+
+  // const clickHandleDelete = event => {
+  //   resultRecords.map(item => dispatch(deleteTransaction(item.categoryId)));
+  // };
 
   function reverseString(str) {
     let splitString = str.split('-');
@@ -165,7 +172,8 @@ const HomeTab = () => {
                   ></use>
                 </svg>
               </Action>
-              <Btn onClick={() => deleteTransactionFu(id)}>Delete</Btn>
+              <Btn onClick={() => dispatch(deleteTransaction(id))}>Delete</Btn>
+
             </TableBody>
           )
         )}

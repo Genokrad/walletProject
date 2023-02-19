@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CurrencyStyled = styled.div`
   width: 280px;
   height: 174px;
-
+  position: relative;
   left: 20px;
   top: 144px;
 
@@ -12,7 +12,6 @@ export const CurrencyStyled = styled.div`
 `;
 
 export const ListStyled = styled.ul`
-  position: relative;
   display: flex;
 
   gap: 28px;
@@ -48,15 +47,13 @@ export const ImgStyledRectangle = styled.img`
 
 export const ImgStyledVector = styled.img`
   position: absolute;
-  bottom: 273px;
+  top: 80px;
   left: auto;
-
   width: 280px;
   height: 93px;
 `;
 
 export const TypeStyled = styled.ul`
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
