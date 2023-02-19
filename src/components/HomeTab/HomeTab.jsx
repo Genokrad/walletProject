@@ -22,11 +22,16 @@ import {
 import sprite from '../../iconsSprite/icons.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { openModalAddTransaction } from 'redux/transactionsController/slice';
-import { updateTransaction } from 'redux/transactionsController/operations';
+import {
+  addOneTransaction,
+  openModalAddTransaction,
+} from 'redux/transactionsController/slice';
+// import { updateTransaction } from 'redux/transactionsController/operations';
 import { deleteTransaction } from 'redux/transactionsController/operations';
+// import ModalAdd from 'components/ModalAdd/ModalAdd';
 
 const HomeTab = () => {
+  // const modalAdd = useSelector(selectIsModalAddTransactionOpen);
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
   const arrayCategory = useSelector(getCat);
@@ -52,16 +57,33 @@ const HomeTab = () => {
     return finished;
   }
 
-  const getTargetTransaction = (
-    id,
-    transactionDate,
-    type,
-    comment,
-    amount,
-    categoryId
-  ) => {
+  // const getTargetTransaction = (
+  //   id,
+  //   transactionDate,
+  //   type,
+  //   comment,
+  //   amount,
+  //   categoryId
+  // ) => {
+  //   const transaction = {
+  //     id: id,
+  //     obj: {
+  //       transactionDate: new Date(transactionDate).toISOString(),
+  //       type: type,
+  //       categoryId: categoryId,
+  //       comment: comment,
+  //       amount: amount,
+  //     },
+  //   };
+  //   console.log('transaction', transaction);
+  //   dispatch(updateTransaction(transaction));
+  // };
+
+  const updateFu = (id, transactionDate, type, comment, amount, categoryId) => {
     const transaction = {
       id: id,
+      balanceAfter: null,
+      showUpdateButton: false,
       obj: {
         transactionDate: new Date(transactionDate).toISOString(),
         type: type,
@@ -70,8 +92,9 @@ const HomeTab = () => {
         amount: amount,
       },
     };
-    console.log('transaction', transaction);
-    dispatch(updateTransaction(transaction));
+
+    dispatch(addOneTransaction(transaction));
+    dispatch(openModalAddTransaction());
   };
 
   const deleteTransactionFu = id => {
@@ -116,27 +139,26 @@ const HomeTab = () => {
                 </SumTd>
               ) : (
                 <SumTd style={{ color: 'var(--bcg-red-color)' }}>
-                  {amount}
+                  {Math.abs(amount)}
                 </SumTd>
               )}
               <Action>
                 <svg
                   id={id}
-                  onClick={() => dispatch(openModalAddTransaction())}
+                  onClick={() =>
+                    updateFu(
+                      id,
+                      transactionDate,
+                      type,
+                      comment,
+                      amount,
+                      categoryId
+                    )
+                  }
                   width="14"
                   height="14"
                 >
                   <use
-                    onClick={() =>
-                      getTargetTransaction(
-                        id,
-                        transactionDate,
-                        type,
-                        comment,
-                        amount,
-                        categoryId
-                      )
-                    }
                     href={sprite + '#icon-edit-02'}
                     width="14"
                     height="14"

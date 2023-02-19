@@ -7,6 +7,7 @@ import {
 } from './operations';
 
 const initialState = {
+  oneTransaction: null,
   items: [],
   isLoading: false,
   error: null,
@@ -31,6 +32,9 @@ const transactionsController = createSlice({
     closeModalAddTransaction(state) {
       state.isModalAddTransactionOpen = false;
     },
+    addOneTransaction(state, actions) {
+      state.oneTransaction = actions.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -49,7 +53,6 @@ const transactionsController = createSlice({
       .addCase(getAllTransactions.rejected, handleRejected)
       .addCase(updateTransaction.pending, handlePending)
       .addCase(updateTransaction.fulfilled, (state, { payload }) => {
-        console.log('state.items', state.items);
         state.isLoading = false;
         const item = state.items.findIndex(item => item.id === payload.id);
         state.items[item] = payload;
@@ -64,6 +67,9 @@ const transactionsController = createSlice({
       .addCase(deleteTransaction.rejected, handleRejected);
   },
 });
-export const { openModalAddTransaction, closeModalAddTransaction } =
-  transactionsController.actions;
+export const {
+  openModalAddTransaction,
+  closeModalAddTransaction,
+  addOneTransaction,
+} = transactionsController.actions;
 export default transactionsController.reducer;
