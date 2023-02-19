@@ -98,7 +98,7 @@ const ModalAdd = ({ active }) => {
               </p>
             )}
           </DivChekbox>
-          <AddComponent seting={add} />
+          <AddComponent seting={add} fn={getAdd} />
         </div>
       </ContentModal>
     </ContainerModal>
