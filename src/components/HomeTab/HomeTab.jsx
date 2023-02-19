@@ -19,6 +19,7 @@ import {
   CategoryTd,
   CommentTd,
   SumTd,
+  Svg
 } from './HomeTabStyle';
 import sprite from '../../iconsSprite/icons.svg';
 import { useDispatch, useSelector } from 'react-redux';
@@ -122,7 +123,7 @@ const HomeTab = () => {
                   </SumTd>
                 )}
                 <Action>
-                  <svg
+                  <Svg
                     id={id}
                     onClick={() =>
                       updateFu(
@@ -138,11 +139,11 @@ const HomeTab = () => {
                     height="14"
                   >
                     <use
-                      href={sprite + '#icon-edit-02'}
+                      href={sprite + '#icon-pencil-writing-creative'}
                       width="14"
                       height="14"
                     ></use>
-                  </svg>
+                  </Svg>
                 </Action>
                 <Btn onClick={() => dispatch(deleteTransaction(id))}>
                   Delete

@@ -38,3 +38,12 @@ export const SvgClose = styled.svg`
   top: 20px;
   cursor: pointer;
 `;
+export const SvgData = styled.svg`
+  position: absolute;
+  
+    
+    margin-left: 300px;
+`;
+
+
+

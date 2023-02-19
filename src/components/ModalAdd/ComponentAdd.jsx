@@ -1,5 +1,7 @@
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+import sprite from '../../iconsSprite/icons.svg';
+import { SvgData } from './ModalAddStyled';
 import {
   DivSetting,
   DivDataSum,
@@ -8,6 +10,7 @@ import {
   DivBtn,
   BtnAdd,
   BtnCancel,
+  
 } from './StyledContent';
 import { ModalLogout } from 'components/ModalLogout/ModalLogout';
 import { useDispatch, useSelector } from 'react-redux/es/exports.js';
@@ -42,7 +45,8 @@ const AddComponent = ({ seting, fn }) => {
       getId('c9d9e447-1b83-4238-8712-edc77b18b739');
     }
   }, [seting]);
-
+  
+  
   const [data, getData] = useState(new Date());
   const [comment, getComment] = useState('');
   const [amount, getAmount] = useState('');
@@ -55,6 +59,7 @@ const AddComponent = ({ seting, fn }) => {
   const dispatch = useDispatch();
 
   const oneTransaction = useSelector(selectOneTransaction);
+
 
   useEffect(() => {
     if (didUpdate === true) {
@@ -139,6 +144,7 @@ const AddComponent = ({ seting, fn }) => {
   };
 
   const upDateFunction = () => {
+  
     // oneTransaction;
     // console.log('transactionToChange', oneTransaction);
     // console.log('oneTransaction.obj.type', oneTransaction.obj.type);
@@ -158,9 +164,12 @@ const AddComponent = ({ seting, fn }) => {
           type: type,
         },
       };
+      
       dispatch(updateTransaction(newObj));
       dispatch(addOneTransaction(null));
-      return newObj;
+      
+      return newObj
+      
     } else if (oneTransaction.obj.type === 'EXPENSE') {
       console.log('oneTransaction.obj.type', oneTransaction.obj.type);
       newObj = {
@@ -174,11 +183,13 @@ const AddComponent = ({ seting, fn }) => {
         },
       };
       console.log('newObj', newObj);
+      
       dispatch(updateTransaction(newObj));
       dispatch(addOneTransaction(null));
+      
       return newObj;
     }
-
+    
     console.log('newObj', newObj);
   };
 
@@ -203,6 +214,9 @@ const AddComponent = ({ seting, fn }) => {
               className="data"
               onChange={data => getData(data._d)}
             />
+            <SvgData width="25" height="25">
+                  <use href={sprite + '#baseline-date'} width="25" height="25"></use>
+                </SvgData>
           </DivDataSum>
 
           <Coment
@@ -214,6 +228,11 @@ const AddComponent = ({ seting, fn }) => {
         </form>
       </DivSetting>
       <DivBtn className="Btn">
+       
+        {/* {update?<Button title={'update'} onClick={upDateFunction} />:<BtnAdd type="submit" onClick={handleSubmit}>
+          ADD
+        </BtnAdd>
+        } */}
         <Button title={'update'} onClick={upDateFunction} />
         <BtnAdd type="submit" onClick={handleSubmit}>
           ADD
