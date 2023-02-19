@@ -25,12 +25,11 @@ export const Currency = () => {
         <Dna
           height="150"
           width="150"
-          color=" orange"
           ariaLabel="dna-loading"
           wrapperStyle={{
             position: 'absolute',
             bottom: 'auto',
-            left: '15%',
+            left: 'auto',
             zIndex: '100',
           }}
           wrapperClass="dna-wrapper"
