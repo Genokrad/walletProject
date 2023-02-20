@@ -74,3 +74,16 @@ body {
   background-position: 0 100%, 100% 0;
   background-attachment: fixed;
 }
+
+input.form-control {
+  border: none;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #000000;
+  padding-bottom: 8px;
+  padding-left: 30px;
+  border-bottom: 1px solid #e0e0e0;
+}

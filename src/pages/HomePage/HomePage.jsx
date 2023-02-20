@@ -8,7 +8,10 @@ import sprite from '../../iconsSprite/icons.svg';
 import ModalAdd from 'components/ModalAdd/ModalAdd';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsModalAddTransactionOpen } from 'redux/transactionsController/selectors';
-import { openModalAddTransaction } from 'redux/transactionsController/slice';
+import {
+  openModalAddTransaction,
+  statusTransaction,
+} from 'redux/transactionsController/slice';
 import { useEffect } from 'react';
 import { getCategories } from 'redux/categories/categories-operations';
 export const HomePage = () => {
@@ -20,12 +23,17 @@ export const HomePage = () => {
     dispatch(getCategories());
   }, [dispatch]);
 
+  const openModalFu = () => {
+    dispatch(openModalAddTransaction());
+    dispatch(statusTransaction(false));
+  };
+
   return (
     <>
       <HomeTab />
 
       <ModalAdd active={modalAdd} />
-      <Btn onClick={() => dispatch(openModalAddTransaction())} type="button">
+      <Btn onClick={() => openModalFu()} type="button">
         <svg width="20" height="20">
           <use href={sprite + '#iconplus'} width="20" height="20"></use>
         </svg>
@@ -33,3 +41,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+// dispatch(statusTransaction(true));
