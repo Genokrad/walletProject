@@ -25,9 +25,5 @@ export const useFetchCurrency = () => {
     JSON.stringify({ ...details, newDate: Date.now() })
   );
 
-  // const oldTime = JSON.parse(window.localStorage.getItem(LOCAL_KEY)) ?? [];
-  // console.log('old', oldTime);
-
-  // console.log(222, details);
   return details;
 };
