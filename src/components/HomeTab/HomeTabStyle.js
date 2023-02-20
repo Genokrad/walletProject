@@ -114,3 +114,8 @@ export const Btn = styled.td`
   background-color: var(--seaBlue-text-color);
   justify-content: center;
 `;
+export const Svg = styled.svg`
+cursor: pointer;
+margin-right: 10px;
+ 
+`;
