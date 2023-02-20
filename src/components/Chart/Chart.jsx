@@ -3,7 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import './Chart.styled.js';
 import { Wrapper, TextAbs } from './Chart.styled.js';
-import { Loader } from 'Loader/Loader.jsx';
+import { Loader } from 'components/Loader/Loader.jsx';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
