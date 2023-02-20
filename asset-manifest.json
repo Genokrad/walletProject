@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/walletProject/static/css/main.9368f5a1.css",
-    "main.js": "/walletProject/static/js/main.68fb7d27.js",
+    "main.js": "/walletProject/static/js/main.dc7b87ff.js",
     "static/media/enot.png": "/walletProject/static/media/enot.28f91c1fe2109ff5a33b.png",
     "static/media/login_desk_2x.png": "/walletProject/static/media/login_desk_2x.d8f64e3e7c50a467da40.png",
     "static/media/reg_desk_2x.png": "/walletProject/static/media/reg_desk_2x.b6bae1d47d97ecdda1c9.png",
@@ -12,16 +12,16 @@
     "static/media/login_tablet.png": "/walletProject/static/media/login_tablet.bf9ee2ea3880266b790b.png",
     "static/media/reg_tablet.png": "/walletProject/static/media/reg_tablet.fd09c83de9345ce10ca0.png",
     "static/media/icons.svg": "/walletProject/static/media/icons.83153cb29568365e6beb3ff11d897816.svg",
-    "static/media/mySprite.svg": "/walletProject/static/media/mySprite.a07139a95d37c8c31bf91261fd05b8d0.svg",
+    "static/media/mySprite.svg": "/walletProject/static/media/mySprite.91b6b1ca7a073d3d79ed3b51d2393305.svg",
     "static/media/logo-icon.svg": "/walletProject/static/media/logo-icon.7aa7e611acc11def491e6d21f991b890.svg",
     "index.html": "/walletProject/index.html",
     "static/media/exit-icon.svg": "/walletProject/static/media/exit-icon.68a6430100c84f3315fe87a326c27dcc.svg",
     "static/media/delimetr.svg": "/walletProject/static/media/delimetr.4197971255a4c6a047f2d568d14b817e.svg",
     "main.9368f5a1.css.map": "/walletProject/static/css/main.9368f5a1.css.map",
-    "main.68fb7d27.js.map": "/walletProject/static/js/main.68fb7d27.js.map"
+    "main.dc7b87ff.js.map": "/walletProject/static/js/main.dc7b87ff.js.map"
   },
   "entrypoints": [
     "static/css/main.9368f5a1.css",
-    "static/js/main.68fb7d27.js"
+    "static/js/main.dc7b87ff.js"
   ]
 }
