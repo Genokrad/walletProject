@@ -9,21 +9,30 @@ export async function fetchMonoApi() {
 }
 
 export const useFetchCurrency = () => {
-  const [details, setDetails] = useState(
-    JSON.parse(window.localStorage.getItem(LOCAL_KEY)) ?? []
-  );
+  const [details, setDetails] = useState(null);
+  // JSON.parse(window.localStorage.getItem(LOCAL_KEY)) ()
+  // );
 
   useEffect(() => {
-    if (Date.now() - details.newDate < 3600000) {
-      return;
+    const data = JSON.parse(window.localStorage.getItem(LOCAL_KEY));
+    console.log('data :>> ', data);
+    if (data) {
+      const delta = Date.now() - details.newDate;
+      if (delta < 3600000) {
+        setDetails(data);
+        return;
+      }
     }
+
     fetchMonoApi().then(setDetails);
   }, [details]);
 
-  localStorage.setItem(
-    LOCAL_KEY,
-    JSON.stringify({ ...details, newDate: Date.now() })
-  );
+  if (details) {
+    localStorage.setItem(
+      LOCAL_KEY,
+      JSON.stringify({ ...details, newDate: Date.now() })
+    );
+  }
 
   return details;
 };
