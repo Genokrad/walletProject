@@ -34,26 +34,29 @@ import {
 import { Button } from 'components/Button/Button';
 import { closeModalAddTransaction } from 'redux/transactionsController/slice';
 const AddComponent = ({ seting, fn }) => {
+  
   const openModal = useOpenModalLogout();
   const isModalOpen = useSelector(getIsModalLogoutOpen);
   useEffect(() => {
     if (seting) {
-      getType('INCOME');
-      getId('063f1132-ba5d-42b4-951d-44011ca46262');
-    } else if (!seting) {
       getType('EXPENSE');
-      getId('c9d9e447-1b83-4238-8712-edc77b18b739');
+      getId('c9d9e447-1b83-4238-8712-edc77b18b739')
+     ;
+    } else {
+      getType('INCOME');
+      getId('063f1132-ba5d-42b4-951d-44011ca46262')
+     ;
     }
   }, [seting]);
   
   
   const [data, getData] = useState(new Date());
   const [comment, getComment] = useState('');
-  const [amount, getAmount] = useState('');
+  const [amount, getAmount] = useState('0.00');
 
-  const [type, getType] = useState('INCOME');
+  const [type, getType] = useState('EXPENSE');
 
-  const [id, getId] = useState('063f1132-ba5d-42b4-951d-44011ca46262');
+  const [id, getId] = useState('c9d9e447-1b83-4238-8712-edc77b18b739');
   const getCategory = useSelector(getCat);
 
   const dispatch = useDispatch();
@@ -65,8 +68,8 @@ const AddComponent = ({ seting, fn }) => {
     if (didUpdate === true) {
       return;
     }
-    getAmount(Math.abs(oneTransaction?.obj?.amount) || 0);
-    getType(oneTransaction?.obj?.type || 'INCOME');
+    getAmount(Math.abs(oneTransaction?.obj?.amount) || '0.00');
+    getType(oneTransaction?.obj?.type || 'EXPENSE');
     getComment(oneTransaction?.obj?.comment || '');
 
     dispatch(statusTransaction(true));
@@ -80,7 +83,7 @@ const AddComponent = ({ seting, fn }) => {
 
   const handleChange = e => {
     if (e.target.name === 'sum' && seting) {
-      getId('063f1132-ba5d-42b4-951d-44011ca46262');
+      getId('c9d9e447-1b83-4238-8712-edc77b18b739');
       getAmount(e.currentTarget.value);
     } else if (e.target.name === 'sum' && !seting) {
       getAmount(e.currentTarget.value);
@@ -92,6 +95,7 @@ const AddComponent = ({ seting, fn }) => {
       );
 
       getType(typeOfSelector.type);
+      console.log(type)
       getId(typeOfSelector.id);
     }
   };
@@ -100,8 +104,8 @@ const AddComponent = ({ seting, fn }) => {
     getData(new Date());
     getComment('');
     getAmount('');
-    getType('INCOME');
-    getId('063f1132-ba5d-42b4-951d-44011ca46262');
+    getType('EXPENSE');
+    getId('c9d9e447-1b83-4238-8712-edc77b18b739');
   };
 
   const handleSubmit = evt => {
@@ -182,7 +186,7 @@ const AddComponent = ({ seting, fn }) => {
           type: type,
         },
       };
-      console.log('newObj', newObj);
+      
       
       dispatch(updateTransaction(newObj));
       dispatch(addOneTransaction(null));
@@ -190,25 +194,25 @@ const AddComponent = ({ seting, fn }) => {
       return newObj;
     }
     
-    console.log('newObj', newObj);
+ 
   };
 
   return (
     <>
       <DivSetting className="SetingTransaction">
         <form onSubmit={handleSubmit}>
-          {seting ? '' : <MinusComponent change={handleChange} id={id} />}
+          {seting && getCategory.length?  <MinusComponent change={handleChange} id={id} cat={getCategory}/>:"" }
           <DivDataSum>
             <Sum
               name="sum"
-              value={amount}
-              placeholder="0.00"
+              
+              placeholder={amount}
               onChange={handleChange}
             ></Sum>
 
             {/* {console.log('first', data)} */}
             <Datetime
-              dateFormat="DD-MM-YYYY"
+              dateFormat="DD.MM.YYYY"
               timeFormat={false}
               value={data}
               className="data"
