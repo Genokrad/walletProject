@@ -1,8 +1,10 @@
+import { BtnUpdate } from './Button.styled';
+
 const Button = ({ title, type = 'button', onClick }) => {
   return (
-    <button className="btn" type={type} onClick={onClick}>
+    <BtnUpdate className="btn" type={type} onClick={onClick}>
       {title}
-    </button>
+    </BtnUpdate>
   );
 };
 
