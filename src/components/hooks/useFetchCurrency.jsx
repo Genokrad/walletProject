@@ -16,7 +16,7 @@ export const useFetchCurrency = () => {
   useEffect(() => {
     const data = JSON.parse(window.localStorage.getItem(LOCAL_KEY));
     console.log('data :>> ', data);
-    if (data) {
+    if (data && details) {
       const delta = Date.now() - details.newDate;
       if (delta < 3600000) {
         setDetails(data);
