@@ -193,6 +193,7 @@ const AddComponent = ({ seting, fn }) => {
         .unwrap()
         .then(() => dispatch(getAllTransactions()));
       dispatch(addOneTransaction(null));
+      dispatch(closeModalAddTransaction());
 
       return newObj;
     }
