@@ -32,7 +32,7 @@ export const Currency = () => {
           width="150"
           ariaLabel="dna-loading"
           wrapperStyle={{
-            position: 'absolute',
+            // position: 'absolute',
             bottom: 'auto',
             left: 'auto',
           }}

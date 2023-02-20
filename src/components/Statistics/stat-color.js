@@ -7,7 +7,8 @@ export const colorExpensesBox = [
         { name: 'Household products', color: '#4A56E2'},
         { name: 'Education', color: '#81E1FF'},
         { name: 'Leisure', color: '#24CCA7'},
-        { name: 'Other expenses', color: '#00AD84'},
+        { name: 'Other expenses', color: '#00AD84' },
+        { name: 'Entertainment', color: '#81FFA5' },
     ]
 
 export const handleColor = (name) => {    

@@ -20,8 +20,12 @@ export const StyledNavLink = styled(NavLink)`
 
 export const Styledlist = styled.ul`
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 30px;
+  justify-content: center;
+  @media screen and (min-width: 768px) {
+    flex-direction: column;
+    gap: 12px;
+  }
 `;
 
 export const StyledItem = styled.li`

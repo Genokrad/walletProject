@@ -66,7 +66,8 @@ export const CancelButton = styled(Button)`
 `;
 
 export const LogoutButton = styled(Button)`
-  background: var(--leisure);
+  // background: var(--leisure);
   border: transparent;
-  color:#4A56E2;
+  border: 1px solid #000000;
+  color:#000000;
 `;
