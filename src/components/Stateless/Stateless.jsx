@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import Select from 'react-select';
+import css from '../Stateless/Stateless.module.css';
 import { statistSummary } from '../../redux/statistics/stat-operations';
 import { handleColor } from '../../redux/statistics/stat-color';
+
 import {
     selectStatSummury,
     selectExpenseSummary,
     selectIncomeSummary,
 } from '../../redux/statistics/selectorStatistics';
 import {
-    DivConteiner, DivSelect, Select, SelectWrapper,
+    DivConteiner, DivSelect, 
     Table, TableHead, LiList, Results, ResultsName, ResultsExpenses, ResultsIncome,
     Box, ItemTable
 } from '../Stateless/Stateless.styled';
@@ -44,7 +45,8 @@ export const Stateless = () => {
     const currentYear = date.getFullYear();
     const [month, setMonth] = useState(currentMonth);
     const [year, setYear] = useState(currentYear);
-    // const [selectedOption, setSelectedOption] = useState(null);
+    
+    const [isOpenSelect, setIsOpenSelect] = useState(false);
 
     const statSummury = useSelector(selectStatSummury);
     const expenseSummary = useSelector(selectExpenseSummary);
@@ -52,11 +54,29 @@ export const Stateless = () => {
 
     const dispatch = useDispatch();
 
-    const handleChange = ({ target }) => {
+    const handleMonth = () => {
+        for (const item of objMonth) {
+            if (month === item.value) return item.name;
+        }
+    }
+
+    const handleChangeMonth = ({ target }) => {        
         const { name, value } = target;
-        if (name === 'month') setMonth(value);
-        else setYear(value);
+        console.log('target>>>>>>', name, value);
+        setMonth(value);
+        setIsOpenSelect(false);
     };
+
+        const handleChangeYear = ({ target }) => {        
+        const { name, value } = target;
+        console.log('target>>>>>>', name, value);
+        setYear(value);
+        setIsOpenSelect(false);
+    };
+
+    const openSelect = (() => {
+        setIsOpenSelect(true);
+    })
 
     useEffect(() => {
         dispatch(
@@ -72,39 +92,57 @@ export const Stateless = () => {
         <>
             <DivConteiner>
                 <DivSelect>
-                    <SelectWrapper>
-                        <Select name="month" id="month" onChange={handleChange}>
-                            {objMonth.map(({ name, value }) => {
-                                if (value === currentMonth) {
-                                    return (
-                                        <option value={value} selected>{name}</option>
-                                )
-                                } else {
-                                    return (
-                                        <option value={value} >{name}</option>
-                                )
-                                }
-                            })
-                            }
-                    </Select>
-                    </SelectWrapper>
-                    
-                    <SelectWrapper>
-                        <Select name="year" id="year" onChange={handleChange}>
-                        {objYear.map(({ name, value }) => {
-                                if (value === currentYear) {
-                                    return (
-                                        <option value={value} selected>{name}</option>
-                                )
-                                } else {
-                                    return (
-                                        <option value={value} >{name}</option>
-                                )
-                                }
-                            })
-                            }
-                    </Select>
-                    </SelectWrapper>
+                    <div className={css.Selected} onClick={openSelect}>
+                        {handleMonth()}
+                        {isOpenSelect && (
+                            <div className={css.SelectBox}>                          
+                                <div className={css.OptionsContainer}>
+                                    {objMonth.map(({ name, value }) => {
+                                        return (
+                                            <div key={name} className={css.Option} >                                            
+                                                <label>{name}
+                                                    <input
+                                                        className={css.Radio}
+                                                        type='radio'
+                                                        checked={month === value}
+                                                        value={value} name={name}
+                                                        onChange={handleChangeMonth}
+                                                    />
+                                                </label>
+                                            </div>                                        
+                                        )
+                                    })
+                                    }     
+                                </div>
+                        </div>
+                        )}                        
+                    </div>
+
+                    <div className={css.Selected} onClick={openSelect}>
+                        {year}
+                        {isOpenSelect && (
+                            <div className={css.SelectBox}>                          
+                                <div className={css.OptionsContainer}>
+                                    {objYear.map(({ name, value }) => {
+                                        return (
+                                            <div key={name} className={css.Option} >                                            
+                                                <label>{name}
+                                                    <input
+                                                        className={css.Radio}
+                                                        type='radio'
+                                                        checked={year === value}
+                                                        value={value} name={name}
+                                                        onChange={handleChangeYear}
+                                                    />
+                                                </label>
+                                            </div>                                        
+                                        )
+                                    })
+                                    }     
+                                </div>
+                        </div>
+                        )}                        
+                    </div>
                     
                 </DivSelect> 
 
@@ -150,68 +188,40 @@ export const Stateless = () => {
 
 
 
-
-//---------------
+//---------------предыдущий код селекта---------------
 // {/* <DivSelect>
-//                     <Select name="month" id="month" onChange={handleChange}>
+//                     <SelectWrapper>
+//                         <Select name="month" id="month" onChange={handleChange}>
 //                             {objMonth.map(({ name, value }) => {
 //                                 if (value === currentMonth) {
 //                                     return (
-//                                         <Option value={value} selected>{name}</Option>
+//                                         <option value={value} selected>{name}</option>
 //                                 )
 //                                 } else {
 //                                     return (
-//                                         <Option value={value} >{name}</Option>
+//                                         <option value={value} >{name}</option>
 //                                 )
 //                                 }
 //                             })
 //                             }
 //                     </Select>
-
-//                     <Select name="year" id="year" onChange={handleChange}>
+//                     </SelectWrapper>
+                    
+//                     <SelectWrapper>
+//                         <Select name="year" id="year" onChange={handleChange}>
 //                         {objYear.map(({ name, value }) => {
 //                                 if (value === currentYear) {
 //                                     return (
-//                                         <Option value={value} selected>{name}</Option>
+//                                         <option value={value} selected>{name}</option>
 //                                 )
 //                                 } else {
 //                                     return (
-//                                         <Option value={value} >{name}</Option>
+//                                         <option value={value} >{name}</option>
 //                                 )
 //                                 }
 //                             })
 //                             }
 //                     </Select>
-//                 </DivSelect> */}
-
-
-
-// <DivSelect>
-//                     <Select   
-//                         name="month" id="month" onChange={handleChange}
-                        
-//                         options={objMonth}
-//                         theme={(theme) => ({
-//                             ...theme,
-//                             indicatorSeparator: false,
-//                             borderRadius: 20,
-//                             colors: {
-//                                 ...theme.colors,
-//                                 primery: 'black',
-//                             }
-//                         })}
-//                     />
-
-//                     <Select
-//                         name="year" id="year" onChange={handleChange}
-//                         options={objYear}
-//                         theme={(theme) => ({
-//                             ...theme,
-//                             borderRadius: 20,
-//                             colors: {
-//                                 ...theme.colors,
-//                                 primery: 'black',
-//                             }
-//                         })}
-//                     />
-//                 </DivSelect>
+//                     </SelectWrapper>
+                    
+//                 </DivSelect>  */}

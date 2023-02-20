@@ -64,6 +64,7 @@ export const Select = styled.select`
     -moz-appearance: none;
     -ms-appearance: none;
     appearance: none;
+    
     width: 181px;
     height: 50px;
     padding: 10px;
@@ -91,6 +92,14 @@ export const Select = styled.select`
 //     backdrop-filter: blur(25px);
 //     border-radius: 20px;
 //     `
+
+export const ItemOptions = styled.div`
+    
+    `
+
+export const OptionContainer = styled.div`
+    
+    `
 
 export const Table = styled.div`
     width: 395px;
