@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   totalBalance: 0,
-  isHideBalance: false,
+  isHideBalance: true,
 };
 
 const finance = createSlice({
