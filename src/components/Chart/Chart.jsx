@@ -3,7 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { Wrapper, TextAbs } from './Chart.styled.js';
 import { Loader } from 'components/Loader/Loader.jsx';
-import {handleColor } from 'redux/statistics/stat-color.js';
+import {handleColor } from 'components/Statistics/stat-color.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

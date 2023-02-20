@@ -1,9 +1,4 @@
 import { useCloseModalLogout } from 'components/modalHooks/hooks';
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from 'body-scroll-lock';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -18,7 +13,7 @@ import {
 } from './ModalLogout.styled';
 import { Box } from './ModalLogout.styled';
 
-const body = window.document.body;
+
 
 export const ModalLogout = () => {
   const closeModal = useCloseModalLogout();
@@ -33,7 +28,6 @@ export const ModalLogout = () => {
   }
 
   useEffect(() => {
-    disableBodyScroll(body);
     const escapeModal = event => {
       if (event.code === 'Escape') {
         event.preventDefault();
@@ -44,8 +38,6 @@ export const ModalLogout = () => {
 
     return () => {
       window.removeEventListener('keydown', escapeModal);
-      enableBodyScroll(body);
-      clearAllBodyScrollLocks(body);
     };
   });
 
