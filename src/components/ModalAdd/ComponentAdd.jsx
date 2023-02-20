@@ -11,7 +11,7 @@ import {
   BtnAdd,
   BtnCancel,
 } from './StyledContent';
-import { ModalLogout } from 'components/ModalLogout/ModalLogout';
+import { closeModalAddTransaction } from 'redux/transactionsController/slice';
 import { useDispatch, useSelector } from 'react-redux/es/exports.js';
 import {
   createTransaction,
@@ -20,8 +20,7 @@ import {
 } from 'redux/transactionsController/operations';
 import { getCat } from 'redux/categories/categories-selectors';
 import { useEffect, useState } from 'react';
-import { useOpenModalLogout } from 'components/modalHooks/hooks';
-import { getIsModalLogoutOpen } from 'redux/auth/auth-selectors';
+
 import MinusComponent from './componentMinus';
 import {
   didUpdate,
@@ -32,13 +31,12 @@ import {
   statusTransaction,
 } from 'redux/transactionsController/slice';
 import { Button } from 'components/Button/Button';
-import { closeModalAddTransaction } from 'redux/transactionsController/slice';
+
 
 const AddComponent = ({ seting, fn }) => {
-
+console.log(seting)
   const dispatch = useDispatch();
-  const openModal = useOpenModalLogout();
-  const isModalOpen = useSelector(getIsModalLogoutOpen);
+
   const isUpdateTransaction = useSelector(didUpdate);
   useEffect(() => {
     if (seting) {
@@ -103,7 +101,7 @@ const AddComponent = ({ seting, fn }) => {
   const reset = () => {
     getData(new Date());
     getComment('');
-    getAmount('');
+    getAmount('0.00');
     getType('EXPENSE');
     getId('c9d9e447-1b83-4238-8712-edc77b18b739');
   };
@@ -258,8 +256,8 @@ const AddComponent = ({ seting, fn }) => {
             ADD
           </BtnAdd>
         )}
-        <BtnCancel onClick={openModal}>CANCEL</BtnCancel>
-        {isModalOpen && <ModalLogout />}
+        <BtnCancel onClick={()=>dispatch(closeModalAddTransaction())}>CANCEL</BtnCancel>
+       
       </DivBtn>
     </>
   );
