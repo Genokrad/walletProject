@@ -49,12 +49,6 @@ const HomeTab = () => {
     dispatch(getAllTransactions());
   }, [dispatch]);
 
-  // console.log(resultRecords);
-
-  // const clickHandleDelete = event => {
-  //   resultRecords.map(item => dispatch(deleteTransaction(item.categoryId)));
-  // };
-
   function reverseString(str) {
     let splitString = str.split('-');
     let reverseArray = splitString.reverse();
@@ -63,28 +57,6 @@ const HomeTab = () => {
 
     return finished;
   }
-
-  // const getTargetTransaction = (
-  //   id,
-  //   transactionDate,
-  //   type,
-  //   comment,
-  //   amount,
-  //   categoryId
-  // ) => {
-  //   const transaction = {
-  //     id: id,
-  //     obj: {
-  //       transactionDate: new Date(transactionDate).toISOString(),
-  //       type: type,
-  //       categoryId: categoryId,
-  //       comment: comment,
-  //       amount: amount,
-  //     },
-  //   };
-  //   console.log('transaction', transaction);
-  //   dispatch(updateTransaction(transaction));
-  // };
 
   const updateFu = (id, transactionDate, type, comment, amount, categoryId) => {
     const transaction = {
@@ -104,10 +76,6 @@ const HomeTab = () => {
     dispatch(openModalAddTransaction());
   };
 
-  // const deleteTransactionFu = id => {
-  //   dispatch(deleteTransaction(id));
-  // };
-
   return (
     <Table>
       <thead>
@@ -121,61 +89,67 @@ const HomeTab = () => {
         </TopTable>
       </thead>
       <tbody>
-        {console.log(resultRecords)}
-        {resultRecords.map(
-          ({
-            transactionDate,
-            amount,
-            type,
-            name,
-            id,
-            comment,
-            categoryId,
-          }) => (
-            <TableBody key={id}>
-              <DataTd>{reverseString(transactionDate)}</DataTd>
-              <TypeTd>
-                {(type === 'INCOME' && '+') || (type === 'EXPENSE' && '-')}
-              </TypeTd>
-              <CategoryTd>{name}</CategoryTd>
-              <CommentTd>{comment}</CommentTd>
+        {/* {console.log(resultRecords)} */}
+        {resultRecords
+          .reverse()
+          .map(
+            ({
+              transactionDate,
+              amount,
+              type,
+              name,
+              id,
+              comment,
+              categoryId,
+            }) => (
+              <TableBody key={id}>
+                {/* {console.log('transactionDate', transactionDate)} */}
+                <DataTd>{reverseString(transactionDate)}</DataTd>
+                <TypeTd>
+                  {/* new Date(oneTransaction.obj.transactionDate).toLocaleDateString() */}
+                  {(type === 'INCOME' && '+') || (type === 'EXPENSE' && '-')}
+                </TypeTd>
+                <CategoryTd>{name}</CategoryTd>
+                <CommentTd>{comment}</CommentTd>
 
-              {type === 'INCOME' ? (
-                <SumTd style={{ color: 'var(--seaBlue-text-color)' }}>
-                  {amount}
-                </SumTd>
-              ) : (
-                <SumTd style={{ color: 'var(--bcg-red-color)' }}>
-                  {Math.abs(amount)}
-                </SumTd>
-              )}
-              <Action>
-                <svg
-                  id={id}
-                  onClick={() =>
-                    updateFu(
-                      id,
-                      transactionDate,
-                      type,
-                      comment,
-                      amount,
-                      categoryId
-                    )
-                  }
-                  width="14"
-                  height="14"
-                >
-                  <use
-                    href={sprite + '#icon-edit-02'}
+                {type === 'INCOME' ? (
+                  <SumTd style={{ color: 'var(--seaBlue-text-color)' }}>
+                    {amount}
+                  </SumTd>
+                ) : (
+                  <SumTd style={{ color: 'var(--bcg-red-color)' }}>
+                    {Math.abs(amount)}
+                  </SumTd>
+                )}
+                <Action>
+                  <svg
+                    id={id}
+                    onClick={() =>
+                      updateFu(
+                        id,
+                        transactionDate,
+                        type,
+                        comment,
+                        amount,
+                        categoryId
+                      )
+                    }
                     width="14"
                     height="14"
-                  ></use>
-                </svg>
-              </Action>
-              <Btn onClick={() => dispatch(deleteTransaction(id))}>Delete</Btn>
-            </TableBody>
-          )
-        )}
+                  >
+                    <use
+                      href={sprite + '#icon-edit-02'}
+                      width="14"
+                      height="14"
+                    ></use>
+                  </svg>
+                </Action>
+                <Btn onClick={() => dispatch(deleteTransaction(id))}>
+                  Delete
+                </Btn>
+              </TableBody>
+            )
+          )}
       </tbody>
     </Table>
   );

@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   oneTransaction: null,
+  didUpdate: false,
   items: [],
   isLoading: false,
   error: null,
@@ -34,6 +35,9 @@ const transactionsController = createSlice({
     },
     addOneTransaction(state, actions) {
       state.oneTransaction = actions.payload;
+    },
+    statusTransaction(state, action) {
+      state.didUpdate = action.payload;
     },
   },
   extraReducers: builder => {
@@ -71,5 +75,6 @@ export const {
   openModalAddTransaction,
   closeModalAddTransaction,
   addOneTransaction,
+  statusTransaction,
 } = transactionsController.actions;
 export default transactionsController.reducer;

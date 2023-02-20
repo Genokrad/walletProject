@@ -21,22 +21,21 @@ import { useDispatch } from 'react-redux';
 const ModalAdd = ({ active }) => {
   const [add, getAdd] = useState(true);
 
-  console.log('add', active);
+  // console.log('add', active);
   const dispatch = useDispatch();
 
   useEffect(() => {
-   
     const escapeModal = event => {
       if (event.code === 'Escape') {
         event.preventDefault();
-        dispatch(closeModalAddTransaction())
+
+        dispatch(closeModalAddTransaction());
       }
     };
     window.addEventListener('keydown', escapeModal);
 
     return () => {
       window.removeEventListener('keydown', escapeModal);
-      
     };
   });
   return (
@@ -99,9 +98,8 @@ const ModalAdd = ({ active }) => {
               </p>
             )}
           </DivChekbox>
-         <AddComponent seting={add}/> 
+          <AddComponent seting={add} fn={getAdd} />
         </div>
-        
       </ContentModal>
     </ContainerModal>
   );

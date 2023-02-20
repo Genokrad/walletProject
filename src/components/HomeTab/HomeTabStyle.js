@@ -13,7 +13,7 @@ export const TopTable = styled.tr`
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
-  background-color: grey;
+  background-color: var(--bcg-white-color);
   color: black;
   height: 58px;
   width: 100%;
