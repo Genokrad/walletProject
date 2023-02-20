@@ -104,6 +104,7 @@ const ModalAdd = ({ active }) => {
                   <Checkbox
                     className="Checkbox"
                     type="checkbox"
+                   
                     onClick={() => getAdd(true)}
                   />
                   <Span className="slider round">

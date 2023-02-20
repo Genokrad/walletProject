@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import css from '../Stateless/Stateless.module.css';
 import { statistSummary } from '../../redux/statistics/stat-operations';
-import { handleColor } from '../../redux/statistics/stat-color';
+import { handleColor } from '../Statistics/stat-color';
 
 import {
     selectStatSummury,

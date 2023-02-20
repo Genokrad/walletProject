@@ -2,6 +2,27 @@ import styled from 'styled-components';
 export const Table = styled.table`
   width: 715px;
 `;
+
+export const TBody = styled.div`
+  max-height: 60vh;
+  opacity: 1;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+  width: 8px;
+
+  border-radius: 0 20px 20px 0;
+  opacity: 0;
+  
+}
+  &::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 0 8px 8px 0;
+}
+`
+
+
+
 export const TopTable = styled.tr`
   width: 37px;
   height: 27px;
