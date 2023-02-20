@@ -19,10 +19,12 @@ import {
   addOneTransaction,
   closeModalAddTransaction,
 } from 'redux/transactionsController/slice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { didUpdate } from 'redux/transactionsController/selectors';
 // import { selectIsModalAddTransactionOpen } from 'redux/transactionsController/selectors';
 const ModalAdd = ({ active }) => {
   // dispatch(addOneTransaction(null));
+  const isShow = useSelector(didUpdate);
 
   const [add, getAdd] = useState(true);
 
@@ -60,10 +62,80 @@ const ModalAdd = ({ active }) => {
           <use href={sprite + '#iconclose'} width="25" height="25"></use>
         </SvgClose>
         <Header>
-          <h2>Add transaction</h2>
+          <h2>{!isShow ? 'Add transaction' : 'Update transaction'}</h2>
         </Header>
         <div>
-          <DivChekbox className="RadioBtn">
+          {!isShow && (
+            <DivChekbox className="RadioBtn">
+              {add ? (
+                <p>Income</p>
+              ) : (
+                <p
+                  style={{
+                    color: '#24CCA7',
+                  }}
+                >
+                  Income
+                </p>
+              )}
+              {add ? (
+                <Switch className="switch">
+                  <Checkbox
+                    className="Checkbox"
+                    type="checkbox"
+                    defaultChecked="checked"
+                    onClick={() => getAdd(false)}
+                  />
+                  <Span className="slider round">
+                    <SvgPlus width="25" height="25">
+                      <use
+                        href={sprite + '#iconplus'}
+                        width="25"
+                        height="25"
+                      ></use>
+                    </SvgPlus>
+                    <SvgMinus width="25" height="25">
+                      <use href={sprite + '#iconuntitled'} width="20"></use>
+                    </SvgMinus>
+                  </Span>
+                </Switch>
+              ) : (
+                <Switch className="switch">
+                  <Checkbox
+                    className="Checkbox"
+                    type="checkbox"
+                   
+                    onClick={() => getAdd(true)}
+                  />
+                  <Span className="slider round">
+                    <SvgPlus width="25" height="25">
+                      <use
+                        href={sprite + '#iconplus'}
+                        width="25"
+                        height="25"
+                      ></use>
+                    </SvgPlus>
+                    <SvgMinus width="25" height="25">
+                      <use href={sprite + '#iconuntitled'} width="20"></use>
+                    </SvgMinus>
+                  </Span>
+                </Switch>
+              )}
+
+              {add ? (
+                <p
+                  style={{
+                    color: '#FF6596',
+                  }}
+                >
+                  Expense
+                </p>
+              ) : (
+                <p>Expense</p>
+              )}
+            </DivChekbox>
+          )}
+          {/* <DivChekbox className="RadioBtn">
             {add ? (
               <p
               
@@ -130,7 +202,7 @@ const ModalAdd = ({ active }) => {
                 Expense
               </p>
             )}
-          </DivChekbox>
+          </DivChekbox> */}
           <AddComponent seting={add} fn={getAdd} />
         </div>
       </ContentModal>

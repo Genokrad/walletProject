@@ -1,14 +1,23 @@
 import styled from 'styled-components';
 
 export const CurrencyStyled = styled.div`
+  margin-top: 32px;
+
   width: 280px;
   height: 174px;
-
-  left: 20px;
-  top: 144px;
-
+  position: relative;
   background: #4a56e2;
   border-radius: 30px;
+
+  @media (min-width: 768px) {
+    width: 336px;
+    height: 182px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 393px;
+    height: 331px;
+  } ;
 `;
 
 export const ListStyled = styled.ul`
@@ -19,6 +28,18 @@ export const ListStyled = styled.ul`
   margin-bottom: 12px;
   width: 280px;
   height: 50px;
+
+  @media (min-width: 768px) {
+    width: 100%;
+    padding-left: 41px;
+  }
+
+  @media (min-width: 1280px) {
+    margin-left: 40px;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    gap: 60px;
+  } ;
 `;
 
 export const ListLI = styled.li`
@@ -36,7 +57,7 @@ export const ImgStyledRectangle = styled.img`
   top: auto;
   left: auto;
 
-  width: 280px;
+  width: 100%;
   height: 50px;
 
   background: #ffffff;
@@ -46,25 +67,39 @@ export const ImgStyledRectangle = styled.img`
 
 export const ImgStyledVector = styled.img`
   position: absolute;
-  bottom: 212px;
+  bottom: 0px;
   left: auto;
-  width: 280px;
+
+  width: 100%;
   height: 93px;
 
-  background-color: blue;
+  @media (min-width: 768px) {
+    height: 119px;
+  }
+
+  @media (min-width: 1280px) {
+  } ;
 `;
 
 export const TypeStyled = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 17px;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1280px) {
+    align-items: center;
+
+    gap: 24px;
+  }
 
   li {
     display: flex;
     justify-content: space-between;
-    gap: 55px;
+    gap: 70px;
 
     width: 240px;
     height: 24px;
@@ -76,5 +111,18 @@ export const TypeStyled = styled.ul`
     line-height: calc(24 / 16);
 
     color: white;
+
+    p {
+      margin-left: 0;
+    }
+
+    @media (min-width: 768px) {
+    }
+
+    @media (min-width: 1280px) {
+      gap: 90px;
+      justify-content: center;
+      width: 100%;
+    }
   }
 `;

@@ -11,7 +11,7 @@ import {
   BtnAdd,
   BtnCancel,
 } from './StyledContent';
-import { ModalLogout } from 'components/ModalLogout/ModalLogout';
+import { closeModalAddTransaction } from 'redux/transactionsController/slice';
 import { useDispatch, useSelector } from 'react-redux/es/exports.js';
 import {
   createTransaction,
@@ -20,8 +20,7 @@ import {
 } from 'redux/transactionsController/operations';
 import { getCat } from 'redux/categories/categories-selectors';
 import { useEffect, useState } from 'react';
-import { useOpenModalLogout } from 'components/modalHooks/hooks';
-import { getIsModalLogoutOpen } from 'redux/auth/auth-selectors';
+
 import MinusComponent from './componentMinus';
 import {
   didUpdate,
@@ -32,13 +31,12 @@ import {
   statusTransaction,
 } from 'redux/transactionsController/slice';
 import { Button } from 'components/Button/Button';
-import { closeModalAddTransaction } from 'redux/transactionsController/slice';
+
 
 const AddComponent = ({ seting, fn }) => {
-
+console.log(seting)
   const dispatch = useDispatch();
-  const openModal = useOpenModalLogout();
-  const isModalOpen = useSelector(getIsModalLogoutOpen);
+
   const isUpdateTransaction = useSelector(didUpdate);
   useEffect(() => {
     if (seting) {
@@ -55,17 +53,15 @@ const AddComponent = ({ seting, fn }) => {
   const [data, getData] = useState(new Date());
   const [comment, getComment] = useState('');
   const [amount, getAmount] = useState('0.00');
-
   const [type, getType] = useState('EXPENSE');
-
   const [id, getId] = useState('c9d9e447-1b83-4238-8712-edc77b18b739');
+  console.log(id)
   const getCategory = useSelector(getCat);
 
   const oneTransaction = useSelector(selectOneTransaction);
 
   useEffect(() => {
-
-    // if (oneTransaction == true) {
+ // if (oneTransaction == true) {
     //   return;
     // }
     getAmount(Math.abs(oneTransaction?.obj?.amount) || '0.00');
@@ -74,7 +70,7 @@ const AddComponent = ({ seting, fn }) => {
     getComment(oneTransaction?.obj?.comment || '');
 
     dispatch(statusTransaction(true));
-  }, [oneTransaction, dispatch]);
+  }, [oneTransaction, dispatch,]);
 
   // if (oneTransaction !== null) {
   //   getAmount(oneTransaction?.obj?.amount);
@@ -84,27 +80,28 @@ const AddComponent = ({ seting, fn }) => {
 
   const handleChange = e => {
     if (e.target.name === 'sum' && seting) {
-      getId('c9d9e447-1b83-4238-8712-edc77b18b739');
+      // getId('c9d9e447-1b83-4238-8712-edc77b18b739');
       getAmount(e.currentTarget.value);
     } else if (e.target.name === 'sum' && !seting) {
       getAmount(e.currentTarget.value);
     } else if (e.target.name === 'comment') {
       getComment(e.currentTarget.value);
-    } else if (e.target.name === 'select' && !seting) {
+    } else if (e.target.name === 'select') {
       const typeOfSelector = getCategory.find(
         obj => obj.name === e.target.value
       );
-
+  
       getType(typeOfSelector.type);
-      console.log(type)
+    
       getId(typeOfSelector.id);
     }
+   
   };
 
   const reset = () => {
     getData(new Date());
     getComment('');
-    getAmount('');
+    getAmount('0.00');
     getType('EXPENSE');
     getId('c9d9e447-1b83-4238-8712-edc77b18b739');
   };
@@ -259,8 +256,8 @@ const AddComponent = ({ seting, fn }) => {
             ADD
           </BtnAdd>
         )}
-        <BtnCancel onClick={openModal}>CANCEL</BtnCancel>
-        {isModalOpen && <ModalLogout />}
+        <BtnCancel onClick={()=>dispatch(closeModalAddTransaction())}>CANCEL</BtnCancel>
+       
       </DivBtn>
     </>
   );

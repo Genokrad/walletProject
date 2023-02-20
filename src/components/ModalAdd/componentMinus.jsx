@@ -1,5 +1,6 @@
 
 
+import { useEffect } from 'react';
 import {
   DivSetting,
   Forms,
@@ -17,7 +18,8 @@ const MinusComponent = ({change,id,cat}) => {
     obj => obj.id === id
   );
 
-  
+useEffect(()=>{})
+
   
  
   
@@ -28,8 +30,8 @@ const MinusComponent = ({change,id,cat}) => {
       <DivSetting className="SetingTransaction">
         <form>
           <Forms>
-            <FormsInput placeholder="Select a category" defaultValue={typeOfSelector.name} />
-            <FormsSelect id="category" onChange={change} name="select">
+            <FormsInput placeholder="Select a category" value={typeOfSelector.name} />
+            <FormsSelect id="category" onChange={change}  value={typeOfSelector.name} name="select">
               {cat.map(category => {
                 return <Option key={category.id}>{category.name}</Option>;
               })}

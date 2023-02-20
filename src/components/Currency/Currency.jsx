@@ -42,13 +42,12 @@ export const Currency = () => {
       ) : (
         <CurrencyStyled>
           <ImgStyledRectangle src={Rectangle} alt="img" />
-          <ImgStyledVector src={Vector} alt="img" />
           <ListStyled>
             <ListLI>Currency</ListLI>
             <ListLI>Purchase</ListLI>
             <ListLI>Sale</ListLI>
           </ListStyled>
-
+          <ImgStyledVector src={Vector} alt="img" />
           <TypeStyled>
             {allCurrency.map(({ rateBuy, currencyCodeA, rateSell }) => (
               <li key={currencyCodeA}>
