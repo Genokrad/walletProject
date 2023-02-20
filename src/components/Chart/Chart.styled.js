@@ -2,9 +2,16 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 280px;
+  height: 100%;
   float: left;
   position: relative;
 float: left;
+@media (min-width: 768px) {
+    width: 336px;
+  }
+  @media (min-width: 1280px) {
+    width: 288px;
+  }
 `;
 
 export const TextAbs = styled.div`

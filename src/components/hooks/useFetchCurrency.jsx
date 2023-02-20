@@ -14,6 +14,7 @@ export const useFetchCurrency = () => {
   // );
 
   useEffect(() => {
+
     // const data = JSON.parse(window.localStorage.getItem(LOCAL_KEY));
     // // console.log('data :>> ', data);
     // if (data && details && details.newDate) {
@@ -39,6 +40,7 @@ export const useFetchCurrency = () => {
     //     JSON.stringify({ ...details, newDate: Date.now() })
     //   );
     // });
+
   }, [details]);
 
   // if (details) {

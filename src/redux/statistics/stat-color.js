@@ -1,4 +1,4 @@
-const colorExpensesBox = [
+export const colorExpensesBox = [
         { name: 'Main expenses', color: '#FED057' },
         { name: 'Products', color: '#FFD8D0'},
         { name: 'Car', color: '#FD9498'},

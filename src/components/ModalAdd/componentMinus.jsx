@@ -1,8 +1,4 @@
 
-import {useSelector } from 'react-redux';
-
-import { getCat } from 'redux/categories/categories-selectors';
-
 
 import {
   DivSetting,
@@ -12,12 +8,15 @@ import {
   Option,
 
 } from './StyledContent';
-const MinusComponent = ({change,id}) => {
-  const getCategory = useSelector(getCat);
-  const typeOfSelector = getCategory.find(
+const MinusComponent = ({change,id,cat}) => {
+  
+ 
+
+  
+  const typeOfSelector = cat.find(
     obj => obj.id === id
   );
-  console.log(typeOfSelector)
+
   
   
  
@@ -29,9 +28,9 @@ const MinusComponent = ({change,id}) => {
       <DivSetting className="SetingTransaction">
         <form>
           <Forms>
-            <FormsInput placeholder="Select a category" value={typeOfSelector.name} />
+            <FormsInput placeholder="Select a category" defaultValue={typeOfSelector.name} />
             <FormsSelect id="category" onChange={change} name="select">
-              {getCategory.map(category => {
+              {cat.map(category => {
                 return <Option key={category.id}>{category.name}</Option>;
               })}
             </FormsSelect>

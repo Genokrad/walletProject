@@ -58,6 +58,7 @@ export const updateTransaction = createAsyncThunk(
       );
       console.log('data', data);
       dispatch(getAllTransactions());
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
