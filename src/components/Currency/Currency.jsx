@@ -15,6 +15,7 @@ import Rectangle from '../../images/Header/Rectangle.png';
 
 export const Currency = () => {
   const data = useFetchCurrency();
+  console.log(data);
   const usd = data?.data[0];
   const eur = data?.data[1];
   const allCurrency = [usd, eur];
@@ -38,6 +39,7 @@ export const Currency = () => {
       ) : (
         <CurrencyStyled>
           <ImgStyledRectangle src={Rectangle} alt="img" />
+          <ImgStyledVector src={Vector} alt="img" />
           <ListStyled>
             <ListLI>Currency</ListLI>
             <ListLI>Purchase</ListLI>
@@ -54,7 +56,6 @@ export const Currency = () => {
               </li>
             ))}
           </TypeStyled>
-          <ImgStyledVector src={Vector} alt="img" />
         </CurrencyStyled>
       )}
     </>
