@@ -5,7 +5,7 @@ import { selectStatSummury } from 'redux/statistics/selectorStatistics';
 import { selectIsTotalBalance } from 'redux/finance/finance-selectors';
 import { ConteinerStat, DivBox, H2} from './Statistics.styled';
 
-export const colorExpenses = [
+ const colorExpenses = [
   { color: '#FED057' },
   { color: '#FFD8D0' },
   { color: '#FD9498' },
@@ -16,7 +16,6 @@ export const colorExpenses = [
   { color: '#24CCA7' },
   { color: '#00AD84' },
 ];
-
 export const Statistics = () => {
   const totalSummary = useSelector(selectStatSummury);
   const balance = useSelector(selectIsTotalBalance);

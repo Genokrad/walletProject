@@ -12,7 +12,7 @@ export const Chart = ({ colors, date, balance }) => {
 
   const labels = expenses.map(el => el.name);
   let amount = expenses.map(el => Math.abs(el.total));
-  const color = colors.map(el => el.color);
+  const color = index => colors.find((_, ind )=> ind === index);
   const options = {
     plugins: {
       legend: {
