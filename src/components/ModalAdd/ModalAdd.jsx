@@ -15,21 +15,30 @@ import {
 } from './StyledContent';
 
 import { useState } from 'react';
-import { closeModalAddTransaction } from 'redux/transactionsController/slice';
+import {
+  addOneTransaction,
+  closeModalAddTransaction,
+} from 'redux/transactionsController/slice';
 import { useDispatch } from 'react-redux';
 // import { selectIsModalAddTransactionOpen } from 'redux/transactionsController/selectors';
 const ModalAdd = ({ active }) => {
+  // dispatch(addOneTransaction(null));
+
   const [add, getAdd] = useState(true);
-  console.log(add);
-  // console.log('add', active);
+
   const dispatch = useDispatch();
+
+  const closeModalFu = () => {
+    dispatch(addOneTransaction(null));
+    dispatch(closeModalAddTransaction());
+  };
 
   useEffect(() => {
     const escapeModal = event => {
       if (event.code === 'Escape') {
         event.preventDefault();
 
-        dispatch(closeModalAddTransaction());
+        closeModalFu();
       }
     };
     window.addEventListener('keydown', escapeModal);
@@ -41,17 +50,13 @@ const ModalAdd = ({ active }) => {
   return (
     <ContainerModal
       className={active ? 'ContainerModal active' : 'ContainerModal'}
-      onClick={() => dispatch(closeModalAddTransaction())}
+      onClick={() => closeModalFu()}
     >
       <ContentModal
         className={active ? 'ContentModal active' : 'ContentModal'}
         onClick={e => e.stopPropagation()}
       >
-        <SvgClose
-          width="25"
-          height="25"
-          onClick={() => dispatch(closeModalAddTransaction())}
-        >
+        <SvgClose width="25" height="25" onClick={() => closeModalFu()}>
           <use href={sprite + '#iconclose'} width="25" height="25"></use>
         </SvgClose>
         <Header>

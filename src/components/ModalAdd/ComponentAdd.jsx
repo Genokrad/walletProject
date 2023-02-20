@@ -10,12 +10,12 @@ import {
   DivBtn,
   BtnAdd,
   BtnCancel,
-  
 } from './StyledContent';
 import { ModalLogout } from 'components/ModalLogout/ModalLogout';
 import { useDispatch, useSelector } from 'react-redux/es/exports.js';
 import {
   createTransaction,
+  getAllTransactions,
   updateTransaction,
 } from 'redux/transactionsController/operations';
 import { getCat } from 'redux/categories/categories-selectors';
@@ -33,10 +33,13 @@ import {
 } from 'redux/transactionsController/slice';
 import { Button } from 'components/Button/Button';
 import { closeModalAddTransaction } from 'redux/transactionsController/slice';
+
 const AddComponent = ({ seting, fn }) => {
-  
+
+  const dispatch = useDispatch();
   const openModal = useOpenModalLogout();
   const isModalOpen = useSelector(getIsModalLogoutOpen);
+  const isUpdateTransaction = useSelector(didUpdate);
   useEffect(() => {
     if (seting) {
       getType('EXPENSE');
@@ -48,8 +51,7 @@ const AddComponent = ({ seting, fn }) => {
      ;
     }
   }, [seting]);
-  
-  
+
   const [data, getData] = useState(new Date());
   const [comment, getComment] = useState('');
   const [amount, getAmount] = useState('0.00');
@@ -59,17 +61,16 @@ const AddComponent = ({ seting, fn }) => {
   const [id, getId] = useState('c9d9e447-1b83-4238-8712-edc77b18b739');
   const getCategory = useSelector(getCat);
 
-  const dispatch = useDispatch();
-
   const oneTransaction = useSelector(selectOneTransaction);
 
-
   useEffect(() => {
-    if (didUpdate === true) {
-      return;
-    }
+
+    // if (oneTransaction == true) {
+    //   return;
+    // }
     getAmount(Math.abs(oneTransaction?.obj?.amount) || '0.00');
     getType(oneTransaction?.obj?.type || 'EXPENSE');
+
     getComment(oneTransaction?.obj?.comment || '');
 
     dispatch(statusTransaction(true));
@@ -121,7 +122,9 @@ const AddComponent = ({ seting, fn }) => {
       };
       fn(true);
 
-      dispatch(createTransaction(operation));
+      dispatch(createTransaction(operation))
+        .unwrap()
+        .then(() => dispatch(getAllTransactions()));
       dispatch(closeModalAddTransaction());
 
       reset();
@@ -137,7 +140,9 @@ const AddComponent = ({ seting, fn }) => {
       };
       fn(true);
 
-      dispatch(createTransaction(operation));
+      dispatch(createTransaction(operation))
+        .unwrap()
+        .then(() => dispatch(getAllTransactions()));
       dispatch(closeModalAddTransaction());
 
       reset();
@@ -148,7 +153,6 @@ const AddComponent = ({ seting, fn }) => {
   };
 
   const upDateFunction = () => {
-  
     // oneTransaction;
     // console.log('transactionToChange', oneTransaction);
     // console.log('oneTransaction.obj.type', oneTransaction.obj.type);
@@ -168,12 +172,15 @@ const AddComponent = ({ seting, fn }) => {
           type: type,
         },
       };
-      
-      dispatch(updateTransaction(newObj));
+
+      dispatch(updateTransaction(newObj))
+        .unwrap()
+        .then(() => dispatch(getAllTransactions()));
+
       dispatch(addOneTransaction(null));
-      
-      return newObj
-      
+      dispatch(closeModalAddTransaction());
+
+      return newObj;
     } else if (oneTransaction.obj.type === 'EXPENSE') {
       console.log('oneTransaction.obj.type', oneTransaction.obj.type);
       newObj = {
@@ -186,15 +193,19 @@ const AddComponent = ({ seting, fn }) => {
           type: type,
         },
       };
-      
-      
-      dispatch(updateTransaction(newObj));
+
+      console.log('newObj', newObj);
+
+      dispatch(updateTransaction(newObj))
+        .unwrap()
+        .then(() => dispatch(getAllTransactions()));
+
       dispatch(addOneTransaction(null));
-      
+      dispatch(closeModalAddTransaction());
+
       return newObj;
     }
-    
- 
+
   };
 
   return (
@@ -219,8 +230,12 @@ const AddComponent = ({ seting, fn }) => {
               onChange={data => getData(data._d)}
             />
             <SvgData width="25" height="25">
-                  <use href={sprite + '#baseline-date'} width="25" height="25"></use>
-                </SvgData>
+              <use
+                href={sprite + '#baseline-date'}
+                width="25"
+                height="25"
+              ></use>
+            </SvgData>
           </DivDataSum>
 
           <Coment
@@ -232,15 +247,18 @@ const AddComponent = ({ seting, fn }) => {
         </form>
       </DivSetting>
       <DivBtn className="Btn">
-       
         {/* {update?<Button title={'update'} onClick={upDateFunction} />:<BtnAdd type="submit" onClick={handleSubmit}>
           ADD
         </BtnAdd>
         } */}
-        <Button title={'update'} onClick={upDateFunction} />
-        <BtnAdd type="submit" onClick={handleSubmit}>
-          ADD
-        </BtnAdd>
+        {isUpdateTransaction && (
+          <Button title={'update'} onClick={upDateFunction} />
+        )}
+        {!isUpdateTransaction && (
+          <BtnAdd type="submit" onClick={handleSubmit}>
+            ADD
+          </BtnAdd>
+        )}
         <BtnCancel onClick={openModal}>CANCEL</BtnCancel>
         {isModalOpen && <ModalLogout />}
       </DivBtn>

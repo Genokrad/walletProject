@@ -1,18 +1,20 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import './Chart.styled.js';
 import { Wrapper, TextAbs } from './Chart.styled.js';
+import { Loader } from 'components/Loader/Loader.jsx';
+import {handleColor } from 'redux/statistics/stat-color.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const Chart = ({ colors, date, balance }) => {
-  
+export const Chart = ({ date, balance }) => {
   const expenses = date.filter(item => item.type === 'EXPENSE');
 
   const labels = expenses.map(el => el.name);
   let amount = expenses.map(el => Math.abs(el.total));
-  const colories = colors.map(el =>el.color)
+
+  const color = labels.map(item => handleColor(item));
+
   const options = {
     plugins: {
       legend: {
@@ -25,7 +27,7 @@ export const Chart = ({ colors, date, balance }) => {
     datasets: [
       {
         data: amount,
-        backgroundColor: colories,
+        backgroundColor: color,
         borderWidth: 0,
       },
     ],
@@ -33,13 +35,20 @@ export const Chart = ({ colors, date, balance }) => {
 
   return (
     <Wrapper>
-      <TextAbs>{balance}</TextAbs>
-      <Doughnut
-        className="relative"
-        //    key={labels.name}
-        data={data}
-        options={options}
-      />
+      {amount.length > 0 ? (
+        <TextAbs>
+          &#8372;
+          <br />
+          {balance}
+        </TextAbs>
+      ) : (
+        <TextAbs>
+          &#8372;
+          {balance}
+          <Loader />
+        </TextAbs>
+      )}
+      <Doughnut data={data} options={options} />
     </Wrapper>
   );
 };

@@ -50,12 +50,14 @@ export const getAllTransactions = createAsyncThunk(
 // Update transaction
 export const updateTransaction = createAsyncThunk(
   'transactions/updateTransaction',
-  async (transaction, { rejectWithValue }) => {
+  async (transaction, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await axios.patch(
         `/api/transactions/${transaction.id}`,
         transaction.obj
       );
+      console.log('data', data);
+      dispatch(getAllTransactions());
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
