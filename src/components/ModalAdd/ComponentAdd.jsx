@@ -55,17 +55,15 @@ const AddComponent = ({ seting, fn }) => {
   const [data, getData] = useState(new Date());
   const [comment, getComment] = useState('');
   const [amount, getAmount] = useState('0.00');
-
   const [type, getType] = useState('EXPENSE');
-
   const [id, getId] = useState('c9d9e447-1b83-4238-8712-edc77b18b739');
+  console.log(id)
   const getCategory = useSelector(getCat);
 
   const oneTransaction = useSelector(selectOneTransaction);
 
   useEffect(() => {
-
-    // if (oneTransaction == true) {
+ // if (oneTransaction == true) {
     //   return;
     // }
     getAmount(Math.abs(oneTransaction?.obj?.amount) || '0.00');
@@ -74,7 +72,7 @@ const AddComponent = ({ seting, fn }) => {
     getComment(oneTransaction?.obj?.comment || '');
 
     dispatch(statusTransaction(true));
-  }, [oneTransaction, dispatch]);
+  }, [oneTransaction, dispatch,]);
 
   // if (oneTransaction !== null) {
   //   getAmount(oneTransaction?.obj?.amount);
@@ -84,21 +82,22 @@ const AddComponent = ({ seting, fn }) => {
 
   const handleChange = e => {
     if (e.target.name === 'sum' && seting) {
-      getId('c9d9e447-1b83-4238-8712-edc77b18b739');
+      // getId('c9d9e447-1b83-4238-8712-edc77b18b739');
       getAmount(e.currentTarget.value);
     } else if (e.target.name === 'sum' && !seting) {
       getAmount(e.currentTarget.value);
     } else if (e.target.name === 'comment') {
       getComment(e.currentTarget.value);
-    } else if (e.target.name === 'select' && !seting) {
+    } else if (e.target.name === 'select') {
       const typeOfSelector = getCategory.find(
         obj => obj.name === e.target.value
       );
-
+  
       getType(typeOfSelector.type);
-      console.log(type)
+    
       getId(typeOfSelector.id);
     }
+   
   };
 
   const reset = () => {
