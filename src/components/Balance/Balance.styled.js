@@ -1,21 +1,26 @@
 import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
-  margin-top: 28px;
+  width: 280px;
+  height: 80px;
+  margin-top: 12px;
+  margin-bottom: 32px;
   display: flex;
   flex-direction: column;
   padding: 8px 40px;
   justify-content: center;
-  width: 395px;
-  height: 80px;
+
   background-color: var(--bcg-white-color);
   border-radius: 30px;
 
   @media (min-width: 768px) {
-    width: 336px;
+    width: 395px;
+    margin-top: 28px;
+    margin-bottom: 0px;
   }
 
   @media (min-width: 1280px) {
+    width: 336px;
   } ;
 `;
 
