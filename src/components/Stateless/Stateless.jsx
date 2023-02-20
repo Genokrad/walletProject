@@ -14,9 +14,7 @@ import {
     Table, TableHead, LiList, Results, ResultsName, ResultsExpenses, ResultsIncome,
     Box, ItemTable
 } from '../Stateless/Stateless.styled';
-
-export const Stateless = () => {
-    const objMonth = [
+const objMonth = [
         { name: 'January', value: 1 },
         { name: 'February', value: 2 },
         { name: 'March', value: 3 },
@@ -29,8 +27,9 @@ export const Stateless = () => {
         { name: 'October', value: 10 },
         { name: 'November', value: 11 },
         { name: 'December', value: 12 },
-    ]
-    const objYear = [
+]
+    
+const objYear = [
         { name: '2019', value: 2019 },
         { name: '2020', value: 2020 },
         { name: '2021', value: 2021 },
@@ -38,8 +37,10 @@ export const Stateless = () => {
         { name: '2023', value: 2023 },
         { name: '2024', value: 2024 },
         { name: '2025', value: 2025 },
-    ]
-
+]
+    
+export const Stateless = () => {
+    
     const [isOpenSelect, setIsOpenSelect] = useState(false);
     const statSummury = useSelector(selectStatSummury);
     const expenseSummary = useSelector(selectExpenseSummary);
@@ -69,7 +70,7 @@ export const Stateless = () => {
     useEffect(() => {
         const currentNameMonth = objMonth.find((item) => Number(month) === item.value )
         setNameMonth(currentNameMonth.name);
-    },[month, objMonth])
+    },[month])
 
     const openSelect = (() => {
         setIsOpenSelect(true);
