@@ -10,6 +10,13 @@ export const StyledDiv = styled.div`
   height: 80px;
   background-color: var(--bcg-white-color);
   border-radius: 30px;
+
+  @media (min-width: 768px) {
+    width: 336px;
+  }
+
+  @media (min-width: 1280px) {
+  } ;
 `;
 
 export const StyledPBalance = styled.div`
