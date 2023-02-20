@@ -97,9 +97,8 @@ export const Stateless = () => {
                                 <div className={css.OptionsContainer}>
                                     {objMonth.map(({ name, value }) => {
                                         return (
-                                           // <div key={name} className={css.Option} onClick={handle} >                                            
                                                 <label key={name} className={css.Option}>{name}
-                                                <input
+                                                    <input
                                                         className={css.Radio}
                                                         type='radio'
                                                         checked={month === value}
@@ -107,7 +106,6 @@ export const Stateless = () => {
                                                         onChange={handleChangeMonth}
                                                     />
                                                 </label>
-                                           // </div>                                        
                                         )
                                     })
                                     }     
@@ -116,24 +114,22 @@ export const Stateless = () => {
                         )}                        
                     </div>
 
-                    <div className={css.Selected} onClick={openSelect}>
+                    <div className={css.SelectedYear} onClick={openSelect}>
                         {year}
                         {isOpenSelect && (
-                            <div className={css.SelectBox}>                          
-                                <div className={css.OptionsContainer}>
+                            <div className={css.SelectBoxYear}>                          
+                                <div className={css.OptionsContainerYear}>
                                     {objYear.map(({ name, value }) => {
-                                        return (
-                                            // <div key={name} className={css.Option} >                                            
-                                                <label key={name} className={css.Option}>{name}
+                                        return (                                        
+                                                <label key={name} className={css.OptionYear}>{name}
                                                     <input
-                                                        className={css.Radio}
+                                                        className={css.RadioYear}
                                                         type='radio'
                                                         checked={year === value}
                                                         value={value} name={name}
                                                         onChange={handleChangeYear}
                                                     />
-                                                </label>
-                                            // </div>                                        
+                                                </label>                                      
                                         )
                                     })
                                     }     

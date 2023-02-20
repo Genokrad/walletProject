@@ -15,6 +15,9 @@ export const Chart = ({ date, balance }) => {
 
   const color = labels.map(item => handleColor(item));
 
+  // const color = labels.length !== 0 ? labels.map(item => handleColor(item)) : ['#ffffff']
+  // console.log('color>>>', color)
+
   const options = {
     plugins: {
       legend: {
