@@ -19,6 +19,7 @@ width:100vw;
 background-color: rgba(0,0,0,0.1);
 top: 0;
 left: 0;
+z-index: 100;
 `
 export const Content = styled.div`
 padding: 20px;
@@ -26,7 +27,7 @@ text-align: center;
 border-radius: 12px;
 background-color: white;
 width: 400px;
-height: 200px;
+height: 150px;
 
 `
 export const Title = styled.h2`
