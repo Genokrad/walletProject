@@ -38,16 +38,16 @@
   top: -6px;
 }
 
-/* .SelectBox .OptionsContainer::-webkit-scrollbar {
+.SelectBox .OptionsContainer::-webkit-scrollbar {
   width: 8px;
-  background: #ffffff;
+  /* background: #ffffff; */
   border-radius: 0 20px 20px 0;
 }
 
 .SelectBox .OptionsContainer::-webkit-scrollbar-thumb {
-  background: #525861;
+  /* background: #525861; */
   border-radius: 0 8px 8px 0;
-} */
+}
 
 .SelectBox .Option,
 .Selected {

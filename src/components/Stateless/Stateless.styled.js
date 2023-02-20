@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const DivConteiner = styled.div`
-    width: 395px;
-    margin-right: 20px;
+    min-width: 280px;
+    padding-right: 20px;
+    padding-left: 20px;
 
-    /* @media (min-width: 768px) {
-        padding-left: 32px;
+    @media (min-width: 768px) {
+        width: 336px;
         padding-right: 32px;
     }
     @media (min-width: 1280px){
-        padding-left: 69px;
-        padding-right: 16px;
-    } */
+        width: 395px;
+        padding-right: 20px;
+    }
     `
 
 export const DivSelect = styled.div`
@@ -35,12 +36,6 @@ export const SelectWrapper = styled.div`
     position: relative;
     width: 181px;
     height: 50px;
-    /* background: rgba(255, 255, 255, 0.7); */
-    /* border: 1px solid #000000; */
-    /* box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(25px);
-    border-radius: 20px; */
-    /* overflow: hidden; */
 
     &::after {
         content: '';
@@ -83,22 +78,6 @@ export const Select = styled.select`
     &::-ms-expand {
         display: none;
     }
-    `
-
-// export const Option = styled.option`
-//     background: rgba(255, 255, 255, 0.7);
-//     border: 1px solid #000000;
-//     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-//     backdrop-filter: blur(25px);
-//     border-radius: 20px;
-//     `
-
-export const ItemOptions = styled.div`
-    
-    `
-
-export const OptionContainer = styled.div`
-    
     `
 
 export const Table = styled.div`
