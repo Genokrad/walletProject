@@ -16,13 +16,16 @@ import Rectangle from '../../images/Header/Rectangle.png';
 export const Currency = () => {
   const data = useFetchCurrency();
   console.log(data);
-  const usd = data?.data[0];
-  const eur = data?.data[1];
-  const allCurrency = [usd, eur];
+  let allCurrency;
+  if (data.length > 0) {
+    const usd = data[0];
+    const eur = data[1];
+    allCurrency = [usd, eur];
+  }
 
   return (
     <>
-      {!data ? (
+      {!data.length > 0 ? (
         <Dna
           height="150"
           width="150"
