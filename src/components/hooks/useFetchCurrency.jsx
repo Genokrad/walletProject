@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-// const LOCAL_KEY = 'currency';
+const LOCAL_KEY = 'currency';
 
 export async function fetchMonoApi() {
   const response = await axios('https://api.monobank.ua/bank/currency');
@@ -9,25 +9,25 @@ export async function fetchMonoApi() {
 }
 
 export const useFetchCurrency = () => {
-  const [details, setDetails] = useState(null);
+  const [details, setDetails] = useState(
+    JSON.parse(window.localStorage.getItem(LOCAL_KEY)) ?? []
+  );
 
   useEffect(() => {
-    if (details) {
+    if (Date.now() - details.newDate < 3600000) {
       return;
     }
     fetchMonoApi().then(setDetails);
   }, [details]);
 
-  // useEffect(() => {
-  //   // const time = details.data[0].date;
-  //   // console.log(555, time);
-  //   localStorage.setItem(LOCAL_KEY, JSON.stringify(details.data[0].date));
+  localStorage.setItem(
+    LOCAL_KEY,
+    JSON.stringify({ ...details, newDate: Date.now() })
+  );
 
-  //   const oldTime = JSON.parse(window.localStorage.getItem(LOCAL_KEY)) ?? [];
-  //   console.log('old', oldTime);
-  //   return oldTime;
-  // }, [details]);
+  // const oldTime = JSON.parse(window.localStorage.getItem(LOCAL_KEY)) ?? [];
+  // console.log('old', oldTime);
+
   // console.log(222, details);
-
   return details;
 };
