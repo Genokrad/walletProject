@@ -30,6 +30,7 @@
   @media (min-width: 1280px) {
     width: 181px;
   } */
+  z-index: 1;
 }
 
 .SelectBox .OptionsContainer.active {

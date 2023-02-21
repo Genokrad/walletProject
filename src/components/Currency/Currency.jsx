@@ -34,7 +34,7 @@ export const Currency = () => {
             // position: 'absolute',
             bottom: 'auto',
             left: 'auto',
-            zIndex: '100',
+            zIndex: '0',
           }}
           wrapperClass="dna-wrapper"
           visible={true}
