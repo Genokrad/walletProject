@@ -14,17 +14,22 @@
   font-size: 16px;
   line-height: 1.5;
 
-  width: 181px;
+  /* width: 280px; */
+  width: 100%;
 
-  /* opacity: 0; */
   transition: all 0.4s;
-  /* overflow: hidden; */
-
-  order: 1;
+  /* order: 1; */
 
   max-height: 240px;
   opacity: 1;
   overflow-y: scroll;
+
+  /* @media (min-width: 768px) {
+    width: 160px;
+  }
+  @media (min-width: 1280px) {
+    width: 181px;
+  } */
 }
 
 .SelectBox .OptionsContainer.active {
@@ -38,16 +43,16 @@
   top: -6px;
 }
 
-/* .SelectBox .OptionsContainer::-webkit-scrollbar {
+.SelectBox .OptionsContainer::-webkit-scrollbar {
   width: 8px;
-  background: #ffffff;
+  /* background: #ffffff; */
   border-radius: 0 20px 20px 0;
 }
 
 .SelectBox .OptionsContainer::-webkit-scrollbar-thumb {
-  background: #525861;
+  /* background: #525861; */
   border-radius: 0 8px 8px 0;
-} */
+}
 
 .SelectBox .Option,
 .Selected {
@@ -69,10 +74,10 @@
 }
 
 .Selected {
-  width: 181px;
+  width: 280px;
   height: 50px;
   padding: 10px;
-  padding-left: 16px;
+  padding-left: 20px;
 
   display: flex;
   align-items: center;
@@ -88,10 +93,16 @@
   line-height: 1.5;
   color: var(--black-text-color);
   cursor: pointer;
-
   position: relative;
+  /* order: 0; */
 
-  order: 0;
+  @media (min-width: 768px) {
+    width: 160px;
+    padding-left: 16px;
+  }
+  @media (min-width: 1280px) {
+    width: 181px;
+  }
 }
 
 .Selected::-ms-expand {
@@ -111,5 +122,132 @@
 }
 
 .Selected:hover::after {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='20' height='11' viewBox='0 0 20 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M19 10L10 1L1 10' stroke='black'/%3e%3c/svg%3e ");
+}
+
+/* ----------------------// for Year */
+.SelectBoxYear .OptionsContainerYear {
+  position: absolute;
+  left: 0;
+  transform: translateY(35px);
+
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(25px);
+  border-radius: 20px;
+
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+
+  width: 100%;
+
+  transition: all 0.4s;
+  /* order: 1; */
+
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+
+  /* @media (min-width: 768px) {
+    width: 160px;
+  }
+  @media (min-width: 1280px) {
+    width: 181px;
+  } */
+}
+
+.SelectBoxYear .OptionsContainerYear.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.SelectBoxYear .OptionsContainerYear.active + .SelectedYear::after {
+  transform: rotateX(180deg);
+  top: -6px;
+}
+
+.SelectBoxYear .OptionsContainerYear::-webkit-scrollbar {
+  width: 8px;
+  /* background: #ffffff; */
+  border-radius: 0 20px 20px 0;
+}
+
+.SelectBoxYear .OptionsContainerYear::-webkit-scrollbar-thumb {
+  /* background: #525861; */
+  border-radius: 0 8px 8px 0;
+}
+
+.SelectBoxYear .OptionYear,
+.SelectedYear {
+  display: block;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.SelectBoxYear .OptionYear:hover {
+  background: #ffffff;
+}
+
+.SelectBoxYear label {
+  cursor: pointer;
+}
+
+.SelectBoxYear .OptionYear .RadioYear {
+  display: none;
+}
+
+.SelectedYear {
+  width: 280px;
+  height: 50px;
+  padding: 10px;
+  padding-left: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid #000000;
+  border-radius: 30px;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--black-text-color);
+  cursor: pointer;
+  position: relative;
+  /* order: 0; */
+
+  @media (min-width: 768px) {
+    width: 160px;
+    padding-left: 16px;
+  }
+  @media (min-width: 1280px) {
+    width: 181px;
+  }
+}
+
+.SelectedYear::-ms-expand {
+  display: none;
+}
+
+.SelectedYear::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 11px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='20' height='11' viewBox='0 0 20 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M19 1L10 10L1 1' stroke='black'/%3e%3c/svg%3e ");
+  pointer-events: none;
+}
+
+.SelectedYear:hover::after {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='20' height='11' viewBox='0 0 20 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M19 10L10 1L1 10' stroke='black'/%3e%3c/svg%3e ");
 }
