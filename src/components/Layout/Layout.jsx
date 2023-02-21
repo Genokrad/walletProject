@@ -5,20 +5,28 @@ import { DashBoard } from 'components/DashBoard/DashBoard';
 import { StyledMain, StiledLeftPart, StyledContainer } from './Layout.styled';
 // import { Login } from 'pages/LoginPage/LoginPage';
 // import { Registration } from 'pages/RegistrationsPage/RegistrationsPage';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { selectIsHideBalance } from 'redux/finance/finance-selectors';
 import { useSelector } from 'react-redux';
 import { Currency } from 'components/Currency/Currency';
+import { useDispatch } from 'react-redux';
+import { getSizeViewport } from 'redux/auth/auth-selectors';
+import { mobSizeHandler, sizeHandler } from 'redux/auth/auth-slice';
 
 export const Layout = () => {
-  const [sizeLayout, setSizeLayout] = useState(false);
+  const dispatch = useDispatch();
   const ref = useRef();
   const showBalance = useSelector(selectIsHideBalance);
+  const sizeLayout = useSelector(getSizeViewport);
 
   const resizeHandler = () => {
     const { clientWidth } = ref.current || {};
-    if (clientWidth > 767) return setSizeLayout(true);
-    setSizeLayout(false);
+
+    if (clientWidth > 767) {
+      dispatch(mobSizeHandler())
+    } else {
+      dispatch(sizeHandler())
+    }
   };
 
   useEffect(() => {
@@ -36,7 +44,7 @@ export const Layout = () => {
       <StyledMain className="main">
         <StyledContainer>
           <StiledLeftPart>
-            <DashBoard props={sizeLayout} />
+            <DashBoard />
           </StiledLeftPart>
           <div>
             {sizeLayout && <Outlet />}
