@@ -12,29 +12,13 @@ import {
   openModalAddTransaction,
   statusTransaction,
 } from 'redux/transactionsController/slice';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { getCategories } from 'redux/categories/categories-operations';
 import { TransactionHistoryMobile } from 'components/TransactionHistoryMobile/TransactionHistoryMobile';
+import { getSizeViewport } from 'redux/auth/auth-selectors';
 // import { selectIsHideBalance } from 'redux/finance/finance-selectors';
 export const HomePage = () => {
-  const [sizeLayout, setSizeLayout] = useState(false);
-  const ref = useRef();
-  // const showBalance = useSelector(selectIsHideBalance);
-
-  const resizeHandler = () => {
-    const { clientWidth } = ref.current || {};
-    if (clientWidth > 767) return setSizeLayout(true);
-    setSizeLayout(false);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', resizeHandler);
-    resizeHandler();
-
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-    };
-  }, []);
+  const sizeLayout = useSelector(getSizeViewport);
 
   const modalAdd = useSelector(selectIsModalAddTransactionOpen);
 

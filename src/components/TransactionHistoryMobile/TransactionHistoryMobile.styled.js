@@ -1,6 +1,21 @@
 import styled from 'styled-components';
 
-export const TransactionWraper = styled.div``;
+export const TransactionWraper = styled.div`
+  max-height: 60vh;
+  opacity: 1;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+
+    border-radius: 0 20px 20px 0;
+    opacity: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--leisure);
+    border-radius: 0 8px 8px 0;
+  }
+`;
 
 export const Transactionlist = styled.ul`
   display: flex;

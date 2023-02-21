@@ -16,6 +16,9 @@ export const DivDataSum = styled.div`
   gap: 32px;
   justify-content: center;
   display: flex;
+  @media screen and (max-width: 768px){
+   flex-direction: column;
+}
 `;
 
 export const Sum = styled.input`
@@ -25,6 +28,12 @@ export const Sum = styled.input`
   padding: 9px;
   text-align: center;
   border-bottom: 1px solid #e0e0e0;
+  @media screen and (max-width: 768px){
+    margin-left:auto;
+    margin-right:auto;
+    
+  width:280px;
+}
 `;
 export const Data = styled(Datetime)`
   color: #bdbdbd;
@@ -39,6 +48,11 @@ export const Data = styled(Datetime)`
   font-size: 18px;
   line-height: 27px;
   color: #000000;
+  @media screen and (max-width: 768px){
+    margin-left:auto;
+    margin-right:auto;
+  width:280px;
+}
 `;
 
 export const DivSetting = styled.div`
@@ -54,6 +68,11 @@ export const Coment = styled.input`
   width: 394px;
 
   border-bottom: 1px solid #e0e0e0;
+  @media screen and (max-width: 768px){
+    margin-left:auto;
+    margin-right:auto;
+  width:280px;
+}
 `;
 export const DivBtn = styled.div`
   display: grid;
@@ -182,31 +201,72 @@ export const FormsInput = styled.input`
   height: 24px;
   left: 451px;
   top: 265px;
-
+  outline:none;
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-
-  /* Gray 4 */
-
   color: #bdbdbd;
   border: none;
+  @media screen and (max-width: 768px){
+   display: none;
+}
 `;
 
 export const FormsSelect = styled.select`
+-webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+
   border: none;
   text-decoration: none;
-`;
+  outline:none;
+
+  @media screen and (max-width: 768px){
+    width: 280px;
+height: 32px;
+font-family: 'Circe';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+color: #BDBDBD;
+
+}
+&::-ms-expand {
+        display: none;
+    }
+
+`
+export const ContainerOptions = styled.div`
+position: relative;
+&::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+      
+        transform: translateY(-50%);
+        width: 20px;
+        height: 11px;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='20' height='11' viewBox='0 0 20 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M19 1L10 10L1 1' stroke='black'/%3e%3c/svg%3e ");
+        pointer-events: none;
+    }
+
+    &:hover::after {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='20' height='11' viewBox='0 0 20 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M19 10L10 1L1 10' stroke='black'/%3e%3c/svg%3e ");
+    }
+
+`
 export const Option = styled.option`
   border: none;
   text-decoration: none;
   width: 382px;
   height: 44px;
+  color: black;
   left: 463px;
   top: 346px;
-
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -214,4 +274,6 @@ export const Option = styled.option`
   line-height: 27px;
   display: flex;
   align-items: center;
+
+
 `;

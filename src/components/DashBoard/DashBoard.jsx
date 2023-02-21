@@ -6,18 +6,19 @@ import { StyledDiv, StyledContainer } from './DashBoard.styled';
 
 import { selectIsHideBalance } from 'redux/finance/finance-selectors';
 import { useSelector } from 'react-redux';
+import { getSizeViewport } from 'redux/auth/auth-selectors';
 
 export const DashBoard = ({ props }) => {
   const showBalance = useSelector(selectIsHideBalance);
-  const size = props;
-
+  // const size = props;
+  const sizeLayout = useSelector(getSizeViewport);
   return (
     <StyledContainer>
       <StyledDiv>
-        <Navigation props={props} />
+        <Navigation />
         {showBalance && <Balance />}
       </StyledDiv>
-      {size && <Currency />}
+      {sizeLayout && <Currency />}
     </StyledContainer>
   );
 };
