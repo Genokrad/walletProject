@@ -12,7 +12,7 @@ import {
   openModalAddTransaction,
   statusTransaction,
 } from 'redux/transactionsController/slice';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { getCategories } from 'redux/categories/categories-operations';
 import { TransactionHistoryMobile } from 'components/TransactionHistoryMobile/TransactionHistoryMobile';
 import { getSizeViewport } from 'redux/auth/auth-selectors';

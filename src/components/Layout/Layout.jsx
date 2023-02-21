@@ -5,7 +5,7 @@ import { DashBoard } from 'components/DashBoard/DashBoard';
 import { StyledMain, StiledLeftPart, StyledContainer } from './Layout.styled';
 // import { Login } from 'pages/LoginPage/LoginPage';
 // import { Registration } from 'pages/RegistrationsPage/RegistrationsPage';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { selectIsHideBalance } from 'redux/finance/finance-selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { Currency } from 'components/Currency/Currency';
@@ -18,24 +18,24 @@ export const Layout = () => {
   const showBalance = useSelector(selectIsHideBalance);
   const sizeLayout = useSelector(getSizeViewport);
 
-  const resizeHandler = () => {
-    const { clientWidth } = ref.current || {};
-
-    if (clientWidth > 767) {
-      dispatch(mobSizeHandler());
-    } else {
-      dispatch(sizeHandler());
-    }
-  };
-
   useEffect(() => {
+    const resizeHandler = () => {
+      const { clientWidth } = ref.current || {};
+
+      if (clientWidth > 767) {
+        dispatch(mobSizeHandler());
+      } else {
+        dispatch(sizeHandler());
+      }
+    };
+
     window.addEventListener('resize', resizeHandler);
     resizeHandler();
 
     return () => {
       window.removeEventListener('resize', resizeHandler);
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <div ref={ref}>
