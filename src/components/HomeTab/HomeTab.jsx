@@ -20,7 +20,7 @@ import {
   CategoryTd,
   CommentTd,
   SumTd,
-  Svg
+  Svg,
 } from './HomeTabStyle';
 import sprite from '../../iconsSprite/icons.svg';
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,7 +34,6 @@ import {
 // import ModalAdd from 'components/ModalAdd/ModalAdd';
 // import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-  
 const HomeTab = () => {
   // const modalAdd = useSelector(selectIsModalAddTransactionOpen);
   const dispatch = useDispatch();
@@ -57,12 +56,6 @@ const HomeTab = () => {
   // const hideTargetElement = () => {
   //   enableBodyScroll(targetElement);
   // };
-
-
-
-
-
-
 
   const resultRecords = transactions?.reduce((acc, item) => {
     const category = arrayCategory?.find(
@@ -105,87 +98,87 @@ const HomeTab = () => {
 
   return (
     <>
-    <Table>
-      <thead>
-        <TopTable>
-          <Data>Date</Data>
-          <Type>Type</Type>
-          <Category>Category</Category>
-          <Comment>Comment</Comment>
-          <Sum>Sum</Sum>
-          <th> </th>
-        </TopTable>
-      </thead>
-      </Table>
-      
-      <TBody>
       <Table>
-        <tbody>
-          {/* {console.log(resultRecords)} */}
-          {resultRecords
-            .reverse()
-            .map(
-              ({
-                transactionDate,
-                amount,
-                type,
-                name,
-                id,
-                comment,
-                categoryId,
-              }) => (
-                <TableBody key={id}>
-                  {/* {console.log('transactionDate', transactionDate)} */}
-                  <DataTd>{reverseString(transactionDate)}</DataTd>
-                  <TypeTd>
-                    {/* new Date(oneTransaction.obj.transactionDate).toLocaleDateString() */}
-                    {(type === 'INCOME' && '+') || (type === 'EXPENSE' && '-')}
-                  </TypeTd>
-                  <CategoryTd>{name}</CategoryTd>
-                  <CommentTd>{comment}</CommentTd>
+        <thead>
+          <TopTable>
+            <Data>Date</Data>
+            <Type>Type</Type>
+            <Category>Category</Category>
+            <Comment>Comment</Comment>
+            <Sum>Sum</Sum>
+            <th> </th>
+          </TopTable>
+        </thead>
+      </Table>
 
-                  {type === 'INCOME' ? (
-                    <SumTd style={{ color: 'var(--seaBlue-text-color)' }}>
-                      {amount}
-                    </SumTd>
-                  ) : (
-                    <SumTd style={{ color: 'var(--bcg-red-color)' }}>
-                      {Math.abs(amount)}
-                    </SumTd>
-                  )}
-                  <Action>
-                    <Svg
-                      id={id}
-                      onClick={() =>
-                        updateFu(
-                          id,
-                          transactionDate,
-                          type,
-                          comment,
-                          amount,
-                          categoryId
-                        )
-                      }
-                      width="14"
-                      height="14"
-                    >
-                      <use
-                        href={sprite + '#icon-pencil-writing-creative'}
+      <TBody>
+        <Table>
+          <tbody>
+            {resultRecords
+              .reverse()
+              .map(
+                ({
+                  transactionDate,
+                  amount,
+                  type,
+                  name,
+                  id,
+                  comment,
+                  categoryId,
+                }) => (
+                  <TableBody key={id}>
+                    {/* {console.log('transactionDate', transactionDate)} */}
+                    <DataTd>{reverseString(transactionDate)}</DataTd>
+                    <TypeTd>
+                      {/* new Date(oneTransaction.obj.transactionDate).toLocaleDateString() */}
+                      {(type === 'INCOME' && '+') ||
+                        (type === 'EXPENSE' && '-')}
+                    </TypeTd>
+                    <CategoryTd>{name}</CategoryTd>
+                    <CommentTd>{comment}</CommentTd>
+
+                    {type === 'INCOME' ? (
+                      <SumTd style={{ color: 'var(--seaBlue-text-color)' }}>
+                        {amount}
+                      </SumTd>
+                    ) : (
+                      <SumTd style={{ color: 'var(--bcg-red-color)' }}>
+                        {Math.abs(amount)}
+                      </SumTd>
+                    )}
+                    <Action>
+                      <Svg
+                        id={id}
+                        onClick={() =>
+                          updateFu(
+                            id,
+                            transactionDate,
+                            type,
+                            comment,
+                            amount,
+                            categoryId
+                          )
+                        }
                         width="14"
                         height="14"
-                      ></use>
-                    </Svg>
-                  </Action>
-                  <Btn onClick={() => dispatch(deleteTransaction(id))}>
-                    Delete
-                  </Btn>
-                </TableBody>
-              )
-            )}
-        </tbody>
-          </Table>
-        </TBody>
-      </>
+                      >
+                        <use
+                          href={sprite + '#icon-pencil-writing-creative'}
+                          width="14"
+                          height="14"
+                        ></use>
+                      </Svg>
+                    </Action>
+                    <Btn onClick={() => dispatch(deleteTransaction(id))}>
+                      Delete
+                    </Btn>
+                  </TableBody>
+                )
+              )}
+          </tbody>
+        </Table>
+      </TBody>
+    </>
   );
 };
 export default HomeTab;

@@ -12,9 +12,30 @@ import {
   openModalAddTransaction,
   statusTransaction,
 } from 'redux/transactionsController/slice';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getCategories } from 'redux/categories/categories-operations';
+import { TransactionHistoryMobile } from 'components/TransactionHistoryMobile/TransactionHistoryMobile';
+// import { selectIsHideBalance } from 'redux/finance/finance-selectors';
 export const HomePage = () => {
+  const [sizeLayout, setSizeLayout] = useState(false);
+  const ref = useRef();
+  // const showBalance = useSelector(selectIsHideBalance);
+
+  const resizeHandler = () => {
+    const { clientWidth } = ref.current || {};
+    if (clientWidth > 767) return setSizeLayout(true);
+    setSizeLayout(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', resizeHandler);
+    resizeHandler();
+
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+    };
+  }, []);
+
   const modalAdd = useSelector(selectIsModalAddTransactionOpen);
 
   const dispatch = useDispatch();
@@ -30,8 +51,8 @@ export const HomePage = () => {
 
   return (
     <>
-      <HomeTab />
-
+      {sizeLayout && <HomeTab />}
+      {!sizeLayout && <TransactionHistoryMobile />}
       <ModalAdd active={modalAdd} />
       <Btn onClick={() => openModalFu()} type="button">
         <svg width="20" height="20">

@@ -15,7 +15,7 @@ import Rectangle from '../../images/Header/Rectangle.png';
 
 export const Currency = () => {
   const data = useFetchCurrency();
-  console.log(data);
+  // console.log(data);
   let allCurrency;
   if (data.length > 0) {
     const usd = data[0];
