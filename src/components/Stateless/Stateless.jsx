@@ -42,6 +42,7 @@ const objYear = [
 export const Stateless = () => {
     
     const [isOpenSelect, setIsOpenSelect] = useState(false);
+    const [isOpenSelectYear, setIsOpenSelectYear] = useState(false);
     const statSummury = useSelector(selectStatSummury);
     const expenseSummary = useSelector(selectExpenseSummary);
     const incomeSummary = useSelector(selectIncomeSummary);
@@ -64,7 +65,7 @@ export const Stateless = () => {
     const handleChangeYear = ({ target }) => {        
         const { value } = target;
         setYear(value);
-        setIsOpenSelect(false);
+        setIsOpenSelectYear(false);
     };
 
     useEffect(() => {
@@ -74,6 +75,10 @@ export const Stateless = () => {
 
     const openSelect = (() => {
         setIsOpenSelect(true);
+    })
+
+    const openSelectYear = (() => {
+        setIsOpenSelectYear(true);
     })
 
     useEffect(() => {
@@ -114,9 +119,9 @@ export const Stateless = () => {
                         )}                        
                     </div>
 
-                    <div className={css.SelectedYear} onClick={openSelect}>
+                    <div className={css.SelectedYear} onClick={openSelectYear}>
                         {year}
-                        {isOpenSelect && (
+                        {isOpenSelectYear && (
                             <div className={css.SelectBoxYear}>                          
                                 <div className={css.OptionsContainerYear}>
                                     {objYear.map(({ name, value }) => {

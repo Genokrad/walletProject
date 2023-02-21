@@ -13,9 +13,9 @@ export const Chart = ({ date, balance }) => {
   const labels = expenses.map(el => el.name);
   let amount = expenses.map(el => Math.abs(el.total));
 
-  const color = labels.map(item => handleColor(item));
+  // const color = labels.map(item => handleColor(item));
 
-  // const color = labels.length !== 0 ? labels.map(item => handleColor(item)) : ['#ffffff']
+  const color = labels.length !== 0 ? labels.map(item => handleColor(item)) : ['#ffffff']
   // console.log('color>>>', color)
 
   const options = {

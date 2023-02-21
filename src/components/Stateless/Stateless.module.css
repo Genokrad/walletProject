@@ -14,7 +14,8 @@
   font-size: 16px;
   line-height: 1.5;
 
-  width: 280px;
+  /* width: 280px; */
+  width: 100%;
 
   transition: all 0.4s;
   /* order: 1; */
@@ -23,12 +24,12 @@
   opacity: 1;
   overflow-y: scroll;
 
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     width: 160px;
   }
   @media (min-width: 1280px) {
     width: 181px;
-  }
+  } */
 }
 
 .SelectBox .OptionsContainer.active {
@@ -141,7 +142,7 @@
   font-size: 16px;
   line-height: 1.5;
 
-  width: 280px;
+  width: 100%;
 
   transition: all 0.4s;
   /* order: 1; */
@@ -150,12 +151,12 @@
   opacity: 1;
   overflow-y: scroll;
 
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     width: 160px;
   }
   @media (min-width: 1280px) {
     width: 181px;
-  }
+  } */
 }
 
 .SelectBoxYear .OptionsContainerYear.active {
