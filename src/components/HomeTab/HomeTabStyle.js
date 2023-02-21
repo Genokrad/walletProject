@@ -9,19 +9,16 @@ export const TBody = styled.div`
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 
-  border-radius: 0 20px 20px 0;
-  opacity: 0;
-  
-}
+    border-radius: 0 20px 20px 0;
+    opacity: 0;
+  }
   &::-webkit-scrollbar-thumb {
-  background: #ffffff;
-  border-radius: 0 8px 8px 0;
-}
-`
-
-
+    background: #ffffff;
+    border-radius: 0 8px 8px 0;
+  }
+`;
 
 export const TopTable = styled.tr`
   width: 37px;
@@ -136,7 +133,6 @@ export const Btn = styled.td`
   justify-content: center;
 `;
 export const Svg = styled.svg`
-cursor: pointer;
-margin-right: 10px;
- 
+  cursor: pointer;
+  margin-right: 10px;
 `;
