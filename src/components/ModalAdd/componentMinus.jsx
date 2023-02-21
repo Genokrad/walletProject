@@ -30,7 +30,7 @@ useEffect(()=>{})
       <DivSetting className="SetingTransaction">
         <form>
           <Forms>
-            <FormsInput placeholder="Select a category" value={typeOfSelector.name} />
+            <FormsInput placeholder="Select a category"  />
             <FormsSelect id="category" onChange={change}  value={typeOfSelector.name} name="select">
               {cat.map(category => {
                 return <Option key={category.id}>{category.name}</Option>;
