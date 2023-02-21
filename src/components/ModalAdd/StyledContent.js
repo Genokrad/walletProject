@@ -16,6 +16,9 @@ export const DivDataSum = styled.div`
   gap: 32px;
   justify-content: center;
   display: flex;
+  @media screen and (max-width: 768px){
+   flex-direction: column;
+}
 `;
 
 export const Sum = styled.input`
@@ -25,6 +28,12 @@ export const Sum = styled.input`
   padding: 9px;
   text-align: center;
   border-bottom: 1px solid #e0e0e0;
+  @media screen and (max-width: 768px){
+    margin-left:auto;
+    margin-right:auto;
+    
+  width:280px;
+}
 `;
 export const Data = styled(Datetime)`
   color: #bdbdbd;
@@ -39,6 +48,11 @@ export const Data = styled(Datetime)`
   font-size: 18px;
   line-height: 27px;
   color: #000000;
+  @media screen and (max-width: 768px){
+    margin-left:auto;
+    margin-right:auto;
+  width:280px;
+}
 `;
 
 export const DivSetting = styled.div`
@@ -54,6 +68,11 @@ export const Coment = styled.input`
   width: 394px;
 
   border-bottom: 1px solid #e0e0e0;
+  @media screen and (max-width: 768px){
+    margin-left:auto;
+    margin-right:auto;
+  width:280px;
+}
 `;
 export const DivBtn = styled.div`
   display: grid;
@@ -188,16 +207,26 @@ export const FormsInput = styled.input`
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-
-  /* Gray 4 */
-
   color: #bdbdbd;
   border: none;
+  @media screen and (max-width: 768px){
+   display: none;
+}
 `;
 
 export const FormsSelect = styled.select`
   border: none;
   text-decoration: none;
+  @media screen and (max-width: 768px){
+    width: 280px;
+height: 32px;
+font-family: 'Circe';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+color: #BDBDBD;
+}
 `;
 export const Option = styled.option`
   border: none;
@@ -214,4 +243,5 @@ export const Option = styled.option`
   line-height: 27px;
   display: flex;
   align-items: center;
+
 `;
