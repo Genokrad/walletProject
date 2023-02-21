@@ -14,7 +14,12 @@ import {
 } from 'redux/transactionsController/slice';
 import { useEffect } from 'react';
 import { getCategories } from 'redux/categories/categories-operations';
+import { TransactionHistoryMobile } from 'components/TransactionHistoryMobile/TransactionHistoryMobile';
+import { getSizeViewport } from 'redux/auth/auth-selectors';
+// import { selectIsHideBalance } from 'redux/finance/finance-selectors';
 export const HomePage = () => {
+  const sizeLayout = useSelector(getSizeViewport);
+
   const modalAdd = useSelector(selectIsModalAddTransactionOpen);
 
   const dispatch = useDispatch();
@@ -30,8 +35,8 @@ export const HomePage = () => {
 
   return (
     <>
-      <HomeTab />
-
+      {sizeLayout && <HomeTab />}
+      {!sizeLayout && <TransactionHistoryMobile />}
       <ModalAdd active={modalAdd} />
       <Btn onClick={() => openModalFu()} type="button">
         <svg width="20" height="20">

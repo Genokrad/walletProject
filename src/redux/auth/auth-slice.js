@@ -7,8 +7,9 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   isModalLogoutOpen: false,
-  error:null,
+  error: null,
   balance: 0,
+  size: false,
 };
 const handlePending = state => {
   state.isLoading = true;
@@ -30,6 +31,12 @@ export const authSlice = createSlice({
     },
     closeModalLogout(state) {
       state.isModalLogoutOpen = false;
+    },
+    mobSizeHandler(state) {
+      state.size = true;
+    },
+    sizeHandler(state) {
+      state.size = false;
     },
   },
   extraReducers: builder => {
@@ -81,5 +88,10 @@ export const authSlice = createSlice({
       });
   },
 });
-export const { openModalLogout, closeModalLogout } = authSlice.actions;
+export const {
+  openModalLogout,
+  closeModalLogout,
+  mobSizeHandler,
+  sizeHandler,
+} = authSlice.actions;
 export default authSlice.reducer;

@@ -10,11 +10,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export const Chart = ({ date, balance }) => {
   const expenses = date.filter(item => item.type === 'EXPENSE');
 
-  const labels = expenses.map(el => el.name);
-  let amount = expenses.map(el => Math.abs(el.total));
 
+  const labels = expenses.length !== 0 ? expenses.map(el => el.name) : ['Nothing']
+  let amount = expenses.length !== 0 ? expenses.map(el => Math.abs(el.total)) : [1];
   const color = labels.map(item => handleColor(item));
-
+  
   const options = {
     plugins: {
       legend: {
@@ -35,7 +35,7 @@ export const Chart = ({ date, balance }) => {
 
   return (
     <Wrapper>
-      {amount.length > 0 ? (
+      {amount.length >= 0 ? (
         <TextAbs>
           &#8372;
           <br />

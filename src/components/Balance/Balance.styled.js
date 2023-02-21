@@ -20,9 +20,7 @@ export const StyledDiv = styled.div`
   }
 
   @media (min-width: 1280px) {
-
-    width: 336px;
-
+    width: 395px;
   } ;
 `;
 

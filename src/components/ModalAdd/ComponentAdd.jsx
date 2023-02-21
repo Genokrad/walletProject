@@ -32,21 +32,18 @@ import {
 } from 'redux/transactionsController/slice';
 import { Button } from 'components/Button/Button';
 
-
 const AddComponent = ({ seting, fn }) => {
-console.log(seting)
+  // console.log(seting)
   const dispatch = useDispatch();
 
   const isUpdateTransaction = useSelector(didUpdate);
   useEffect(() => {
     if (seting) {
       getType('EXPENSE');
-      getId('c9d9e447-1b83-4238-8712-edc77b18b739')
-     ;
+      getId('c9d9e447-1b83-4238-8712-edc77b18b739');
     } else {
       getType('INCOME');
-      getId('063f1132-ba5d-42b4-951d-44011ca46262')
-     ;
+      getId('063f1132-ba5d-42b4-951d-44011ca46262');
     }
   }, [seting]);
 
@@ -55,13 +52,13 @@ console.log(seting)
   const [amount, getAmount] = useState('0.00');
   const [type, getType] = useState('EXPENSE');
   const [id, getId] = useState('c9d9e447-1b83-4238-8712-edc77b18b739');
-  console.log(id)
+  // console.log(id)
   const getCategory = useSelector(getCat);
 
   const oneTransaction = useSelector(selectOneTransaction);
 
   useEffect(() => {
- // if (oneTransaction == true) {
+    // if (oneTransaction == true) {
     //   return;
     // }
     getAmount(Math.abs(oneTransaction?.obj?.amount) || '0.00');
@@ -70,7 +67,7 @@ console.log(seting)
     getComment(oneTransaction?.obj?.comment || '');
 
     dispatch(statusTransaction(true));
-  }, [oneTransaction, dispatch,]);
+  }, [oneTransaction, dispatch]);
 
   // if (oneTransaction !== null) {
   //   getAmount(oneTransaction?.obj?.amount);
@@ -90,12 +87,11 @@ console.log(seting)
       const typeOfSelector = getCategory.find(
         obj => obj.name === e.target.value
       );
-  
+
       getType(typeOfSelector.type);
-    
+
       getId(typeOfSelector.id);
     }
-   
   };
 
   const reset = () => {
@@ -108,7 +104,7 @@ console.log(seting)
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log(type);
+    // console.log(type);
     if (type === 'EXPENSE') {
       const operation = {
         transactionDate: data,
@@ -179,7 +175,7 @@ console.log(seting)
 
       return newObj;
     } else if (oneTransaction.obj.type === 'EXPENSE') {
-      console.log('oneTransaction.obj.type', oneTransaction.obj.type);
+      // console.log('oneTransaction.obj.type', oneTransaction.obj.type);
       newObj = {
         id: oneTransaction.id,
         obj: {
@@ -191,7 +187,7 @@ console.log(seting)
         },
       };
 
-      console.log('newObj', newObj);
+      // console.log('newObj', newObj);
 
       dispatch(updateTransaction(newObj))
         .unwrap()
@@ -202,21 +198,19 @@ console.log(seting)
 
       return newObj;
     }
-
   };
 
   return (
     <>
       <DivSetting className="SetingTransaction">
         <form onSubmit={handleSubmit}>
-          {seting && getCategory.length?  <MinusComponent change={handleChange} id={id} cat={getCategory}/>:"" }
+          {seting && getCategory.length ? (
+            <MinusComponent change={handleChange} id={id} cat={getCategory} />
+          ) : (
+            ''
+          )}
           <DivDataSum>
-            <Sum
-              name="sum"
-              
-              placeholder={amount}
-              onChange={handleChange}
-            ></Sum>
+            <Sum name="sum" placeholder={amount} onChange={handleChange}></Sum>
 
             {/* {console.log('first', data)} */}
             <Datetime
@@ -256,8 +250,9 @@ console.log(seting)
             ADD
           </BtnAdd>
         )}
-        <BtnCancel onClick={()=>dispatch(closeModalAddTransaction())}>CANCEL</BtnCancel>
-       
+        <BtnCancel onClick={() => dispatch(closeModalAddTransaction())}>
+          CANCEL
+        </BtnCancel>
       </DivBtn>
     </>
   );

@@ -5,12 +5,14 @@ import {
   StyledSVG,
 } from './Navigation.styled';
 import sprite from '../../iconsSprite/mySprite.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { hideBalance, showBalance } from 'redux/finance/finance-slice';
+import { getSizeViewport } from 'redux/auth/auth-selectors';
 
-export const Navigation = ({ props }) => {
+export const Navigation = () => {
   const dispatch = useDispatch();
-  const size = props;
+
+  const sizeLayout = useSelector(getSizeViewport);
 
   const hide = () => dispatch(showBalance());
   const show = () => dispatch(hideBalance());
@@ -18,7 +20,7 @@ export const Navigation = ({ props }) => {
   return (
     <>
       <nav>
-        {size ? (
+        {sizeLayout ? (
           <Styledlist>
             <StyledItem>
               <StyledSVG width="18" height="18">
