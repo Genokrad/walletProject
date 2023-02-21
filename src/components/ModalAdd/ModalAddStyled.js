@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ContainerModal = styled.div`
+z-index:1000;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
@@ -24,7 +25,7 @@ export const ContainerModal = styled.div`
 export const ContentModal = styled.div`
   padding: 20px;
   width: 540px;
-  
+  z-index:1001;
   /* height: 508px; */
   border-radius: 20px;
   background-color: white;
