@@ -7,6 +7,7 @@ import {
   TypeStyled,
   ImgStyledVector,
   ImgStyledRectangle,
+  ListLISale,
 } from './Currency.styled';
 
 import { useFetchCurrency } from 'components/hooks/useFetchCurrency';
@@ -34,7 +35,6 @@ export const Currency = () => {
             // position: 'absolute',
             bottom: 'auto',
             left: 'auto',
-            zIndex: '100',
           }}
           wrapperClass="dna-wrapper"
           visible={true}
@@ -45,7 +45,7 @@ export const Currency = () => {
           <ListStyled>
             <ListLI>Currency</ListLI>
             <ListLI>Purchase</ListLI>
-            <ListLI>Sale</ListLI>
+            <ListLISale>Sale</ListLISale>
           </ListStyled>
           <ImgStyledVector src={Vector} alt="img" />
           <TypeStyled>

@@ -30,12 +30,13 @@ export const ListStyled = styled.ul`
   height: 50px;
 
   @media (min-width: 768px) {
+    justify-content: center;
     width: 100%;
-    padding-left: 41px;
+    padding-left: 0px;
+    gap: 53px;
   }
 
   @media (min-width: 1280px) {
-    margin-left: 40px;
     padding-left: 0px;
     margin-bottom: 20px;
     gap: 60px;
@@ -51,7 +52,33 @@ export const ListLI = styled.li`
   font-size: 18px;
   line-height: calc(27 / 18);
   color: white;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1280px) {
+  } ;
 `;
+
+export const ListLISale = styled.li`
+  margin-top: 11px;
+  margin-left: 15px;
+
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  color: white;
+
+  @media (min-width: 768px) {
+    margin-left: 10px;
+  }
+
+  @media (min-width: 1280px) {
+  } ;
+`;
+
 export const ImgStyledRectangle = styled.img`
   position: absolute;
   top: auto;
@@ -117,12 +144,15 @@ export const TypeStyled = styled.ul`
     }
 
     @media (min-width: 768px) {
+      width: 296px;
+      height: 24px;
     }
 
     @media (min-width: 1280px) {
       gap: 90px;
-      justify-content: center;
-      width: 100%;
+
+      width: 274px;
+      height: 24px;
     }
   }
 `;
