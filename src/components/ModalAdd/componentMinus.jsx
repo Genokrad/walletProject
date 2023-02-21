@@ -7,7 +7,7 @@ import {
   FormsInput,
   FormsSelect,
   Option,
-
+  ContainerOptions
 } from './StyledContent';
 const MinusComponent = ({change,id,cat}) => {
   
@@ -31,11 +31,13 @@ useEffect(()=>{})
         <form>
           <Forms>
             <FormsInput placeholder="Select a category"  />
-            <FormsSelect id="category" onChange={change}  value={typeOfSelector.name} name="select">
-              {cat.map(category => {
-                return <Option key={category.id}>{category.name}</Option>;
-              })}
-            </FormsSelect>
+            <ContainerOptions><FormsSelect  id="category" onChange={change}  value={typeOfSelector.name} name="select">
+
+{cat.map(category => {
+  return <Option key={category.id}>{category.name}</Option>;
+})}
+</FormsSelect></ContainerOptions>
+            
           </Forms>
 
         </form>
