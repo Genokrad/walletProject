@@ -9,6 +9,7 @@ export const colorExpensesBox = [
         { name: 'Leisure', color: '#24CCA7'},
         { name: 'Other expenses', color: '#00AD84' },
         { name: 'Entertainment', color: '#81FFA5' },
+        { name: 'Nothing', color: '#D8DBE0' },
     ]
 
 export const handleColor = (name) => {    
